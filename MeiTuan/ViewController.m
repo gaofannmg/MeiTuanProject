@@ -59,6 +59,20 @@
     wapBtn.backgroundColor = [UIColor whiteColor];
     [titleView addSubview:wapBtn];
     
+    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
+    layout.itemSize = CGSizeMake(150, 150);
+    layout.minimumInteritemSpacing = 10;
+    layout.minimumLineSpacing = 10;
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    
+    UICollectionView *cView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - titleView.frame.size.height) collectionViewLayout:layout];
+    cView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:cView];
+    cView.delegate = self;
+    cView.dataSource = self;
+    [cView registerClass:[MTCollectionViewCell class] forCellWithReuseIdentifier:@"MTCollectionViewCell"];
+    
     UIButton *screeningBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     screeningBtn.frame = CGRectMake(self.view.frame.size.width - 100,self.view.frame.size.height - 150, 60, 60);
     screeningBtn.backgroundColor = [UIColor greenColor];
@@ -78,21 +92,6 @@
     sortBtn.layer.borderWidth = 0.5;
     [sortBtn setTitle:@"排序" forState:UIControlStateNormal];
     [self.view addSubview:sortBtn];
-    
-    UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(150, 150);
-    layout.minimumInteritemSpacing = 10;
-    layout.minimumLineSpacing = 10;
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    
-    UICollectionView *cView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - titleView.frame.size.height) collectionViewLayout:layout];
-    cView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:cView];
-    cView.delegate = self;
-    cView.dataSource = self;
-    cView.alpha = 0.4;
-    [cView registerClass:[MTCollectionViewCell class] forCellWithReuseIdentifier:@"MTCollectionViewCell"];
     
     [self getHttpData];
 }
