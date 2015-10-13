@@ -15,6 +15,9 @@
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
     UILabel *titleLabel;
+    NSMutableDictionary *params;
+    NSArray *array;
+    UICollectionView *cView;
 }
 @end
 
@@ -60,13 +63,13 @@
     [titleView addSubview:wapBtn];
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(150, 150);
+    layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width / 2 -5, [UIScreen mainScreen].bounds.size.width / 2 -5);
     layout.minimumInteritemSpacing = 10;
     layout.minimumLineSpacing = 10;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     
-    UICollectionView *cView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - titleView.frame.size.height) collectionViewLayout:layout];
+    cView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - titleView.frame.size.height) collectionViewLayout:layout];
     cView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:cView];
     cView.delegate = self;
@@ -98,7 +101,7 @@
 
 - (void) getHttpData
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params = [NSMutableDictionary dictionary];
     
     [params setObject:@"公寓式酒店" forKey:@"category"];
     [params setObject:[NSNumber numberWithInt:1] forKey:@"page"];
@@ -115,6 +118,8 @@
 {
     //result 字典
     NSLog(@"%@",result);
+    array = [result objectForKey:@"deals"];
+    [cView reloadData];
 }
 
 //失败
@@ -130,15 +135,14 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 10;
+    return array.count;
 }
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-     MTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTCollectionViewCell" forIndexPath:indexPath];
-    
-    
-    [cell refreshCell:@"haha" detailsLabelText:@"haha" presentPriceLabelText:@"haha" originalPriceLabelText:@"haha" soldLabelText:@"haha" imageViewName:nil];
+    MTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTCollectionViewCell" forIndexPath:indexPath];
+    NSDictionary *dic = array[indexPath.row];
+    [cell refreshCell:dic];
     cell.backgroundColor = [UIColor blackColor];
 
     return cell;

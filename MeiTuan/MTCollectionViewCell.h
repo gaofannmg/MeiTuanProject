@@ -10,6 +10,6 @@
 
 @interface MTCollectionViewCell : UICollectionViewCell
 
--(void) refreshCell:(NSString *) nameLabelText detailsLabelText:(NSString *) detailsLabelText presentPriceLabelText:(NSString *) presentPriceLabelText originalPriceLabelText:(NSString *) originalPriceLabelText soldLabelText:(NSString *) soldLabelText imageViewName:(NSString *) imagname;
+-(void) refreshCell:(NSDictionary *) dic;
 
 @end
