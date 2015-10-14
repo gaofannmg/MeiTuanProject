@@ -62,12 +62,16 @@
     wapBtn.backgroundColor = [UIColor whiteColor];
     [titleView addSubview:wapBtn];
     
+    CGFloat span = 5;
+    CGFloat cellWidth = (self.view.bounds.size.width - 3 * span)/ 2;
+    CGFloat cellHeight = cellWidth;
+    
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(150, 150);
-    layout.minimumInteritemSpacing = 10;
-    layout.minimumLineSpacing = 10;
+    layout.itemSize = CGSizeMake(cellWidth , cellHeight);
+    layout.minimumInteritemSpacing = span;
+    layout.minimumLineSpacing = span;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    layout.sectionInset = UIEdgeInsetsMake(span, span, span, span);
     
     cView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - titleView.frame.size.height) collectionViewLayout:layout];
     cView.backgroundColor = [UIColor clearColor];
@@ -107,7 +111,7 @@
     [params setObject:[NSNumber numberWithInt:1] forKey:@"page"];
     [params setObject:@"北京" forKey:@"city"];
     
-    NSLog(@"发送请求的参数: %@", params.allValues);
+//    NSLog(@"发送请求的参数: %@", params.allValues);
     
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];

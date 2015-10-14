@@ -160,7 +160,7 @@
 	[signString appendString:kDPAppSecret];
 	unsigned char digest[CC_SHA1_DIGEST_LENGTH];
 	NSData *stringBytes = [signString dataUsingEncoding: NSUTF8StringEncoding];
-	if (CC_SHA1([stringBytes bytes], [stringBytes length], digest)) {
+	if (CC_SHA1([stringBytes bytes], (CC_LONG)[stringBytes length], digest)) {
 		/* SHA-1 hash has been calculated and stored in 'digest'. */
 		NSMutableString *digestString = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH];
 		for (int i=0; i<CC_SHA1_DIGEST_LENGTH; i++) {
