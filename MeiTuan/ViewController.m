@@ -63,7 +63,7 @@
     [titleView addSubview:wapBtn];
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake([UIScreen mainScreen].bounds.size.width / 2 -5, [UIScreen mainScreen].bounds.size.width / 2 -5);
+    layout.itemSize = CGSizeMake(150, 150);
     layout.minimumInteritemSpacing = 10;
     layout.minimumLineSpacing = 10;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
