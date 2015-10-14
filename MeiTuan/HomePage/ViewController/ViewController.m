@@ -8,8 +8,6 @@
 
 #import "ViewController.h"
 #import "MTCollectionViewCell.h"
-//#import "DPAPI.h
-//#import "DPRequest.h"
 #import "DPAPI.h"
 
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
@@ -106,13 +104,10 @@
 - (void) getHttpData
 {
     params = [NSMutableDictionary dictionary];
-    
     [params setObject:@"公寓式酒店" forKey:@"category"];
     [params setObject:[NSNumber numberWithInt:1] forKey:@"page"];
     [params setObject:@"北京" forKey:@"city"];
-    
-//    NSLog(@"发送请求的参数: %@", params.allValues);
-    
+    //    NSLog(@"发送请求的参数: %@", params.allValues);
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 }
@@ -125,7 +120,6 @@
     array = [result objectForKey:@"deals"];
     [cView reloadData];
 }
-
 //失败
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
 {

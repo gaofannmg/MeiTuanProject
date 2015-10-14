@@ -7,7 +7,6 @@
 //
 
 #import "MTCollectionViewCell.h"
-#import "UIImageView+WebCache.h"
 
 @interface MTCollectionViewCell ()
 {
@@ -52,36 +51,38 @@
     [self.contentView addSubview:imageView];
    
     nameLabel.frame = CGRectMake(2,CGRectGetMaxY(imageView.frame) +2, imageView.frame.size.width -2, 20);
-    nameLabel.backgroundColor = [UIColor redColor];
+    nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.text = titleStr;
     [self.contentView addSubview:nameLabel];
    
     detailsLabel.frame = CGRectMake(2, CGRectGetMaxY(nameLabel.frame) +2, imageView.frame.size.width -2, 40);
-    detailsLabel.backgroundColor = [UIColor redColor];
+    detailsLabel.backgroundColor = [UIColor clearColor];
     detailsLabel.text = detailsLabelStr;
     detailsLabel.font = [UIFont fontWithName:nil size:10];
     detailsLabel.numberOfLines = 0;
     [self.contentView addSubview:detailsLabel];
     
     presentPriceLabel.frame = CGRectMake(2, CGRectGetMaxY(detailsLabel.frame) +1, 50, 20);
-    presentPriceLabel.backgroundColor = [UIColor redColor];
+    presentPriceLabel.backgroundColor = [UIColor clearColor];
     NSNumber *presentNumber = [NSNumber numberWithDouble:presentPriceLabelStr];
     NSString *presentString = [presentNumber stringValue];
-    NSString *presentStr = [NSString stringWithFormat:@"$%@",presentString];
+    NSString *presentStr = [NSString stringWithFormat:@"￥%@",presentString];
     presentPriceLabel.text = presentStr;
+    presentPriceLabel.textColor = [UIColor blackColor];
     [self.contentView addSubview:presentPriceLabel];
    
     originalPriceLabel.frame = CGRectMake(CGRectGetMaxX(presentPriceLabel.frame) +10, CGRectGetMaxY(detailsLabel.frame) +1,50, 20);
-    originalPriceLabel.backgroundColor = [UIColor redColor];
+    originalPriceLabel.backgroundColor = [UIColor clearColor];
     originalPriceLabel.font = [UIFont fontWithName:nil size:11];
     NSNumber *originalNumber = [NSNumber numberWithDouble:originalPriceLabelStr];
     NSString *originalString = [originalNumber stringValue];
-    NSString *originaStr = [NSString stringWithFormat:@"$%@",originalString];
+    NSString *originaStr = [NSString stringWithFormat:@"￥%@",originalString];
     originalPriceLabel.text = originaStr;
+    originalPriceLabel.textColor = RGB(85, 85, 85);
     [self.contentView addSubview:originalPriceLabel];
    
     soldLabel.frame = CGRectMake(CGRectGetMaxX(originalPriceLabel.frame) +5, CGRectGetMaxY(detailsLabel.frame) +1, 55, 20);
-    soldLabel.backgroundColor = [UIColor redColor];
+    soldLabel.backgroundColor = [UIColor clearColor];
     soldLabel.font = [UIFont fontWithName:nil size:11];
     NSNumber *soldNumber = [NSNumber numberWithDouble:soldLabelStr];
     NSString *soldString = [soldNumber stringValue];
