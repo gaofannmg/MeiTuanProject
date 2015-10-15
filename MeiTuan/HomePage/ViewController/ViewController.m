@@ -78,28 +78,28 @@
     cView.dataSource = self;
     [cView registerClass:[MTCollectionViewCell class] forCellWithReuseIdentifier:@"MTCollectionViewCell"];
     
-    UIButton *screeningBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    screeningBtn.frame = CGRectMake(self.view.frame.size.width - 100,self.view.frame.size.height - 150, 60, 60);
-    screeningBtn.backgroundColor = [UIColor greenColor];
-    screeningBtn.layer.masksToBounds = YES;
-    screeningBtn.layer.cornerRadius = 30.0;
-    screeningBtn.layer.borderColor = [[UIColor clearColor] CGColor];
-    screeningBtn.layer.borderWidth = 0.5;
-    screeningBtn.alpha = 0.8;
-    [screeningBtn setTitle:@"筛选" forState:UIControlStateNormal];
-    [self.view addSubview:screeningBtn];
+    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height - 20, self.view.frame.size.width,60)];
+    barView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:barView];
+
+    UIButton *cityButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cityButton.frame = CGRectMake(0, 0, barView.frame.size.width/3, barView.frame.size.height);
+    [cityButton setTitle:@"城市" forState:UIControlStateNormal];
+    cityButton.backgroundColor = [UIColor redColor];
+    [barView addSubview:cityButton];
     
-    UIButton *sortBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    sortBtn.frame = CGRectMake(screeningBtn.frame.origin.x, CGRectGetMaxY(screeningBtn.frame) + 10, screeningBtn.frame.size.width, screeningBtn.frame.size.height);
-    sortBtn.backgroundColor = [UIColor blueColor];
-    sortBtn.layer.masksToBounds = YES;
-    sortBtn.layer.cornerRadius = 30.0;
-    sortBtn.layer.borderColor = [[UIColor clearColor] CGColor];
-    sortBtn.layer.borderWidth = 0.5;
-    sortBtn.alpha = 0.8;
-    [sortBtn setTitle:@"排序" forState:UIControlStateNormal];
-    [self.view addSubview:sortBtn];
+    UIButton *screeningButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    screeningButton.frame = CGRectMake(CGRectGetMaxX(cityButton.frame),0,cityButton.frame.size.width, barView.frame.size.height);
+    [screeningButton setTitle:@"筛选" forState:UIControlStateNormal];
+    screeningButton.backgroundColor =[UIColor yellowColor];
+    [barView addSubview:screeningButton];
     
+    UIButton *sortButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    sortButton.frame = CGRectMake(CGRectGetMaxX(screeningButton.frame),0,cityButton.frame.size.width, barView.frame.size.height);
+    [sortButton setTitle:@"排序" forState:UIControlStateNormal];
+    sortButton.backgroundColor =[UIColor blueColor];
+    [barView addSubview:sortButton];
+
     [self getHttpData];
 }
 
