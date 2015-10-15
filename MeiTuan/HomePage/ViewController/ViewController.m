@@ -44,7 +44,7 @@
     searchView.layer.borderWidth = 0.5;
     [titleView addSubview:searchView];
     
-    UIImageView *searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 5, 30, 30)];
+    UIImageView *searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 5, 25, 25)];
     searchImageView.backgroundColor = [UIColor whiteColor];
     searchImageView.image = [UIImage imageNamed:@"icon_search"];
     [searchView addSubview:searchImageView];
@@ -65,7 +65,7 @@
     CGFloat cellHeight = cellWidth;
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(cellWidth , cellHeight);
+    layout.itemSize = CGSizeMake(cellWidth , cellHeight +50);
     layout.minimumInteritemSpacing = span;
     layout.minimumLineSpacing = span;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
@@ -85,16 +85,18 @@
     screeningBtn.layer.cornerRadius = 30.0;
     screeningBtn.layer.borderColor = [[UIColor clearColor] CGColor];
     screeningBtn.layer.borderWidth = 0.5;
+    screeningBtn.alpha = 0.8;
     [screeningBtn setTitle:@"筛选" forState:UIControlStateNormal];
     [self.view addSubview:screeningBtn];
     
     UIButton *sortBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sortBtn.frame = CGRectMake(screeningBtn.frame.origin.x, CGRectGetMaxY(screeningBtn.frame) + 10, screeningBtn.frame.size.width, screeningBtn.frame.size.height);
-    sortBtn.backgroundColor = [UIColor greenColor];
+    sortBtn.backgroundColor = [UIColor blueColor];
     sortBtn.layer.masksToBounds = YES;
     sortBtn.layer.cornerRadius = 30.0;
     sortBtn.layer.borderColor = [[UIColor clearColor] CGColor];
     sortBtn.layer.borderWidth = 0.5;
+    sortBtn.alpha = 0.8;
     [sortBtn setTitle:@"排序" forState:UIControlStateNormal];
     [self.view addSubview:sortBtn];
     
