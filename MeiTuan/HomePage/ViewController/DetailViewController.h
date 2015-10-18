@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PushViewController : UIViewController
+@interface DetailViewController : UIViewController
+- (void) clickView;
 
 @end

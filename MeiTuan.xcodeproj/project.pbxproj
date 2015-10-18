@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4977E37D1BD280A100C9D5FF /* PushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4977E37C1BD280A100C9D5FF /* PushViewController.m */; };
+		4977E37D1BD280A100C9D5FF /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4977E37C1BD280A100C9D5FF /* DetailViewController.m */; };
+		49B67E1E1BD38B0500ABE81C /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B67E1D1BD38B0500ABE81C /* DetailCell.m */; };
 		A610EBB01BCEAE1300B25B4D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB831BCEAE1300B25B4D /* ViewController.m */; };
 		A610EBB11BCEAE1300B25B4D /* MTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB861BCEAE1300B25B4D /* MTCollectionViewCell.m */; };
 		A610EBB21BCEAE1300B25B4D /* DPAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB8A1BCEAE1300B25B4D /* DPAPI.m */; };
@@ -47,8 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4977E37B1BD280A100C9D5FF /* PushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushViewController.h; sourceTree = "<group>"; };
-		4977E37C1BD280A100C9D5FF /* PushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushViewController.m; sourceTree = "<group>"; };
+		4977E37B1BD280A100C9D5FF /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		4977E37C1BD280A100C9D5FF /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		49B67E1C1BD38B0500ABE81C /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCell.h; sourceTree = "<group>"; };
+		49B67E1D1BD38B0500ABE81C /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
 		A610EB821BCEAE1300B25B4D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A610EB831BCEAE1300B25B4D /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A610EB851BCEAE1300B25B4D /* MTCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTCollectionViewCell.h; sourceTree = "<group>"; };
@@ -145,8 +148,10 @@
 			children = (
 				A610EB821BCEAE1300B25B4D /* ViewController.h */,
 				A610EB831BCEAE1300B25B4D /* ViewController.m */,
-				4977E37B1BD280A100C9D5FF /* PushViewController.h */,
-				4977E37C1BD280A100C9D5FF /* PushViewController.m */,
+				4977E37B1BD280A100C9D5FF /* DetailViewController.h */,
+				4977E37C1BD280A100C9D5FF /* DetailViewController.m */,
+				49B67E1C1BD38B0500ABE81C /* DetailCell.h */,
+				49B67E1D1BD38B0500ABE81C /* DetailCell.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 			files = (
 				A610EBB21BCEAE1300B25B4D /* DPAPI.m in Sources */,
 				A610EBBB1BCEAE1300B25B4D /* SDWebImageManager.m in Sources */,
+				49B67E1E1BD38B0500ABE81C /* DetailCell.m in Sources */,
 				A610EBB61BCEAE1300B25B4D /* SDImageCache.m in Sources */,
 				A610EBBA1BCEAE1300B25B4D /* SDWebImageDownloaderOperation.m in Sources */,
 				A610EBC31BCEAE1300B25B4D /* UIView+WebCacheOperation.m in Sources */,
@@ -399,7 +405,7 @@
 				A610EBB41BCEAE1300B25B4D /* MKAnnotationView+WebCache.m in Sources */,
 				A610EBB71BCEAE1300B25B4D /* SDWebImageCompat.m in Sources */,
 				A670840D1BC943EA00F6A40F /* AppDelegate.m in Sources */,
-				4977E37D1BD280A100C9D5FF /* PushViewController.m in Sources */,
+				4977E37D1BD280A100C9D5FF /* DetailViewController.m in Sources */,
 				A670840A1BC943EA00F6A40F /* main.m in Sources */,
 				A610EBBF1BCEAE1300B25B4D /* UIImage+MultiFormat.m in Sources */,
 				A610EBC11BCEAE1300B25B4D /* UIImageView+HighlightedWebCache.m in Sources */,

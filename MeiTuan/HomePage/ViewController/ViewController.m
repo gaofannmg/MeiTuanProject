@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "MTCollectionViewCell.h"
-#import "PushViewController.h"
+#import "DetailViewController.h"
 
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
@@ -150,9 +150,9 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    PushViewController *pushView = [[PushViewController alloc] init];
+    DetailViewController *detailView = [[DetailViewController alloc] init];
 //    [self.navigationController pushViewController:pushView animated:YES];
-    [self presentViewController:pushView animated:YES completion:nil];
+    [self presentViewController:detailView animated:YES completion:nil];
     
 }
 
