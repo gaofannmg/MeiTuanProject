@@ -8,12 +8,11 @@
 
 #import "ViewController.h"
 #import "MTCollectionViewCell.h"
-#import "DPAPI.h"
+#import "PushViewController.h"
 
 @interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
     UILabel *titleLabel;
-    NSMutableDictionary *params;
     NSArray *array;
     UICollectionView *cView;
 }
@@ -78,26 +77,29 @@
     cView.dataSource = self;
     [cView registerClass:[MTCollectionViewCell class] forCellWithReuseIdentifier:@"MTCollectionViewCell"];
     
-    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height - 20, self.view.frame.size.width,60)];
-    barView.backgroundColor = [UIColor greenColor];
+    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height - 50, self.view.frame.size.width,50)];
+    barView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:barView];
 
-    UIButton *cityButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    cityButton.frame = CGRectMake(0, 0, barView.frame.size.width/3, barView.frame.size.height);
-    [cityButton setTitle:@"城市" forState:UIControlStateNormal];
-    cityButton.backgroundColor = [UIColor redColor];
-    [barView addSubview:cityButton];
+    UIButton *typeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    typeButton.frame = CGRectMake(7, 0, barView.frame.size.width/3, barView.frame.size.height-5);
+    [typeButton setTitle:@"列表" forState:UIControlStateNormal];
+    typeButton.backgroundColor = [UIColor grayColor];
+    typeButton.alpha = 0.8;
+    [barView addSubview:typeButton];
     
     UIButton *screeningButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    screeningButton.frame = CGRectMake(CGRectGetMaxX(cityButton.frame),0,cityButton.frame.size.width, barView.frame.size.height);
+    screeningButton.frame = CGRectMake(CGRectGetMaxX(typeButton.frame),0,typeButton.frame.size.width, typeButton.frame.size.height);
     [screeningButton setTitle:@"筛选" forState:UIControlStateNormal];
-    screeningButton.backgroundColor =[UIColor yellowColor];
+    screeningButton.backgroundColor =[UIColor grayColor];
+    screeningButton.alpha = 0.8;
     [barView addSubview:screeningButton];
     
     UIButton *sortButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    sortButton.frame = CGRectMake(CGRectGetMaxX(screeningButton.frame),0,cityButton.frame.size.width, barView.frame.size.height);
+    sortButton.frame = CGRectMake(CGRectGetMaxX(screeningButton.frame),0,typeButton.frame.size.width -14, screeningButton.frame.size.height);
     [sortButton setTitle:@"排序" forState:UIControlStateNormal];
-    sortButton.backgroundColor =[UIColor blueColor];
+    sortButton.backgroundColor =[UIColor grayColor];
+    sortButton.alpha = 0.8;
     [barView addSubview:sortButton];
 
     [self getHttpData];
@@ -105,7 +107,7 @@
 
 - (void) getHttpData
 {
-    params = [NSMutableDictionary dictionary];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:@"公寓式酒店" forKey:@"category"];
     [params setObject:[NSNumber numberWithInt:1] forKey:@"page"];
     [params setObject:@"北京" forKey:@"city"];
@@ -143,9 +145,15 @@
     MTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTCollectionViewCell" forIndexPath:indexPath];
     NSDictionary *dic = array[indexPath.row];
     [cell refreshCell:dic];
-    cell.backgroundColor = [UIColor blackColor];
-
+    cell.userInteractionEnabled = YES;
     return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    PushViewController *pushView = [[PushViewController alloc] init];
+//    [self.navigationController pushViewController:pushView animated:YES];
+    [self presentViewController:pushView animated:YES completion:nil];
+    
 }
 
 
