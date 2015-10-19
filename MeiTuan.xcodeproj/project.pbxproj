@@ -35,6 +35,8 @@
 		A67084151BC943EA00F6A40F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A67084141BC943EA00F6A40F /* Images.xcassets */; };
 		A67084181BC943EA00F6A40F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A67084161BC943EA00F6A40F /* LaunchScreen.xib */; };
 		A67084241BC943EB00F6A40F /* MeiTuanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67084231BC943EB00F6A40F /* MeiTuanTests.m */; };
+		A6AE8B151BD526BE00E2D0FC /* DetailSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AE8B141BD526BE00E2D0FC /* DetailSecondCell.m */; };
+		A6DE60EE1BD532C200E44CB8 /* DetailThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE60ED1BD532C200E44CB8 /* DetailThirdCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +108,10 @@
 		A670841D1BC943EB00F6A40F /* MeiTuanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeiTuanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67084221BC943EB00F6A40F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A67084231BC943EB00F6A40F /* MeiTuanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeiTuanTests.m; sourceTree = "<group>"; };
+		A6AE8B131BD526BE00E2D0FC /* DetailSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSecondCell.h; sourceTree = "<group>"; };
+		A6AE8B141BD526BE00E2D0FC /* DetailSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSecondCell.m; sourceTree = "<group>"; };
+		A6DE60EC1BD532C200E44CB8 /* DetailThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailThirdCell.h; sourceTree = "<group>"; };
+		A6DE60ED1BD532C200E44CB8 /* DetailThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailThirdCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,10 @@
 				4977E37C1BD280A100C9D5FF /* DetailViewController.m */,
 				49B67E1C1BD38B0500ABE81C /* DetailCell.h */,
 				49B67E1D1BD38B0500ABE81C /* DetailCell.m */,
+				A6AE8B131BD526BE00E2D0FC /* DetailSecondCell.h */,
+				A6AE8B141BD526BE00E2D0FC /* DetailSecondCell.m */,
+				A6DE60EC1BD532C200E44CB8 /* DetailThirdCell.h */,
+				A6DE60ED1BD532C200E44CB8 /* DetailThirdCell.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -388,6 +398,7 @@
 			files = (
 				A610EBB21BCEAE1300B25B4D /* DPAPI.m in Sources */,
 				A610EBBB1BCEAE1300B25B4D /* SDWebImageManager.m in Sources */,
+				A6AE8B151BD526BE00E2D0FC /* DetailSecondCell.m in Sources */,
 				49B67E1E1BD38B0500ABE81C /* DetailCell.m in Sources */,
 				A610EBB61BCEAE1300B25B4D /* SDImageCache.m in Sources */,
 				A610EBBA1BCEAE1300B25B4D /* SDWebImageDownloaderOperation.m in Sources */,
@@ -403,6 +414,7 @@
 				A610EBB81BCEAE1300B25B4D /* SDWebImageDecoder.m in Sources */,
 				A610EBB11BCEAE1300B25B4D /* MTCollectionViewCell.m in Sources */,
 				A610EBB41BCEAE1300B25B4D /* MKAnnotationView+WebCache.m in Sources */,
+				A6DE60EE1BD532C200E44CB8 /* DetailThirdCell.m in Sources */,
 				A610EBB71BCEAE1300B25B4D /* SDWebImageCompat.m in Sources */,
 				A670840D1BC943EA00F6A40F /* AppDelegate.m in Sources */,
 				4977E37D1BD280A100C9D5FF /* DetailViewController.m in Sources */,

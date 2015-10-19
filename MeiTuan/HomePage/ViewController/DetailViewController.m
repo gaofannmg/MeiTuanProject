@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "DetailCell.h"
+#import "DetailSecondCell.h"
 
 @interface DetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -36,6 +37,7 @@
 
     UITableView *detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     [detailTabView registerClass:[DetailCell class] forCellReuseIdentifier:@"DetailCell"];
+    [detailTabView registerClass:[DetailSecondCell class] forCellReuseIdentifier:@"DetailSecondCell"];
     
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
@@ -73,7 +75,7 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -105,12 +107,18 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section ==0) {
+    if (indexPath.section == 0) {
         
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
 //        NSDictionary *dic = array[indexPath.row];
         [cell refreshCell:nil];
         cell.userInteractionEnabled = YES;
+        
+        return cell;
+    }
+    else if (indexPath.section == 1) {
+        DetailSecondCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSecondCell" forIndexPath:indexPath];
+        [cell refreshSecondCell:nil];
         
         return cell;
     }
