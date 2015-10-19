@@ -10,4 +10,6 @@
 
 @interface DetailThirdCell : UITableViewCell
 
+- (void) refreshThirdCell:(NSDictionary *)dic;
+
 @end

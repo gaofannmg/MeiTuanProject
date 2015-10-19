@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "DetailCell.h"
 #import "DetailSecondCell.h"
+#import "DetailThirdCell.h"
 
 @interface DetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -38,6 +39,7 @@
     UITableView *detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
     [detailTabView registerClass:[DetailCell class] forCellReuseIdentifier:@"DetailCell"];
     [detailTabView registerClass:[DetailSecondCell class] forCellReuseIdentifier:@"DetailSecondCell"];
+    [detailTabView registerClass:[DetailThirdCell class] forCellReuseIdentifier:@"DetailThirdCell.h"];
     
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
@@ -75,7 +77,7 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -113,24 +115,40 @@
 //        NSDictionary *dic = array[indexPath.row];
         [cell refreshCell:nil];
         cell.userInteractionEnabled = YES;
-        
         return cell;
     }
     else if (indexPath.section == 1) {
         DetailSecondCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSecondCell" forIndexPath:indexPath];
         [cell refreshSecondCell:nil];
-        
         return cell;
     }
-
-
     
+    else if (indexPath.section == 2) {
+        DetailThirdCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailThirdCell.h" forIndexPath:indexPath];
+        [cell refreshThirdCell:nil];
+        return cell;
+    }
     return nil;
 }
-
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 300;
+    if (indexPath.section == 0) {
+        return 300;
+    }
+    else if (indexPath.section ==1){
+        return 160;
+    }
+    else if (indexPath.section == 2){
+        return 280;
+    }
+    return 0;
 }
+
+//- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 300;
+//}
+
+
 
 @end
