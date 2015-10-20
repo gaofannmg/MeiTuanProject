@@ -14,6 +14,8 @@
     UILabel *titleLabel;
     UIImageView *assessImageView;
     UILabel *addressLabel;
+    UIView *cutView; //分割线
+    UIView *cutSecondView;
 }
 @end
 
@@ -26,6 +28,8 @@
         titleLabel = [[UILabel alloc] init];
         assessImageView = [[UIImageView alloc] init];
         addressLabel = [[UILabel alloc] init];
+        cutView = [[UIView alloc] init];
+        cutSecondView = [[UIView alloc] init];
     }
     return self;
 }
@@ -33,17 +37,32 @@
 - (void) refreshSecondCell:(NSDictionary *)dic
 {
     userLabel.frame = CGRectMake(0, 0, 100, 30);
-    userLabel.backgroundColor = [UIColor greenColor];
+    userLabel.backgroundColor = [UIColor clearColor];
+    userLabel.text = @"适用商户";
+    userLabel.font = [UIFont fontWithName:nil size:12.0];
+    userLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:userLabel];
-    titleLabel.frame = CGRectMake(0, CGRectGetMaxY(userLabel.frame)+ 10, 200, 30);
-    titleLabel.backgroundColor = [UIColor greenColor];
+    cutView.frame = CGRectMake(0, CGRectGetMaxY(userLabel.frame) +5, [UIScreen mainScreen].bounds.size.width, 0.5);
+    cutView.backgroundColor = [UIColor grayColor];
+    [self.contentView addSubview:cutView];
+    titleLabel.frame = CGRectMake(0, CGRectGetMaxY(userLabel.frame)+ 10, 200, 20);
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.text = @"诗语原创主题酒店公寓";
+    titleLabel.font = [UIFont fontWithName:nil size:15.0];
+    titleLabel.textColor = [UIColor blackColor];
     [self.contentView addSubview:titleLabel];
-    assessImageView.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) +10, [UIScreen mainScreen].bounds.size.width,30);
+    assessImageView.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) +10, [UIScreen mainScreen].bounds.size.width,40);
     assessImageView.backgroundColor = [UIColor greenColor];
     assessImageView.image = [UIImage imageNamed:@""];
     [self.contentView addSubview:assessImageView];
+    cutSecondView.frame = CGRectMake(0, CGRectGetMaxY(assessImageView.frame) +5, [UIScreen mainScreen].bounds.size.width, 0.5);
+    cutSecondView.backgroundColor = [UIColor grayColor];
+    [self.contentView addSubview:cutSecondView];
     addressLabel.frame = CGRectMake(0, CGRectGetMaxY(assessImageView.frame) +10, [UIScreen mainScreen].bounds.size.width, 30);
-    addressLabel.backgroundColor = [UIColor greenColor];
+    addressLabel.backgroundColor = [UIColor clearColor];
+    addressLabel.text = @"建国路89号华贸公寓1号楼";
+    addressLabel.textColor = [UIColor blackColor];
+    addressLabel.font = [UIFont fontWithName: nil size:12.0];
     [self.contentView addSubview:addressLabel];
     
     

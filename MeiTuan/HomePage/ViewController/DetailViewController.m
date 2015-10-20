@@ -43,14 +43,15 @@
     
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
+    detailTabView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:detailTabView];
     
     [self getDealDetailData];
 }
 
 - (void) clickView
-{    //    [self.navigationController popViewControllerAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) getDealDetailData
@@ -113,7 +114,7 @@
         
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
 //        NSDictionary *dic = array[indexPath.row];
-        [cell refreshCell:nil];
+        [cell refreshCell:nil baseVCNew:self];
         cell.userInteractionEnabled = YES;
         return cell;
     }
@@ -133,21 +134,17 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        return 300;
+        return 280;
     }
     else if (indexPath.section ==1){
         return 160;
     }
     else if (indexPath.section == 2){
-        return 280;
+        return 250;
     }
     return 0;
 }
 
-//- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 300;
-//}
 
 
 

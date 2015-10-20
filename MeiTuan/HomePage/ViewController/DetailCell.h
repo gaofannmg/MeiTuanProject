@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailViewController.h"
 
 @interface DetailCell : UITableViewCell
 
-- (void) refreshCell:(NSDictionary *) dic;
+- (void) refreshCell:(NSDictionary *) dic baseVCNew:(DetailViewController *) baseVCNew;
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "DetailCell.h"
-#import "DetailViewController.h"
 
 @interface DetailCell ()
 {
@@ -19,7 +18,11 @@
     UILabel *label1;
     UILabel *label2;
     UIView *lineView;
+    UIView *presentCutView;
 }
+
+@property (nonatomic,weak) DetailViewController *baseVC;
+
 @end
 
 @implementation DetailCell
@@ -36,12 +39,15 @@
         label1 = [[UILabel alloc] init];
         label2 = [[UILabel alloc] init];
         lineView = [[UIView alloc] init];//分割线
+        presentCutView = [[UIView alloc] init];//现价切线
     }
     return self;
 }
 
-- (void) refreshCell:(NSDictionary *) dic
+- (void) refreshCell:(NSDictionary *) dic baseVCNew:(DetailViewController *) baseVCNew
 {
+    self.baseVC = baseVCNew;
+    
     titleImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200);
     titleImageView.image = [UIImage imageNamed:@""];
     titleImageView.backgroundColor = [UIColor redColor];
@@ -52,38 +58,54 @@
     outBtn.alpha = 0.5;
     [outBtn setTitle:@"返回" forState:UIControlStateNormal];
     outBtn.userInteractionEnabled = YES;
-    [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
+    [outBtn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:outBtn];
     
-    originalpriceLabel.frame = CGRectMake(0,CGRectGetMaxY(titleImageView.frame), 100, 30);
-    originalpriceLabel.backgroundColor = [UIColor greenColor];
-    originalpriceLabel.text = @"原价";
+    originalpriceLabel.frame = CGRectMake(0,CGRectGetMaxY(titleImageView.frame)+5, 60, 30);
+    originalpriceLabel.backgroundColor = [UIColor clearColor];
+    originalpriceLabel.text = @"现价";
+    originalpriceLabel.font =[UIFont fontWithName:nil size:15.0];
+    originalpriceLabel.textColor = [UIColor redColor];
     [self.contentView addSubview:originalpriceLabel];
     
-    presentpriceLabel.frame = CGRectMake(CGRectGetMaxX(originalpriceLabel.frame) +5,CGRectGetMaxY(titleImageView.frame), 100, 30);
-    presentpriceLabel.backgroundColor = [UIColor greenColor];
-    presentpriceLabel.text = @"现价";
+    presentpriceLabel.frame = CGRectMake(CGRectGetMaxX(originalpriceLabel.frame) +5,originalpriceLabel.frame.origin.y,60, 30);
+    presentpriceLabel.backgroundColor = [UIColor clearColor];
+    presentpriceLabel.text = @"原价";
+    presentpriceLabel.font =[UIFont fontWithName:nil size:12.0];
+    presentpriceLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:presentpriceLabel];
     
-    buyBtn.frame = CGRectMake(CGRectGetMaxX(presentpriceLabel.frame) + 50, CGRectGetMaxY(titleImageView.frame), 100, 30);
-    buyBtn.backgroundColor = [UIColor greenColor];
+    presentCutView.frame = CGRectMake(presentpriceLabel.frame.origin.x, presentpriceLabel.center.y, presentpriceLabel.frame.size.width, 1);
+    presentCutView.backgroundColor = [UIColor grayColor];
+    [self.contentView addSubview:presentCutView];
+    
+    buyBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 105, presentpriceLabel.frame.origin.y, 100, 30);
+    buyBtn.backgroundColor = [UIColor orangeColor];
     [buyBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
+    buyBtn.titleLabel.font = [UIFont fontWithName:nil size:15.0];
     [self.contentView addSubview:buyBtn];
     
-    lineView.frame = CGRectMake(0, CGRectGetMaxY(originalpriceLabel.frame) +10, [UIScreen mainScreen].bounds.size.width, 0.5);
+    lineView.frame = CGRectMake(0, CGRectGetMaxY(originalpriceLabel.frame) +5, [UIScreen mainScreen].bounds.size.width, 0.5);
     lineView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:lineView];//分割线
     
-    label1.frame = CGRectMake(0,CGRectGetMaxY(originalpriceLabel.frame) +20, 100, 30);
-    label1.backgroundColor = [UIColor greenColor];
+    label1.frame = CGRectMake(0,CGRectGetMaxY(presentpriceLabel.frame) +10, 100, 30);
+    label1.backgroundColor = [UIColor clearColor];
     label1.text = @"限时可退";
+    label1.font = [UIFont fontWithName: nil size:12.0];
+    label1.textColor = [UIColor grayColor];
     [self.contentView addSubview:label1];
     
     label2.frame = CGRectMake(buyBtn.frame.origin.x, label1.frame.origin.y, 100, 30);
-    label2.backgroundColor = [UIColor greenColor];
+    label2.backgroundColor = [UIColor clearColor];
     label2.text = @"过期自动退";
+    label2.font = [UIFont fontWithName: nil size:12.0];
+    label2.textColor = [UIColor grayColor];
     [self.contentView addSubview:label2];
 }
-
+- (void) click
+{
+    [self.baseVC clickView];
+}
 
 @end

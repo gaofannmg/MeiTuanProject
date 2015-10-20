@@ -151,8 +151,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController *detailView = [[DetailViewController alloc] init];
-//    [self.navigationController pushViewController:pushView animated:YES];
-    [self presentViewController:detailView animated:YES completion:nil];
+    [self.navigationController pushViewController:detailView animated:YES];
     
 }
 
