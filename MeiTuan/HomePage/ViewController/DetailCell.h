@@ -11,6 +11,6 @@
 
 @interface DetailCell : UITableViewCell
 
-- (void) refreshCell:(NSDictionary *) dic baseVCNew:(DetailViewController *) baseVCNew;
+- (void) refreshCell:(NSDictionary *) dic;
 
 @end

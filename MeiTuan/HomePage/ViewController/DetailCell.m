@@ -21,8 +21,6 @@
     UIView *presentCutView;
 }
 
-@property (nonatomic,weak) DetailViewController *baseVC;
-
 @end
 
 @implementation DetailCell
@@ -31,6 +29,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
     {
+       
         titleImageView = [[UIImageView alloc] init];
         outBtn =[UIButton buttonWithType:UIButtonTypeCustom];
         originalpriceLabel = [[UILabel alloc] init];
@@ -44,22 +43,12 @@
     return self;
 }
 
-- (void) refreshCell:(NSDictionary *) dic baseVCNew:(DetailViewController *) baseVCNew
+- (void) refreshCell:(NSDictionary *) dic
 {
-    self.baseVC = baseVCNew;
-    
     titleImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200);
     titleImageView.image = [UIImage imageNamed:@""];
     titleImageView.backgroundColor = [UIColor redColor];
     [self.contentView addSubview:titleImageView];
-    
-    outBtn.frame = CGRectMake(0, 0, 60, 30);
-    outBtn.backgroundColor = [UIColor blackColor];
-    outBtn.alpha = 0.5;
-    [outBtn setTitle:@"返回" forState:UIControlStateNormal];
-    outBtn.userInteractionEnabled = YES;
-    [outBtn addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:outBtn];
     
     originalpriceLabel.frame = CGRectMake(0,CGRectGetMaxY(titleImageView.frame)+5, 60, 30);
     originalpriceLabel.backgroundColor = [UIColor clearColor];
@@ -68,14 +57,14 @@
     originalpriceLabel.textColor = [UIColor redColor];
     [self.contentView addSubview:originalpriceLabel];
     
-    presentpriceLabel.frame = CGRectMake(CGRectGetMaxX(originalpriceLabel.frame) +5,originalpriceLabel.frame.origin.y,60, 30);
+    presentpriceLabel.frame = CGRectMake(CGRectGetMaxX(originalpriceLabel.frame) +5,originalpriceLabel.frame.origin.y,50, 30);
     presentpriceLabel.backgroundColor = [UIColor clearColor];
     presentpriceLabel.text = @"原价";
     presentpriceLabel.font =[UIFont fontWithName:nil size:12.0];
     presentpriceLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:presentpriceLabel];
     
-    presentCutView.frame = CGRectMake(presentpriceLabel.frame.origin.x, presentpriceLabel.center.y, presentpriceLabel.frame.size.width, 1);
+    presentCutView.frame = CGRectMake(presentpriceLabel.frame.origin.x - 5, presentpriceLabel.center.y, presentpriceLabel.frame.size.width, 1);
     presentCutView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:presentCutView];
     
@@ -103,9 +92,6 @@
     label2.textColor = [UIColor grayColor];
     [self.contentView addSubview:label2];
 }
-- (void) click
-{
-    [self.baseVC clickView];
-}
+
 
 @end

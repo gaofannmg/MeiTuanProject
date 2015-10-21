@@ -10,6 +10,10 @@
 #import "DetailCell.h"
 #import "DetailSecondCell.h"
 #import "DetailThirdCell.h"
+#import "DetailFourthCell.h"
+#import "DetailFifthCell.h"
+#import "DetailSixthCell.h"
+#import "DetailSeventhCell.h"
 
 @interface DetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -35,15 +39,30 @@
     [super viewDidLoad];
     
     self.view.backgroundColor =[UIColor whiteColor];
+    
+    UIView *titleView = [[UIView alloc] init];
+    titleView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64);
+    titleView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:titleView];
+    
+    UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    outBtn.frame = CGRectMake(0,5,50, 44);
+    outBtn.backgroundColor = [UIColor blackColor];
+    [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
+    [titleView addSubview:outBtn];
 
-    UITableView *detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
+    UITableView *detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(titleView.frame)) style:UITableViewStyleGrouped];
     [detailTabView registerClass:[DetailCell class] forCellReuseIdentifier:@"DetailCell"];
     [detailTabView registerClass:[DetailSecondCell class] forCellReuseIdentifier:@"DetailSecondCell"];
-    [detailTabView registerClass:[DetailThirdCell class] forCellReuseIdentifier:@"DetailThirdCell.h"];
+//    [detailTabView registerClass:[DetailThirdCell class] forCellReuseIdentifier:@"DetailThirdCell"];
+    [detailTabView registerClass:[DetailFourthCell class] forCellReuseIdentifier:@"DetailFourthCell"];
+    [detailTabView registerClass:[DetailFifthCell class] forCellReuseIdentifier:@"DetailFifthCell"];
+    [detailTabView registerClass:[DetailSixthCell class] forCellReuseIdentifier:@"DetailSixthCell"];
+    [detailTabView registerClass:[DetailSeventhCell class] forCellReuseIdentifier:@"DetailSeventhCell"];
     
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
-    detailTabView.backgroundColor = [UIColor greenColor];
+    detailTabView.backgroundColor = [UIColor grayColor];
     [self.view addSubview:detailTabView];
     
     [self getDealDetailData];
@@ -78,33 +97,18 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 7;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section ==0) {
-        return 1;
-    }
-    else if(section ==1)
+   if(section == 5)
     {
-        return 1;
-    }
-    else if(section ==2)
-    {
-        return 1;
-    }
-    else if(section ==3)
-    {
-        return 4;
-    }
-    else if(section == 4)
-    {
-        return 1;
+        return 3;
     }
     else
     {
-        return 3;
+        return 1;
     }
 }
 
@@ -114,7 +118,7 @@
         
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
 //        NSDictionary *dic = array[indexPath.row];
-        [cell refreshCell:nil baseVCNew:self];
+        [cell refreshCell:nil];
         cell.userInteractionEnabled = YES;
         return cell;
     }
@@ -125,7 +129,34 @@
     }
     
     else if (indexPath.section == 2) {
-        DetailThirdCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailThirdCell.h" forIndexPath:indexPath];
+//        DetailThirdCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailThirdCell" forIndexPath:indexPath];
+//        [cell refreshThirdCell:nil];
+//        return cell;
+        DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell" forIndexPath:indexPath];
+        NSArray *stringArray = @[@"123",@"123惚惚恍恍惚惚号，恍恍123123恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号",@"fasd惚惚恍恍惚惚恍恍惚惚号，dfasdf惚恍恍惚惚恍恍惚惚号，ffasd惚惚恍恍惚惚恍恍惚惚号，dafs恍惚惚恍恍惚惚恍恍惚惚号"];
+        [cell refreshThirdCell:nil labelArray:stringArray];
+        return cell;
+
+    }
+    else if (indexPath.section ==3){
+        DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell" forIndexPath:indexPath];
+        NSArray *stringArray = @[@"团购详情",@"恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号",@"恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号"];
+        [cell refreshThirdCell:nil labelArray:stringArray];
+        return cell;
+    }
+    else if (indexPath.section ==4){
+        DetailFifthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFifthCell" forIndexPath:indexPath];
+        [cell refreshThirdCell:nil];
+        return cell;
+    }
+    else if (indexPath.section == 5){
+        DetailSixthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSixthCell" forIndexPath:indexPath];
+        [cell refreshThirdCell:nil];
+        return cell;
+    }
+    else
+    {
+        DetailSeventhCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSeventhCell" forIndexPath:indexPath];
         [cell refreshThirdCell:nil];
         return cell;
     }
@@ -140,12 +171,43 @@
         return 160;
     }
     else if (indexPath.section == 2){
-        return 250;
+        return 160;
+    }
+    else if (indexPath.section == 3){
+        return 160;
+    }
+    else if (indexPath.section ==4){
+        return 30;
+    }
+    else if (indexPath.section == 5){
+        return 30;
+    }
+    else if (indexPath.section == 6){
+        return 40;
     }
     return 0;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
+}
 
-
+- (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 4) {
+        return 0.1;
+    }
+    else if (section == 5) {
+        return 0.1;
+    }
+    else if (section == 6){
+        return  0.1;
+    }
+    else
+    {
+        return 10;
+    }
+}
 
 @end
