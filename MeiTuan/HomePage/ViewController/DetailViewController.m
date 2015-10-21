@@ -18,6 +18,7 @@
 @interface DetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *array;
+    DetailFourthCell *caucateCell;
 }
 @end
 
@@ -46,8 +47,10 @@
     [self.view addSubview:titleView];
     
     UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    outBtn.frame = CGRectMake(0,5,50, 44);
-    outBtn.backgroundColor = [UIColor blackColor];
+    outBtn.frame = CGRectMake(5,30,60, 30);
+    outBtn.backgroundColor = [UIColor whiteColor];
+    [outBtn setTitle:@"返回" forState:UIControlStateNormal];
+    [outBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:outBtn];
 
@@ -59,6 +62,8 @@
     [detailTabView registerClass:[DetailFifthCell class] forCellReuseIdentifier:@"DetailFifthCell"];
     [detailTabView registerClass:[DetailSixthCell class] forCellReuseIdentifier:@"DetailSixthCell"];
     [detailTabView registerClass:[DetailSeventhCell class] forCellReuseIdentifier:@"DetailSeventhCell"];
+    
+    caucateCell = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell"];
     
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
@@ -170,11 +175,17 @@
     else if (indexPath.section ==1){
         return 160;
     }
-    else if (indexPath.section == 2){
-        return 160;
+    else if (indexPath.section == 2)
+    {
+        NSArray *stringArray = @[@"123",@"123惚惚恍恍惚惚号，恍恍123123恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号",@"fasd惚惚恍恍惚惚恍恍惚惚号，dfasdf惚恍恍惚惚恍恍惚惚号，ffasd惚惚恍恍惚惚恍恍惚惚号，dafs恍惚惚恍恍惚惚恍恍惚惚号"];
+        CGFloat curHeight = [caucateCell refreshThirdCell:nil labelArray:stringArray];
+        return curHeight;
     }
-    else if (indexPath.section == 3){
-        return 160;
+    else if (indexPath.section == 3)
+    {
+        NSArray *stringArray = @[@"团购详情",@"恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号",@"恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号"];
+        CGFloat curHeight = [caucateCell refreshThirdCell:nil labelArray:stringArray];
+        return curHeight;
     }
     else if (indexPath.section ==4){
         return 30;
@@ -190,7 +201,13 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.1;
+    if (section == 4) {
+        return 15;
+    }
+    else
+    {
+        return 0.1;
+    }
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -198,14 +215,13 @@
     if (section == 4) {
         return 0.1;
     }
-    else if (section == 5) {
+    else if (section == 5){
         return 0.1;
     }
     else if (section == 6){
-        return  0.1;
+        return 0.1;
     }
-    else
-    {
+    else{
         return 10;
     }
 }

@@ -53,7 +53,7 @@
     [self.contentView addSubview:titleLabel];
     assessImageView.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) +10, [UIScreen mainScreen].bounds.size.width,40);
     assessImageView.backgroundColor = [UIColor greenColor];
-    assessImageView.image = [UIImage imageNamed:@""];
+    assessImageView.image = [UIImage imageNamed:@"titleImage"];
     [self.contentView addSubview:assessImageView];
     cutSecondView.frame = CGRectMake(0, CGRectGetMaxY(assessImageView.frame) +5, [UIScreen mainScreen].bounds.size.width, 0.5);
     cutSecondView.backgroundColor = [UIColor grayColor];

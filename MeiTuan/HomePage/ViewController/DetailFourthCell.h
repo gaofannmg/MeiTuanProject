@@ -10,7 +10,7 @@
 
 @interface DetailFourthCell : UITableViewCell
 
-- (void) refreshThirdCell:(NSDictionary *)dic labelArray:(NSArray *) labelArray;
+- (CGFloat) refreshThirdCell:(NSDictionary *)dic labelArray:(NSArray *) labelArray;
 
 @end
 

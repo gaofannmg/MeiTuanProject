@@ -25,7 +25,7 @@
     return self;
 }
 
-- (void) refreshThirdCell:(NSDictionary *)dic labelArray:(NSArray *) labelArray
+- (CGFloat) refreshThirdCell:(NSDictionary *)dic labelArray:(NSArray *) labelArray
 {
     UILabel *lastLabel = nil;
     for (int a = 0; a < labelArray.count; a ++)
@@ -59,6 +59,8 @@
         
         lastLabel = requireLabel;
     }
+    
+    return CGRectGetMaxY(lastLabel.frame) + 1;
 }
 
 - (void)awakeFromNib {
