@@ -17,8 +17,10 @@
 
 @interface DetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
-    NSArray *array;
     DetailFourthCell *caucateCell;
+    UITableView *detailTabView;
+    NSDictionary *dataDict;
+    NSDictionary *detaSecondDict;
 }
 @end
 
@@ -54,7 +56,7 @@
     [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:outBtn];
 
-    UITableView *detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(titleView.frame)) style:UITableViewStyleGrouped];
+    detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(titleView.frame)) style:UITableViewStyleGrouped];
     [detailTabView registerClass:[DetailCell class] forCellReuseIdentifier:@"DetailCell"];
     [detailTabView registerClass:[DetailSecondCell class] forCellReuseIdentifier:@"DetailSecondCell"];
 //    [detailTabView registerClass:[DetailThirdCell class] forCellReuseIdentifier:@"DetailThirdCell"];
@@ -68,9 +70,12 @@
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
     detailTabView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:detailTabView];
     
+    [self.view addSubview:detailTabView];
+
     [self getDealDetailData];
+    
+ 
 }
 
 - (void) clickView
@@ -81,10 +86,11 @@
 - (void) getDealDetailData
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@"2-8005555" forKey:@"deal_id"];
+    [params setObject:self.dealId forKey:@"deal_id"];
     NSLog(@"发送请求的参数: %@", params.allValues);
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+    [detailTabView reloadData];
 }
 #pragma mark -- 发送请求回调方法
 //成功
@@ -92,7 +98,16 @@
 {
     //result 字典
     NSLog(@"%@",result);
-
+    NSDictionary *data = result;
+    NSArray *dealArray = [data objectForKey:@"deals"];
+    
+    if (dealArray.count > 0)
+    {
+        dataDict = [dealArray firstObject];
+        detaSecondDict = [dealArray firstObject];
+        [detailTabView reloadData];
+    }
+    
 }
 //失败
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
@@ -123,13 +138,13 @@
         
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
 //        NSDictionary *dic = array[indexPath.row];
-        [cell refreshCell:nil];
+        [cell refreshCell:dataDict];
         cell.userInteractionEnabled = YES;
         return cell;
     }
     else if (indexPath.section == 1) {
         DetailSecondCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSecondCell" forIndexPath:indexPath];
-        [cell refreshSecondCell:nil];
+        [cell refreshSecondCell:detaSecondDict];
         return cell;
     }
     

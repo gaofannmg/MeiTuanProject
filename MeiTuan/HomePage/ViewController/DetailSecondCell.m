@@ -13,6 +13,7 @@
     UILabel *userLabel;
     UILabel *titleLabel;
     UIImageView *assessImageView;
+    UIImageView *phoneImageView;
     UILabel *addressLabel;
     UIView *cutView; //分割线
     UIView *cutSecondView;
@@ -27,6 +28,7 @@
         userLabel  = [[UILabel alloc] init];
         titleLabel = [[UILabel alloc] init];
         assessImageView = [[UIImageView alloc] init];
+        phoneImageView = [[UIImageView alloc] init];
         addressLabel = [[UILabel alloc] init];
         cutView = [[UIView alloc] init];
         cutSecondView = [[UIView alloc] init];
@@ -38,29 +40,45 @@
 {
     userLabel.frame = CGRectMake(0, 0, 100, 30);
     userLabel.backgroundColor = [UIColor clearColor];
-    userLabel.text = @"适用商户";
+    NSArray *businArray = dic[@"businesses"];
+    NSDictionary *businessesDic = [businArray firstObject];
+    NSNumber *idNumber = [businessesDic objectForKey:@"id"];
+    NSString *userLabelStr = [NSString stringWithFormat:@"适用商户%@",idNumber];
+    userLabel.text = userLabelStr;
     userLabel.font = [UIFont fontWithName:nil size:12.0];
     userLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:userLabel];
+    
     cutView.frame = CGRectMake(0, CGRectGetMaxY(userLabel.frame) +5, [UIScreen mainScreen].bounds.size.width, 0.5);
     cutView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:cutView];
+   
     titleLabel.frame = CGRectMake(0, CGRectGetMaxY(userLabel.frame)+ 10, 200, 20);
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.text = @"诗语原创主题酒店公寓";
+    NSString *titleStr = [businessesDic objectForKey:@"name"];
+    titleLabel.text = titleStr;
     titleLabel.font = [UIFont fontWithName:nil size:15.0];
     titleLabel.textColor = [UIColor blackColor];
     [self.contentView addSubview:titleLabel];
-    assessImageView.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) +10, [UIScreen mainScreen].bounds.size.width,40);
+    
+    assessImageView.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) +10,70,15);
     assessImageView.backgroundColor = [UIColor greenColor];
-    assessImageView.image = [UIImage imageNamed:@"titleImage"];
+    assessImageView.image = [UIImage imageNamed:@"star"];
     [self.contentView addSubview:assessImageView];
+    
+    phoneImageView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width -35,titleLabel.frame.origin.y +10, 25, 25);
+    phoneImageView.backgroundColor = [UIColor grayColor];
+    phoneImageView.image = [UIImage imageNamed:@"phone"];
+    [self.contentView addSubview:phoneImageView];
+   
     cutSecondView.frame = CGRectMake(0, CGRectGetMaxY(assessImageView.frame) +5, [UIScreen mainScreen].bounds.size.width, 0.5);
     cutSecondView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:cutSecondView];
+   
     addressLabel.frame = CGRectMake(0, CGRectGetMaxY(assessImageView.frame) +10, [UIScreen mainScreen].bounds.size.width, 30);
     addressLabel.backgroundColor = [UIColor clearColor];
-    addressLabel.text = @"建国路89号华贸公寓1号楼";
+    NSString *addressStr = [businessesDic objectForKey:@"address"];
+    addressLabel.text = addressStr;
     addressLabel.textColor = [UIColor blackColor];
     addressLabel.font = [UIFont fontWithName: nil size:12.0];
     [self.contentView addSubview:addressLabel];

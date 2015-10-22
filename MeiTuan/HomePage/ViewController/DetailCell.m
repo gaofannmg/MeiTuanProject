@@ -45,21 +45,33 @@
 
 - (void) refreshCell:(NSDictionary *) dic
 {
+    if (!dic)
+    {
+        return;
+    }
+
     titleImageView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 200);
-    titleImageView.image = [UIImage imageNamed:@""];
+    NSString *urlStr = [dic objectForKey:@"image_url"];
+    [titleImageView sd_setImageWithURL:[NSURL URLWithString:urlStr]];
+    titleImageView.contentMode = UIViewContentModeScaleAspectFill;
     titleImageView.backgroundColor = [UIColor redColor];
+    titleImageView.clipsToBounds = YES;
     [self.contentView addSubview:titleImageView];
     
     originalpriceLabel.frame = CGRectMake(0,CGRectGetMaxY(titleImageView.frame)+5, 60, 30);
     originalpriceLabel.backgroundColor = [UIColor clearColor];
-    originalpriceLabel.text = @"现价";
+    NSNumber *opNumber = [dic objectForKey:@"current_price"];
+    NSString *opStr = [NSString stringWithFormat:@"¥%@",opNumber];
+    originalpriceLabel.text = opStr;
     originalpriceLabel.font =[UIFont fontWithName:nil size:15.0];
     originalpriceLabel.textColor = [UIColor redColor];
     [self.contentView addSubview:originalpriceLabel];
     
     presentpriceLabel.frame = CGRectMake(CGRectGetMaxX(originalpriceLabel.frame) +5,originalpriceLabel.frame.origin.y,50, 30);
     presentpriceLabel.backgroundColor = [UIColor clearColor];
-    presentpriceLabel.text = @"原价";
+    NSNumber *prNumber = [dic objectForKey:@"list_price"];
+    NSString *prStr = [NSString stringWithFormat:@"¥%@",prNumber];
+    presentpriceLabel.text = prStr;
     presentpriceLabel.font =[UIFont fontWithName:nil size:12.0];
     presentpriceLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:presentpriceLabel];
@@ -91,6 +103,28 @@
     label2.font = [UIFont fontWithName: nil size:12.0];
     label2.textColor = [UIColor grayColor];
     [self.contentView addSubview:label2];
+    
+    NSDictionary *restrictionDic = [dic objectForKey:@"restrictions"];
+    
+    BOOL isRefundable = [[restrictionDic objectForKey:@"is_refundable"] boolValue];
+    if (isRefundable)
+    {
+        label1.hidden = NO;
+    }
+    else
+    {
+        label1.hidden = YES;
+    }
+    
+    BOOL isReservationRequired = [[restrictionDic objectForKey:@"is_reservation_required"] boolValue];
+    if (isReservationRequired)
+    {
+        label2.hidden = NO;
+    }
+    else
+    {
+        label2.hidden = YES;
+    }
 }
 
 

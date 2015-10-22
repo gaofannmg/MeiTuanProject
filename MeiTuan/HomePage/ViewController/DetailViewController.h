@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DetailViewController : UIViewController
+@property (nonatomic,copy) NSString *dealId;
 - (void) clickView;
 
 @end

@@ -101,7 +101,7 @@
     sortButton.backgroundColor =[UIColor grayColor];
     sortButton.alpha = 0.8;
     [barView addSubview:sortButton];
-
+    
     [self getHttpData];
 }
 
@@ -151,6 +151,8 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController *detailView = [[DetailViewController alloc] init];
+    NSDictionary *dic = array[indexPath.row];
+    detailView.dealId = [dic objectForKey:@"deal_id"];
     [self.navigationController pushViewController:detailView animated:YES];
     
 }
