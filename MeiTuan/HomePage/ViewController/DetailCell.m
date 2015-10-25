@@ -35,12 +35,18 @@
         originalpriceLabel = [[UILabel alloc] init];
         presentpriceLabel = [[UILabel alloc] init];
         buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [buyBtn addTarget:self action:@selector(buyBtnClick) forControlEvents:UIControlEventTouchUpInside];
         label1 = [[UILabel alloc] init];
         label2 = [[UILabel alloc] init];
         lineView = [[UIView alloc] init];//分割线
         presentCutView = [[UIView alloc] init];//现价切线
     }
     return self;
+}
+
+-(void) buyBtnClick
+{
+    [self.detailVC.listVC changeBtnColor:[UIColor redColor]];
 }
 
 - (void) refreshCell:(NSDictionary *) dic
@@ -83,7 +89,8 @@
     buyBtn.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 105, presentpriceLabel.frame.origin.y, 100, 30);
     buyBtn.backgroundColor = [UIColor orangeColor];
     [buyBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
-    buyBtn.titleLabel.font = [UIFont fontWithName:nil size:15.0];
+    buyBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [buyBtn addTarget:self action:@selector(cColor) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:buyBtn];
     
     lineView.frame = CGRectMake(0, CGRectGetMaxY(originalpriceLabel.frame) +5, [UIScreen mainScreen].bounds.size.width, 0.5);
@@ -93,14 +100,14 @@
     label1.frame = CGRectMake(0,CGRectGetMaxY(presentpriceLabel.frame) +10, 100, 30);
     label1.backgroundColor = [UIColor clearColor];
     label1.text = @"限时可退";
-    label1.font = [UIFont fontWithName: nil size:12.0];
+    label1.font = [UIFont systemFontOfSize:12.0];
     label1.textColor = [UIColor grayColor];
     [self.contentView addSubview:label1];
     
     label2.frame = CGRectMake(buyBtn.frame.origin.x, label1.frame.origin.y, 100, 30);
     label2.backgroundColor = [UIColor clearColor];
     label2.text = @"过期自动退";
-    label2.font = [UIFont fontWithName: nil size:12.0];
+    label2.font = [UIFont systemFontOfSize:12.0];
     label2.textColor = [UIColor grayColor];
     [self.contentView addSubview:label2];
     
@@ -125,6 +132,10 @@
     {
         label2.hidden = YES;
     }
+}
+-(void)cColor
+{
+    
 }
 
 

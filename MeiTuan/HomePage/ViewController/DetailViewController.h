@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @interface DetailViewController : UIViewController
 @property (nonatomic,copy) NSString *dealId;
+
+@property (nonatomic,weak) ViewController *listVC;
+
 - (void) clickView;
 
 @end

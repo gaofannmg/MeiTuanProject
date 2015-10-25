@@ -25,11 +25,17 @@
 - (void) refreshThirdCell:(NSDictionary *)dic
 {
     btn.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 40);
-    btn.backgroundColor = [UIColor redColor];
-    btn.titleLabel.text = @"还有7个团购";
-    [btn setTitle:nil forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor whiteColor];
+    [btn setTitle:@"还有7个团购" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(moreGroupPurchase) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:btn];
+    
+}
+
+- (void)moreGroupPurchase
+{
+    
 }
 
 - (void)awakeFromNib {

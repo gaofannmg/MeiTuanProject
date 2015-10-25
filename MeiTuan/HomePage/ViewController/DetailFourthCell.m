@@ -21,12 +21,28 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.contentView.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
 
-- (CGFloat) refreshThirdCell:(NSDictionary *)dic labelArray:(NSArray *) labelArray
+- (CGFloat) refreshFourthCell:(NSDictionary *)dic labelArray:(NSArray *) labelArrayData
 {
+    NSMutableArray *labelArray = [NSMutableArray array];
+    for (int i = 0; i < labelArrayData.count; i++)
+    {
+        NSString *titleTxt = labelArrayData[i];
+        
+        titleTxt = [titleTxt stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        if (!STRVALID(titleTxt))
+        {
+            continue;
+        }
+        
+        [labelArray addObject:titleTxt];
+    }
+    
     UILabel *lastLabel = nil;
     for (int a = 0; a < labelArray.count; a ++)
     {
@@ -34,13 +50,12 @@
         
         if (!requireLabel)
         {
-            requireLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, a *40,winwidth, 40)];
+            requireLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0 , winwidth - 20, 10)];
             requireLabel.backgroundColor = [UIColor whiteColor];
             requireLabel.text = labelArray[a];
             requireLabel.numberOfLines = 0;
             requireLabel.tag = 100001 + a;
-            requireLabel.frame = CGRectMake(10,40,winwidth - 20,10);
-            requireLabel.font = [UIFont fontWithName:nil size:12];
+            requireLabel.font = [UIFont systemFontOfSize:14];
             requireLabel.textColor = [UIColor grayColor];
             [self.contentView addSubview:requireLabel];
         }
@@ -50,17 +65,17 @@
 
         if (!lastLabel)
         {
-            requireLabel.frame = CGRectMake(0, 0 ,winwidth, rect.size.height);
+            requireLabel.frame = CGRectMake(10, 10 ,requireLabel.frame.size.width, rect.size.height);
         }
         else
         {
-            requireLabel.frame = CGRectMake(0, CGRectGetMaxY(lastLabel.frame) + 1,winwidth, rect.size.height);
+            requireLabel.frame = CGRectMake(10, CGRectGetMaxY(lastLabel.frame),requireLabel.frame.size.width, rect.size.height);
         }
         
         lastLabel = requireLabel;
     }
     
-    return CGRectGetMaxY(lastLabel.frame) + 1;
+    return CGRectGetMaxY(lastLabel.frame) + 10;
 }
 
 - (void)awakeFromNib {

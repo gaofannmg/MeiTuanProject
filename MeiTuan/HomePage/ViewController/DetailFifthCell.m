@@ -25,10 +25,13 @@
     return self;
 }
 
-- (void) refreshThirdCell:(NSDictionary *)dic
+- (void) refreshFifthCell:(NSDictionary *)dic
 {
     label.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30);
-    label.text = @"诗语原创主题公园的其他团购";
+    NSArray *arr = dic[@"categories"];
+    NSString *str = arr[0];
+    NSString *s = [NSString stringWithFormat:@"%@的其他团购",str];
+    label.text = s;
     label.font = [UIFont fontWithName:nil size:15];
     label.backgroundColor =[UIColor whiteColor];
     [self.contentView addSubview:label];

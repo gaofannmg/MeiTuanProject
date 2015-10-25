@@ -10,6 +10,6 @@
 
 @interface DetailFifthCell : UITableViewCell
 
-- (void) refreshThirdCell:(NSDictionary *)dic;
+- (void) refreshFifthCell:(NSDictionary *)dic;
 
 @end

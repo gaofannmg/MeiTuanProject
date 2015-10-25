@@ -15,6 +15,7 @@
     UILabel *titleLabel;
     NSArray *array;
     UICollectionView *cView;
+    UIButton *cityBtn;
 }
 @end
 
@@ -29,7 +30,7 @@
     titleView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:titleView];
     
-    UIButton *cityBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    cityBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     cityBtn.frame = CGRectMake(10, 20 , 80, 40);
     [cityBtn setTitle:@"城市" forState:UIControlStateNormal];
     cityBtn.backgroundColor = [UIColor whiteColor];
@@ -153,8 +154,12 @@
     DetailViewController *detailView = [[DetailViewController alloc] init];
     NSDictionary *dic = array[indexPath.row];
     detailView.dealId = [dic objectForKey:@"deal_id"];
+    detailView.listVC = self;
     [self.navigationController pushViewController:detailView animated:YES];
-    
+}
+- (void)changeBtnColor:(UIColor *) color
+{
+    cityBtn.backgroundColor = color;
 }
 
 

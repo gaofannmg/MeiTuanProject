@@ -18,9 +18,13 @@
 @interface DetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     DetailFourthCell *caucateCell;
+    DetailFourthCell *caucateCell1;
     UITableView *detailTabView;
     NSDictionary *dataDict;
     NSDictionary *detaSecondDict;
+    NSDictionary *detaFifthDict;
+    NSDictionary *detaSixthDict;
+    NSDictionary *detaFourthDict;
 }
 @end
 
@@ -66,6 +70,7 @@
     [detailTabView registerClass:[DetailSeventhCell class] forCellReuseIdentifier:@"DetailSeventhCell"];
     
     caucateCell = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell"];
+    caucateCell1 = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell"];
     
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
@@ -105,9 +110,11 @@
     {
         dataDict = [dealArray firstObject];
         detaSecondDict = [dealArray firstObject];
+        detaFifthDict = [dealArray firstObject];
+        detaSixthDict = [dealArray firstObject];
+        detaFourthDict = [dealArray firstObject];
         [detailTabView reloadData];
     }
-    
 }
 //失败
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
@@ -137,6 +144,7 @@
     if (indexPath.section == 0) {
         
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
+        cell.detailVC = self;
 //        NSDictionary *dic = array[indexPath.row];
         [cell refreshCell:dataDict];
         cell.userInteractionEnabled = YES;
@@ -153,25 +161,28 @@
 //        [cell refreshThirdCell:nil];
 //        return cell;
         DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell" forIndexPath:indexPath];
-        NSArray *stringArray = @[@"123",@"123惚惚恍恍惚惚号，恍恍123123恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号",@"fasd惚惚恍恍惚惚恍恍惚惚号，dfasdf惚恍恍惚惚恍恍惚惚号，ffasd惚惚恍恍惚惚恍恍惚惚号，dafs恍惚惚恍恍惚惚恍恍惚惚号"];
-        [cell refreshThirdCell:nil labelArray:stringArray];
+        NSString *stringList = detaFourthDict[@"details"];
+        NSArray *list=[stringList componentsSeparatedByString:@"\n"];
+        [cell refreshFourthCell:detaFourthDict labelArray:list];
         return cell;
 
     }
     else if (indexPath.section ==3){
         DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell" forIndexPath:indexPath];
-        NSArray *stringArray = @[@"团购详情",@"恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号",@"恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号"];
-        [cell refreshThirdCell:nil labelArray:stringArray];
+        NSDictionary *restrictionsDic = detaFourthDict[@"restrictions"];
+        NSString *listStr = restrictionsDic[@"special_tips"];
+        NSArray *list=[listStr componentsSeparatedByString:@"\n"];
+        [cell refreshFourthCell:detaFourthDict labelArray:list];
         return cell;
     }
     else if (indexPath.section ==4){
         DetailFifthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFifthCell" forIndexPath:indexPath];
-        [cell refreshThirdCell:nil];
+        [cell refreshFifthCell:detaFifthDict];
         return cell;
     }
     else if (indexPath.section == 5){
         DetailSixthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSixthCell" forIndexPath:indexPath];
-        [cell refreshThirdCell:nil];
+        [cell refreshSixthCell:detaSixthDict];
         return cell;
     }
     else
@@ -188,18 +199,21 @@
         return 280;
     }
     else if (indexPath.section ==1){
-        return 160;
+        return 130;
     }
     else if (indexPath.section == 2)
     {
-        NSArray *stringArray = @[@"123",@"123惚惚恍恍惚惚号，恍恍123123恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号",@"fasd惚惚恍恍惚惚恍恍惚惚号，dfasdf惚恍恍惚惚恍恍惚惚号，ffasd惚惚恍恍惚惚恍恍惚惚号，dafs恍惚惚恍恍惚惚恍恍惚惚号"];
-        CGFloat curHeight = [caucateCell refreshThirdCell:nil labelArray:stringArray];
+        NSString *stringList = detaFourthDict[@"details"];
+        NSArray *list=[stringList componentsSeparatedByString:@"\n"];
+        CGFloat curHeight = [caucateCell refreshFourthCell:nil labelArray:list];
         return curHeight;
     }
     else if (indexPath.section == 3)
     {
-        NSArray *stringArray = @[@"团购详情",@"恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号",@"恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号，恍恍惚惚恍恍惚惚恍恍惚惚恍恍惚惚号"];
-        CGFloat curHeight = [caucateCell refreshThirdCell:nil labelArray:stringArray];
+        NSDictionary *restrictionsDic = detaFourthDict[@"restrictions"];
+        NSString *listStr = restrictionsDic[@"special_tips"];
+        NSArray *list=[listStr componentsSeparatedByString:@"\n"];
+        CGFloat curHeight = [caucateCell1 refreshFourthCell:nil labelArray:list];
         return curHeight;
     }
     else if (indexPath.section ==4){

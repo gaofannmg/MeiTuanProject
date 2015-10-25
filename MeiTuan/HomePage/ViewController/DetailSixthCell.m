@@ -29,16 +29,20 @@
     return self;
 }
 
-- (void) refreshThirdCell:(NSDictionary *)dic
+- (void) refreshSixthCell:(NSDictionary *)dic
 {
     currentLabel.frame = CGRectMake(0, 0, 60, 30);
-    currentLabel.text = @"566";
+    NSNumber *currentNumber = dic[@"current_price"];
+    NSString *curStr = [NSString stringWithFormat:@"%@",currentNumber];
+    currentLabel.text = curStr;
     currentLabel.textColor = [UIColor redColor];
     currentLabel.font = [UIFont fontWithName:nil size:15];
     [self.contentView addSubview:currentLabel];
     
     originalLabel.frame = CGRectMake(CGRectGetMaxX(currentLabel.frame) +10, 0, 30, 30);
-    originalLabel.text = @"700";
+   NSNumber *originaNumber = dic[@"list_price"];
+    NSString *oriStr = [NSString stringWithFormat:@"%@",originaNumber];
+    originalLabel.text = oriStr;
     originalLabel.textColor = [UIColor grayColor];
     originalLabel.font = [UIFont fontWithName:nil size:12];
     [self.contentView addSubview:originalLabel];
@@ -49,7 +53,8 @@
     
     titleLabel.frame = CGRectMake(CGRectGetMaxX(originalLabel.frame) +10, 0,180, 30);
     titleLabel.backgroundColor = [UIColor whiteColor];
-    titleLabel.text = @"主题豪华套房";
+    NSString *titleStr = dic[@"title"];
+    titleLabel.text = titleStr;
     titleLabel.font = [UIFont fontWithName:nil size:12];
     [self.contentView addSubview:titleLabel];
 }

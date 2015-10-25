@@ -11,6 +11,8 @@
 
 @interface DetailCell : UITableViewCell
 
+@property (nonatomic,weak) DetailViewController *detailVC;
+
 - (void) refreshCell:(NSDictionary *) dic;
 
 @end
