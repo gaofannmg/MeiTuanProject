@@ -176,7 +176,8 @@
 //    }
     else if (indexPath.section == 4){
         DetailSixthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSixthCell" forIndexPath:indexPath];
-        [cell refreshSixthCell:dataDict];
+        
+        [cell refreshSixthCell:otherDealsArray[indexPath.row]];
         return cell;
     }
 //    else
@@ -280,7 +281,8 @@
 }
 - (void)moreGroupPurchase
 {
-   
+    DetailSixthCell *cell = [detailTabView dequeueReusableCellWithIdentifier:@"DetailSixthCell" forIndexPath:otherDealsArray];
+ 
 }
 
 @end
