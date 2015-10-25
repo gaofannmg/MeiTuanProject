@@ -38,7 +38,7 @@
 
 - (void) refreshSecondCell:(NSDictionary *)dic
 {
-    userLabel.frame = CGRectMake(10, 0, 100, 30);
+    userLabel.frame = CGRectMake(10, 0,WIN_WIDTH, 30);
     userLabel.backgroundColor = [UIColor clearColor];
     NSArray *businArray = dic[@"businesses"];
     NSDictionary *businessesDic = [businArray firstObject];
@@ -53,7 +53,7 @@
     cutView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:cutView];
    
-    titleLabel.frame = CGRectMake(10, CGRectGetMaxY(userLabel.frame)+ 10, 200, 20);
+    titleLabel.frame = CGRectMake(10, CGRectGetMaxY(userLabel.frame)+ 10, 300, 20);
     titleLabel.backgroundColor = [UIColor clearColor];
     NSString *titleStr = [businessesDic objectForKey:@"name"];
     titleLabel.text = titleStr;

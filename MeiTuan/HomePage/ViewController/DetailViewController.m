@@ -11,9 +11,9 @@
 #import "DetailSecondCell.h"
 #import "DetailThirdCell.h"
 #import "DetailFourthCell.h"
-#import "DetailFifthCell.h"
 #import "DetailSixthCell.h"
-#import "DetailSeventhCell.h"
+#import "OtherDealsData.h"
+
 
 @interface DetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -21,10 +21,10 @@
     DetailFourthCell *caucateCell1;
     UITableView *detailTabView;
     NSDictionary *dataDict;
-    NSDictionary *detaSecondDict;
-    NSDictionary *detaFifthDict;
-    NSDictionary *detaSixthDict;
-    NSDictionary *detaFourthDict;
+
+    
+    
+    NSMutableArray *otherDealsArray;
 }
 @end
 
@@ -61,26 +61,22 @@
     [titleView addSubview:outBtn];
 
     detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(titleView.frame)) style:UITableViewStyleGrouped];
+//    detailTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [detailTabView registerClass:[DetailCell class] forCellReuseIdentifier:@"DetailCell"];
     [detailTabView registerClass:[DetailSecondCell class] forCellReuseIdentifier:@"DetailSecondCell"];
 //    [detailTabView registerClass:[DetailThirdCell class] forCellReuseIdentifier:@"DetailThirdCell"];
     [detailTabView registerClass:[DetailFourthCell class] forCellReuseIdentifier:@"DetailFourthCell"];
-    [detailTabView registerClass:[DetailFifthCell class] forCellReuseIdentifier:@"DetailFifthCell"];
     [detailTabView registerClass:[DetailSixthCell class] forCellReuseIdentifier:@"DetailSixthCell"];
-    [detailTabView registerClass:[DetailSeventhCell class] forCellReuseIdentifier:@"DetailSeventhCell"];
     
     caucateCell = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell"];
     caucateCell1 = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell"];
     
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
-    detailTabView.backgroundColor = [UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:1];
+    detailTabView.backgroundColor = RGB(230, 230, 230);
     
     [self.view addSubview:detailTabView];
-
     [self getDealDetailData];
-    
- 
 }
 
 - (void) clickView
@@ -95,7 +91,6 @@
     NSLog(@"发送请求的参数: %@", params.allValues);
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
-    [detailTabView reloadData];
 }
 #pragma mark -- 发送请求回调方法
 //成功
@@ -109,10 +104,8 @@
     if (dealArray.count > 0)
     {
         dataDict = [dealArray firstObject];
-        detaSecondDict = [dealArray firstObject];
-        detaFifthDict = [dealArray firstObject];
-        detaSixthDict = [dealArray firstObject];
-        detaFourthDict = [dealArray firstObject];
+        otherDealsArray = [OtherDealsData getDealsData:dataDict];
+        
         [detailTabView reloadData];
     }
 }
@@ -124,12 +117,12 @@
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 7;
+    return 5;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   if(section == 5)
+    if(section == 4)
     {
         return 3;
     }
@@ -152,7 +145,7 @@
     }
     else if (indexPath.section == 1) {
         DetailSecondCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSecondCell" forIndexPath:indexPath];
-        [cell refreshSecondCell:detaSecondDict];
+        [cell refreshSecondCell:dataDict];
         return cell;
     }
     
@@ -161,37 +154,38 @@
 //        [cell refreshThirdCell:nil];
 //        return cell;
         DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell" forIndexPath:indexPath];
-        NSString *stringList = detaFourthDict[@"details"];
+        NSString *stringList = dataDict[@"details"];
         NSArray *list=[stringList componentsSeparatedByString:@"\n"];
-        [cell refreshFourthCell:detaFourthDict labelArray:list];
+        [cell refreshFourthCell:dataDict labelArray:list];
         return cell;
 
     }
     else if (indexPath.section ==3){
         DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell" forIndexPath:indexPath];
-        NSDictionary *restrictionsDic = detaFourthDict[@"restrictions"];
+        NSDictionary *restrictionsDic = dataDict[@"restrictions"];
         NSString *listStr = restrictionsDic[@"special_tips"];
         NSArray *list=[listStr componentsSeparatedByString:@"\n"];
-        [cell refreshFourthCell:detaFourthDict labelArray:list];
+        [cell refreshFourthCell:dataDict labelArray:list];
         return cell;
     }
-    else if (indexPath.section ==4){
-        DetailFifthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFifthCell" forIndexPath:indexPath];
-        [cell refreshFifthCell:detaFifthDict];
-        return cell;
-    }
-    else if (indexPath.section == 5){
+//    else if (indexPath.section ==4)
+//    {
+//        DetailFifthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFifthCell" forIndexPath:indexPath];
+//        [cell refreshFifthCell:detaFifthDict];
+//        return cell;
+//    }
+    else if (indexPath.section == 4){
         DetailSixthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSixthCell" forIndexPath:indexPath];
-        [cell refreshSixthCell:detaSixthDict];
+        [cell refreshSixthCell:dataDict];
         return cell;
     }
-    else
-    {
-        DetailSeventhCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSeventhCell" forIndexPath:indexPath];
-        [cell refreshThirdCell:nil];
-        return cell;
-    }
-    return nil;
+//    else
+//    {
+//        DetailSeventhCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSeventhCell" forIndexPath:indexPath];
+//        [cell refreshThirdCell:nil];
+//        return cell;
+//    }
+    return [UITableViewCell new];
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -203,56 +197,90 @@
     }
     else if (indexPath.section == 2)
     {
-        NSString *stringList = detaFourthDict[@"details"];
+        NSString *stringList = dataDict[@"details"];
         NSArray *list=[stringList componentsSeparatedByString:@"\n"];
         CGFloat curHeight = [caucateCell refreshFourthCell:nil labelArray:list];
         return curHeight;
     }
     else if (indexPath.section == 3)
     {
-        NSDictionary *restrictionsDic = detaFourthDict[@"restrictions"];
+        NSDictionary *restrictionsDic = dataDict[@"restrictions"];
         NSString *listStr = restrictionsDic[@"special_tips"];
         NSArray *list=[listStr componentsSeparatedByString:@"\n"];
         CGFloat curHeight = [caucateCell1 refreshFourthCell:nil labelArray:list];
         return curHeight;
     }
-    else if (indexPath.section ==4){
+    else if (indexPath.section ==4)
+    {
         return 30;
     }
-    else if (indexPath.section == 5){
-        return 30;
-    }
-    else if (indexPath.section == 6){
-        return 40;
-    }
+    
     return 0;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 4) {
-        return 25;
-    }
-    else
+    if (section == 4)
     {
-        return 0.1;
+        return 30;
     }
+    
+   return 0.01;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 4) {
-        return 0.1;
+    if (section == 4)
+    {
+        return 40;
     }
-    else if (section == 5){
-        return 0.1;
+    
+    return 5;
+}
+
+-(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 4)
+    {
+        UIView *temHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIN_WIDTH, 25)];
+        temHeaderView.backgroundColor = [UIColor whiteColor];
+       
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, WIN_WIDTH - 20,30)];
+        NSArray *arr = dataDict[@"categories"];
+        NSString *str = arr[0];
+        NSString *s = [NSString stringWithFormat:@"%@的其他团购",str];
+        label.text = s;
+        label.font = [UIFont systemFontOfSize:15.0];
+        label.backgroundColor =[UIColor whiteColor];
+        [temHeaderView addSubview:label];
+        return temHeaderView;
     }
-    else if (section == 6){
-        return 0.1;
+    
+    return nil;
+}
+
+-(UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section == 4)
+    {
+        UIView *temHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIN_WIDTH, 40)];
+        temHeaderView.backgroundColor = [UIColor whiteColor];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        btn.frame = CGRectMake(10, 0, WIN_WIDTH - 20, 40);
+        btn.backgroundColor = [UIColor whiteColor];
+        [btn setTitle:@"还有7个团购" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(moreGroupPurchase) forControlEvents:UIControlEventTouchUpInside];
+        [temHeaderView addSubview:btn];
+         return temHeaderView;
     }
-    else{
-        return 5;
-    }
+   
+    
+    return nil;
+}
+- (void)moreGroupPurchase
+{
+   
 }
 
 @end

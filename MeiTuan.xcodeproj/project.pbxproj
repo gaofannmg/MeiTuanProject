@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4977E37D1BD280A100C9D5FF /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4977E37C1BD280A100C9D5FF /* DetailViewController.m */; };
 		49B67E1E1BD38B0500ABE81C /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B67E1D1BD38B0500ABE81C /* DetailCell.m */; };
+		49C77CB91BDD299F0054D5A9 /* OtherDealsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C77CB81BDD299F0054D5A9 /* OtherDealsData.m */; };
 		A600E40C1BDCEBA100A8F20B /* CommonMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A600E40B1BDCEBA100A8F20B /* CommonMethod.m */; };
 		A610EBB01BCEAE1300B25B4D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB831BCEAE1300B25B4D /* ViewController.m */; };
 		A610EBB11BCEAE1300B25B4D /* MTCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB861BCEAE1300B25B4D /* MTCollectionViewCell.m */; };
@@ -39,9 +40,7 @@
 		A6AE8B151BD526BE00E2D0FC /* DetailSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AE8B141BD526BE00E2D0FC /* DetailSecondCell.m */; };
 		A6DE60EE1BD532C200E44CB8 /* DetailThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE60ED1BD532C200E44CB8 /* DetailThirdCell.m */; };
 		A6F37C321BD7ABBF00FC820E /* DetailFourthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F37C311BD7ABBF00FC820E /* DetailFourthCell.m */; };
-		A6F37C351BD7CAAF00FC820E /* DetailFifthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F37C341BD7CAAF00FC820E /* DetailFifthCell.m */; };
 		A6F37C381BD7CE5900FC820E /* DetailSixthCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F37C371BD7CE5900FC820E /* DetailSixthCell.m */; };
-		A6F37C3B1BD7D43500FC820E /* DetailSeventhCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F37C3A1BD7D43500FC820E /* DetailSeventhCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +58,8 @@
 		4977E37C1BD280A100C9D5FF /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		49B67E1C1BD38B0500ABE81C /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailCell.h; path = ../ViewController/DetailCell.h; sourceTree = "<group>"; };
 		49B67E1D1BD38B0500ABE81C /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailCell.m; path = ../ViewController/DetailCell.m; sourceTree = "<group>"; };
+		49C77CB71BDD299F0054D5A9 /* OtherDealsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherDealsData.h; sourceTree = "<group>"; };
+		49C77CB81BDD299F0054D5A9 /* OtherDealsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherDealsData.m; sourceTree = "<group>"; };
 		A600E40A1BDCEBA100A8F20B /* CommonMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethod.h; sourceTree = "<group>"; };
 		A600E40B1BDCEBA100A8F20B /* CommonMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethod.m; sourceTree = "<group>"; };
 		A610EB821BCEAE1300B25B4D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -121,12 +122,8 @@
 		A6DE60ED1BD532C200E44CB8 /* DetailThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailThirdCell.m; path = ../ViewController/DetailThirdCell.m; sourceTree = "<group>"; };
 		A6F37C301BD7ABBF00FC820E /* DetailFourthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailFourthCell.h; path = ../ViewController/DetailFourthCell.h; sourceTree = "<group>"; };
 		A6F37C311BD7ABBF00FC820E /* DetailFourthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailFourthCell.m; path = ../ViewController/DetailFourthCell.m; sourceTree = "<group>"; };
-		A6F37C331BD7CAAF00FC820E /* DetailFifthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailFifthCell.h; path = ../ViewController/DetailFifthCell.h; sourceTree = "<group>"; };
-		A6F37C341BD7CAAF00FC820E /* DetailFifthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailFifthCell.m; path = ../ViewController/DetailFifthCell.m; sourceTree = "<group>"; };
 		A6F37C361BD7CE5900FC820E /* DetailSixthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailSixthCell.h; path = ../ViewController/DetailSixthCell.h; sourceTree = "<group>"; };
 		A6F37C371BD7CE5900FC820E /* DetailSixthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailSixthCell.m; path = ../ViewController/DetailSixthCell.m; sourceTree = "<group>"; };
-		A6F37C391BD7D43500FC820E /* DetailSeventhCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailSeventhCell.h; path = ../ViewController/DetailSeventhCell.h; sourceTree = "<group>"; };
-		A6F37C3A1BD7D43500FC820E /* DetailSeventhCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailSeventhCell.m; path = ../ViewController/DetailSeventhCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,21 +144,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		498486891BDD295B00D26111 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				49C77CB71BDD299F0054D5A9 /* OtherDealsData.h */,
+				49C77CB81BDD299F0054D5A9 /* OtherDealsData.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		A610EB7F1BCEAE1300B25B4D /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				A610EB801BCEAE1300B25B4D /* Common */,
+				498486891BDD295B00D26111 /* Common */,
 				A610EB811BCEAE1300B25B4D /* ViewController */,
 				A610EB841BCEAE1300B25B4D /* Views */,
 			);
 			path = HomePage;
-			sourceTree = "<group>";
-		};
-		A610EB801BCEAE1300B25B4D /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		A610EB811BCEAE1300B25B4D /* ViewController */ = {
@@ -188,12 +187,8 @@
 				A6DE60ED1BD532C200E44CB8 /* DetailThirdCell.m */,
 				A6F37C301BD7ABBF00FC820E /* DetailFourthCell.h */,
 				A6F37C311BD7ABBF00FC820E /* DetailFourthCell.m */,
-				A6F37C331BD7CAAF00FC820E /* DetailFifthCell.h */,
-				A6F37C341BD7CAAF00FC820E /* DetailFifthCell.m */,
 				A6F37C361BD7CE5900FC820E /* DetailSixthCell.h */,
 				A6F37C371BD7CE5900FC820E /* DetailSixthCell.m */,
-				A6F37C391BD7D43500FC820E /* DetailSeventhCell.h */,
-				A6F37C3A1BD7D43500FC820E /* DetailSeventhCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -426,11 +421,11 @@
 				A610EBBB1BCEAE1300B25B4D /* SDWebImageManager.m in Sources */,
 				A6AE8B151BD526BE00E2D0FC /* DetailSecondCell.m in Sources */,
 				49B67E1E1BD38B0500ABE81C /* DetailCell.m in Sources */,
+				49C77CB91BDD299F0054D5A9 /* OtherDealsData.m in Sources */,
 				A610EBB61BCEAE1300B25B4D /* SDImageCache.m in Sources */,
 				A610EBBA1BCEAE1300B25B4D /* SDWebImageDownloaderOperation.m in Sources */,
 				A610EBC31BCEAE1300B25B4D /* UIView+WebCacheOperation.m in Sources */,
 				A610EBB31BCEAE1300B25B4D /* DPRequest.m in Sources */,
-				A6F37C351BD7CAAF00FC820E /* DetailFifthCell.m in Sources */,
 				A610EBBD1BCEAE1300B25B4D /* UIButton+WebCache.m in Sources */,
 				A610EBB51BCEAE1300B25B4D /* NSData+ImageContentType.m in Sources */,
 				A6F37C321BD7ABBF00FC820E /* DetailFourthCell.m in Sources */,
@@ -442,7 +437,6 @@
 				A610EBC21BCEAE1300B25B4D /* UIImageView+WebCache.m in Sources */,
 				A610EBB81BCEAE1300B25B4D /* SDWebImageDecoder.m in Sources */,
 				A610EBB11BCEAE1300B25B4D /* MTCollectionViewCell.m in Sources */,
-				A6F37C3B1BD7D43500FC820E /* DetailSeventhCell.m in Sources */,
 				A610EBB41BCEAE1300B25B4D /* MKAnnotationView+WebCache.m in Sources */,
 				A6DE60EE1BD532C200E44CB8 /* DetailThirdCell.m in Sources */,
 				A610EBB71BCEAE1300B25B4D /* SDWebImageCompat.m in Sources */,

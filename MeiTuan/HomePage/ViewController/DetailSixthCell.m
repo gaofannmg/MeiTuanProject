@@ -25,6 +25,8 @@
         currentLabel = [[UILabel alloc] init];
         titleLabel = [[UILabel alloc] init];
         cutView = [[UIView alloc] init];
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
@@ -51,7 +53,7 @@
     cutView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:cutView];
     
-    titleLabel.frame = CGRectMake(CGRectGetMaxX(originalLabel.frame) +10, 0,180, 30);
+    titleLabel.frame = CGRectMake(CGRectGetMaxX(originalLabel.frame) +10, 0,245, 30);
     titleLabel.backgroundColor = [UIColor whiteColor];
     NSString *titleStr = dic[@"title"];
     titleLabel.text = titleStr;
