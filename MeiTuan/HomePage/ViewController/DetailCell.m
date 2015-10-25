@@ -64,12 +64,12 @@
     titleImageView.clipsToBounds = YES;
     [self.contentView addSubview:titleImageView];
     
-    originalpriceLabel.frame = CGRectMake(0,CGRectGetMaxY(titleImageView.frame)+5, 60, 30);
+    originalpriceLabel.frame = CGRectMake(10,CGRectGetMaxY(titleImageView.frame)+5, 60, 30);
     originalpriceLabel.backgroundColor = [UIColor clearColor];
     NSNumber *opNumber = [dic objectForKey:@"current_price"];
     NSString *opStr = [NSString stringWithFormat:@"¥%@",opNumber];
     originalpriceLabel.text = opStr;
-    originalpriceLabel.font =[UIFont fontWithName:nil size:15.0];
+    originalpriceLabel.font =[UIFont systemFontOfSize:15.0];
     originalpriceLabel.textColor = [UIColor redColor];
     [self.contentView addSubview:originalpriceLabel];
     
@@ -78,7 +78,7 @@
     NSNumber *prNumber = [dic objectForKey:@"list_price"];
     NSString *prStr = [NSString stringWithFormat:@"¥%@",prNumber];
     presentpriceLabel.text = prStr;
-    presentpriceLabel.font =[UIFont fontWithName:nil size:12.0];
+    presentpriceLabel.font =[UIFont systemFontOfSize:12.0];
     presentpriceLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:presentpriceLabel];
     
@@ -97,7 +97,7 @@
     lineView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:lineView];//分割线
     
-    label1.frame = CGRectMake(0,CGRectGetMaxY(presentpriceLabel.frame) +10, 100, 30);
+    label1.frame = CGRectMake(10,CGRectGetMaxY(presentpriceLabel.frame) +10, 100, 30);
     label1.backgroundColor = [UIColor clearColor];
     label1.text = @"限时可退";
     label1.font = [UIFont systemFontOfSize:12.0];

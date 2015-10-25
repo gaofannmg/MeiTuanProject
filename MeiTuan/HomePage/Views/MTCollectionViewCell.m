@@ -53,13 +53,13 @@
     nameLabel.frame = CGRectMake(1,CGRectGetMaxY(imageView.frame) +1, imageView.frame.size.width+5, 20);
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.text = titleStr;
-    nameLabel.font = [UIFont fontWithName:nil size:15];
+    nameLabel.font = [UIFont systemFontOfSize:15];
     [self.contentView addSubview:nameLabel];
    
     detailsLabel.frame = CGRectMake(2, CGRectGetMaxY(nameLabel.frame) +2, imageView.frame.size.width -2, 50);
     detailsLabel.backgroundColor = [UIColor clearColor];
     detailsLabel.text = detailsLabelStr;
-    detailsLabel.font = [UIFont fontWithName:nil size:10];
+    detailsLabel.font = [UIFont systemFontOfSize:10];
     detailsLabel.numberOfLines = 0;
     [self.contentView addSubview:detailsLabel];
     
@@ -74,7 +74,7 @@
    
     originalPriceLabel.frame = CGRectMake(CGRectGetMaxX(presentPriceLabel.frame) +10, CGRectGetMaxY(detailsLabel.frame) +5,40, 20);
     originalPriceLabel.backgroundColor = [UIColor clearColor];
-    originalPriceLabel.font = [UIFont fontWithName:nil size:11];
+    originalPriceLabel.font = [UIFont systemFontOfSize:11];
     NSNumber *originalNumber = [NSNumber numberWithDouble:originalPriceLabelStr];
     NSString *originalString = [originalNumber stringValue];
     NSString *originaStr = [NSString stringWithFormat:@"￥%@",originalString];
@@ -84,7 +84,7 @@
    
     soldLabel.frame = CGRectMake(CGRectGetMaxX(originalPriceLabel.frame) +2, CGRectGetMaxY(detailsLabel.frame) +5, 55, 20);
     soldLabel.backgroundColor = [UIColor clearColor];
-    soldLabel.font = [UIFont fontWithName:nil size:11];
+    soldLabel.font = [UIFont systemFontOfSize:11];
     NSNumber *soldNumber = [NSNumber numberWithDouble:soldLabelStr];
     NSString *soldString = [soldNumber stringValue];
     NSString *soldStr = [NSString stringWithFormat:@"已售出%@",soldString];

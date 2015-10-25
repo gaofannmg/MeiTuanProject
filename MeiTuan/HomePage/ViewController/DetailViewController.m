@@ -74,7 +74,7 @@
     
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
-    detailTabView.backgroundColor = [UIColor grayColor];
+    detailTabView.backgroundColor = [UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:1];
     
     [self.view addSubview:detailTabView];
 
@@ -231,7 +231,7 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 4) {
-        return 15;
+        return 25;
     }
     else
     {
@@ -251,7 +251,7 @@
         return 0.1;
     }
     else{
-        return 10;
+        return 5;
     }
 }
 

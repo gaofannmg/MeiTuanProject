@@ -38,14 +38,14 @@
 
 - (void) refreshSecondCell:(NSDictionary *)dic
 {
-    userLabel.frame = CGRectMake(0, 0, 100, 30);
+    userLabel.frame = CGRectMake(10, 0, 100, 30);
     userLabel.backgroundColor = [UIColor clearColor];
     NSArray *businArray = dic[@"businesses"];
     NSDictionary *businessesDic = [businArray firstObject];
     NSNumber *idNumber = [businessesDic objectForKey:@"id"];
     NSString *userLabelStr = [NSString stringWithFormat:@"适用商户%@",idNumber];
     userLabel.text = userLabelStr;
-    userLabel.font = [UIFont fontWithName:nil size:12.0];
+    userLabel.font = [UIFont systemFontOfSize:12.0];
     userLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:userLabel];
     
@@ -53,15 +53,15 @@
     cutView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:cutView];
    
-    titleLabel.frame = CGRectMake(0, CGRectGetMaxY(userLabel.frame)+ 10, 200, 20);
+    titleLabel.frame = CGRectMake(10, CGRectGetMaxY(userLabel.frame)+ 10, 200, 20);
     titleLabel.backgroundColor = [UIColor clearColor];
     NSString *titleStr = [businessesDic objectForKey:@"name"];
     titleLabel.text = titleStr;
-    titleLabel.font = [UIFont fontWithName:nil size:15.0];
+    titleLabel.font = [UIFont systemFontOfSize:15.0];
     titleLabel.textColor = [UIColor blackColor];
     [self.contentView addSubview:titleLabel];
     
-    assessImageView.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) +10,70,15);
+    assessImageView.frame = CGRectMake(10, CGRectGetMaxY(titleLabel.frame) +10,70,15);
     assessImageView.backgroundColor = [UIColor greenColor];
     assessImageView.image = [UIImage imageNamed:@"star"];
     [self.contentView addSubview:assessImageView];
@@ -75,12 +75,12 @@
     cutSecondView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:cutSecondView];
    
-    addressLabel.frame = CGRectMake(0, CGRectGetMaxY(assessImageView.frame) +10, [UIScreen mainScreen].bounds.size.width, 30);
+    addressLabel.frame = CGRectMake(10, CGRectGetMaxY(assessImageView.frame) +10, [UIScreen mainScreen].bounds.size.width, 30);
     addressLabel.backgroundColor = [UIColor clearColor];
     NSString *addressStr = [businessesDic objectForKey:@"address"];
     addressLabel.text = addressStr;
     addressLabel.textColor = [UIColor blackColor];
-    addressLabel.font = [UIFont fontWithName: nil size:12.0];
+    addressLabel.font = [UIFont systemFontOfSize:12.0];
     [self.contentView addSubview:addressLabel];
     
     

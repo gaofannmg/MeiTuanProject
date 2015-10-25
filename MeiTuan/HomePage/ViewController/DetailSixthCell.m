@@ -31,12 +31,12 @@
 
 - (void) refreshSixthCell:(NSDictionary *)dic
 {
-    currentLabel.frame = CGRectMake(0, 0, 60, 30);
+    currentLabel.frame = CGRectMake(10, 0, 60, 30);
     NSNumber *currentNumber = dic[@"current_price"];
     NSString *curStr = [NSString stringWithFormat:@"%@",currentNumber];
     currentLabel.text = curStr;
     currentLabel.textColor = [UIColor redColor];
-    currentLabel.font = [UIFont fontWithName:nil size:15];
+    currentLabel.font = [UIFont systemFontOfSize:15.0];
     [self.contentView addSubview:currentLabel];
     
     originalLabel.frame = CGRectMake(CGRectGetMaxX(currentLabel.frame) +10, 0, 30, 30);
@@ -44,7 +44,7 @@
     NSString *oriStr = [NSString stringWithFormat:@"%@",originaNumber];
     originalLabel.text = oriStr;
     originalLabel.textColor = [UIColor grayColor];
-    originalLabel.font = [UIFont fontWithName:nil size:12];
+    originalLabel.font = [UIFont systemFontOfSize:12.0];
     [self.contentView addSubview:originalLabel];
     
     cutView.frame = CGRectMake(originalLabel.frame.origin.x - 5, originalLabel.center.y, originalLabel.frame.size.width, 1);
@@ -55,7 +55,7 @@
     titleLabel.backgroundColor = [UIColor whiteColor];
     NSString *titleStr = dic[@"title"];
     titleLabel.text = titleStr;
-    titleLabel.font = [UIFont fontWithName:nil size:12];
+    titleLabel.font = [UIFont systemFontOfSize:12.0];
     [self.contentView addSubview:titleLabel];
 }
 

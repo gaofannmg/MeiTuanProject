@@ -84,7 +84,7 @@
 
     UIButton *typeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     typeButton.frame = CGRectMake(7, 0, barView.frame.size.width/3, barView.frame.size.height-5);
-    [typeButton setTitle:@"列表" forState:UIControlStateNormal];
+    [typeButton setTitle:@"区域" forState:UIControlStateNormal];
     typeButton.backgroundColor = [UIColor grayColor];
     typeButton.alpha = 0.8;
     [barView addSubview:typeButton];

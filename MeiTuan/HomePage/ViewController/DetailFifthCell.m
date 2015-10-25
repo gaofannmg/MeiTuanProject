@@ -27,12 +27,12 @@
 
 - (void) refreshFifthCell:(NSDictionary *)dic
 {
-    label.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 30);
+    label.frame = CGRectMake(10, 0, [UIScreen mainScreen].bounds.size.width, 30);
     NSArray *arr = dic[@"categories"];
     NSString *str = arr[0];
     NSString *s = [NSString stringWithFormat:@"%@的其他团购",str];
     label.text = s;
-    label.font = [UIFont fontWithName:nil size:15];
+    label.font = [UIFont systemFontOfSize:15.0];
     label.backgroundColor =[UIColor whiteColor];
     [self.contentView addSubview:label];
 }
