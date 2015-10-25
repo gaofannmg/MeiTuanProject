@@ -22,8 +22,6 @@
     UITableView *detailTabView;
     NSDictionary *dataDict;
 
-    
-    
     NSMutableArray *otherDealsArray;
 }
 @end
