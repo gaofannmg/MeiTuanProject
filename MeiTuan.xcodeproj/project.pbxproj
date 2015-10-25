@@ -57,8 +57,8 @@
 /* Begin PBXFileReference section */
 		4977E37B1BD280A100C9D5FF /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		4977E37C1BD280A100C9D5FF /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		49B67E1C1BD38B0500ABE81C /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailCell.h; sourceTree = "<group>"; };
-		49B67E1D1BD38B0500ABE81C /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailCell.m; sourceTree = "<group>"; };
+		49B67E1C1BD38B0500ABE81C /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailCell.h; path = ../ViewController/DetailCell.h; sourceTree = "<group>"; };
+		49B67E1D1BD38B0500ABE81C /* DetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailCell.m; path = ../ViewController/DetailCell.m; sourceTree = "<group>"; };
 		A600E40A1BDCEBA100A8F20B /* CommonMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethod.h; sourceTree = "<group>"; };
 		A600E40B1BDCEBA100A8F20B /* CommonMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethod.m; sourceTree = "<group>"; };
 		A610EB821BCEAE1300B25B4D /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -115,18 +115,18 @@
 		A670841D1BC943EB00F6A40F /* MeiTuanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeiTuanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67084221BC943EB00F6A40F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A67084231BC943EB00F6A40F /* MeiTuanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeiTuanTests.m; sourceTree = "<group>"; };
-		A6AE8B131BD526BE00E2D0FC /* DetailSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSecondCell.h; sourceTree = "<group>"; };
-		A6AE8B141BD526BE00E2D0FC /* DetailSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSecondCell.m; sourceTree = "<group>"; };
-		A6DE60EC1BD532C200E44CB8 /* DetailThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailThirdCell.h; sourceTree = "<group>"; };
-		A6DE60ED1BD532C200E44CB8 /* DetailThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailThirdCell.m; sourceTree = "<group>"; };
-		A6F37C301BD7ABBF00FC820E /* DetailFourthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailFourthCell.h; sourceTree = "<group>"; };
-		A6F37C311BD7ABBF00FC820E /* DetailFourthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailFourthCell.m; sourceTree = "<group>"; };
-		A6F37C331BD7CAAF00FC820E /* DetailFifthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailFifthCell.h; sourceTree = "<group>"; };
-		A6F37C341BD7CAAF00FC820E /* DetailFifthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailFifthCell.m; sourceTree = "<group>"; };
-		A6F37C361BD7CE5900FC820E /* DetailSixthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSixthCell.h; sourceTree = "<group>"; };
-		A6F37C371BD7CE5900FC820E /* DetailSixthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSixthCell.m; sourceTree = "<group>"; };
-		A6F37C391BD7D43500FC820E /* DetailSeventhCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSeventhCell.h; sourceTree = "<group>"; };
-		A6F37C3A1BD7D43500FC820E /* DetailSeventhCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSeventhCell.m; sourceTree = "<group>"; };
+		A6AE8B131BD526BE00E2D0FC /* DetailSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailSecondCell.h; path = ../ViewController/DetailSecondCell.h; sourceTree = "<group>"; };
+		A6AE8B141BD526BE00E2D0FC /* DetailSecondCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailSecondCell.m; path = ../ViewController/DetailSecondCell.m; sourceTree = "<group>"; };
+		A6DE60EC1BD532C200E44CB8 /* DetailThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailThirdCell.h; path = ../ViewController/DetailThirdCell.h; sourceTree = "<group>"; };
+		A6DE60ED1BD532C200E44CB8 /* DetailThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailThirdCell.m; path = ../ViewController/DetailThirdCell.m; sourceTree = "<group>"; };
+		A6F37C301BD7ABBF00FC820E /* DetailFourthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailFourthCell.h; path = ../ViewController/DetailFourthCell.h; sourceTree = "<group>"; };
+		A6F37C311BD7ABBF00FC820E /* DetailFourthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailFourthCell.m; path = ../ViewController/DetailFourthCell.m; sourceTree = "<group>"; };
+		A6F37C331BD7CAAF00FC820E /* DetailFifthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailFifthCell.h; path = ../ViewController/DetailFifthCell.h; sourceTree = "<group>"; };
+		A6F37C341BD7CAAF00FC820E /* DetailFifthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailFifthCell.m; path = ../ViewController/DetailFifthCell.m; sourceTree = "<group>"; };
+		A6F37C361BD7CE5900FC820E /* DetailSixthCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailSixthCell.h; path = ../ViewController/DetailSixthCell.h; sourceTree = "<group>"; };
+		A6F37C371BD7CE5900FC820E /* DetailSixthCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailSixthCell.m; path = ../ViewController/DetailSixthCell.m; sourceTree = "<group>"; };
+		A6F37C391BD7D43500FC820E /* DetailSeventhCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailSeventhCell.h; path = ../ViewController/DetailSeventhCell.h; sourceTree = "<group>"; };
+		A6F37C3A1BD7D43500FC820E /* DetailSeventhCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailSeventhCell.m; path = ../ViewController/DetailSeventhCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +171,15 @@
 				A610EB831BCEAE1300B25B4D /* ViewController.m */,
 				4977E37B1BD280A100C9D5FF /* DetailViewController.h */,
 				4977E37C1BD280A100C9D5FF /* DetailViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A610EB841BCEAE1300B25B4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A610EB851BCEAE1300B25B4D /* MTCollectionViewCell.h */,
+				A610EB861BCEAE1300B25B4D /* MTCollectionViewCell.m */,
 				49B67E1C1BD38B0500ABE81C /* DetailCell.h */,
 				49B67E1D1BD38B0500ABE81C /* DetailCell.m */,
 				A6AE8B131BD526BE00E2D0FC /* DetailSecondCell.h */,
@@ -185,15 +194,6 @@
 				A6F37C371BD7CE5900FC820E /* DetailSixthCell.m */,
 				A6F37C391BD7D43500FC820E /* DetailSeventhCell.h */,
 				A6F37C3A1BD7D43500FC820E /* DetailSeventhCell.m */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		A610EB841BCEAE1300B25B4D /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				A610EB851BCEAE1300B25B4D /* MTCollectionViewCell.h */,
-				A610EB861BCEAE1300B25B4D /* MTCollectionViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
