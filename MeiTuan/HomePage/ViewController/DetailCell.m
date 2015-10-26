@@ -8,6 +8,7 @@
 
 #import "DetailCell.h"
 
+
 @interface DetailCell ()
 {
     UIImageView *titleImageView;
@@ -41,6 +42,8 @@
         label2 = [[UILabel alloc] init];
         lineView = [[UIView alloc] init];//分割线
         presentCutView = [[UIView alloc] init];//现价切线
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }

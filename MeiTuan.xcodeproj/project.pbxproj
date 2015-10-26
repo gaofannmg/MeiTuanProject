@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49265B261BDE6DCF0062F025 /* BuyWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49265B251BDE6DCF0062F025 /* BuyWebViewController.m */; settings = {ASSET_TAGS = (); }; };
 		4977E37D1BD280A100C9D5FF /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4977E37C1BD280A100C9D5FF /* DetailViewController.m */; };
 		49B67E1E1BD38B0500ABE81C /* DetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49B67E1D1BD38B0500ABE81C /* DetailCell.m */; };
 		49C77CB91BDD299F0054D5A9 /* OtherDealsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 49C77CB81BDD299F0054D5A9 /* OtherDealsData.m */; };
@@ -54,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49265B241BDE6DCF0062F025 /* BuyWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyWebViewController.h; sourceTree = "<group>"; };
+		49265B251BDE6DCF0062F025 /* BuyWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyWebViewController.m; sourceTree = "<group>"; };
 		4977E37B1BD280A100C9D5FF /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		4977E37C1BD280A100C9D5FF /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		49B67E1C1BD38B0500ABE81C /* DetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailCell.h; path = ../ViewController/DetailCell.h; sourceTree = "<group>"; };
@@ -170,6 +173,8 @@
 				A610EB831BCEAE1300B25B4D /* ViewController.m */,
 				4977E37B1BD280A100C9D5FF /* DetailViewController.h */,
 				4977E37C1BD280A100C9D5FF /* DetailViewController.m */,
+				49265B241BDE6DCF0062F025 /* BuyWebViewController.h */,
+				49265B251BDE6DCF0062F025 /* BuyWebViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -430,6 +435,7 @@
 				A610EBB51BCEAE1300B25B4D /* NSData+ImageContentType.m in Sources */,
 				A6F37C321BD7ABBF00FC820E /* DetailFourthCell.m in Sources */,
 				A610EBBC1BCEAE1300B25B4D /* SDWebImagePrefetcher.m in Sources */,
+				49265B261BDE6DCF0062F025 /* BuyWebViewController.m in Sources */,
 				A610EBB91BCEAE1300B25B4D /* SDWebImageDownloader.m in Sources */,
 				A6F37C381BD7CE5900FC820E /* DetailSixthCell.m in Sources */,
 				A610EBB01BCEAE1300B25B4D /* ViewController.m in Sources */,

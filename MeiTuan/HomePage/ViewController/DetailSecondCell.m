@@ -32,6 +32,8 @@
         addressLabel = [[UILabel alloc] init];
         cutView = [[UIView alloc] init];
         cutSecondView = [[UIView alloc] init];
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }
