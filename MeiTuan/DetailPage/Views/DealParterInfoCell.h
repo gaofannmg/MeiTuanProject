@@ -1,5 +1,5 @@
 //
-//  DetailSecondCell.h
+//  DealParterInfoCell.h
 //  MeiTuan
 //  商户信息 第二个section cell
 //  Created by gaofan on 15/10/19.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailSecondCell : UITableViewCell
+@interface DealParterInfoCell : UITableViewCell
 
 - (void) refreshSecondCell:(NSDictionary *) dic;
 

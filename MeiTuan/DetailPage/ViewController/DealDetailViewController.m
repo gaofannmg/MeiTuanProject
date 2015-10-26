@@ -8,8 +8,7 @@
 
 #import "DealDetailViewController.h"
 #import "DetailHeaderCell.h"
-#import "DetailSecondCell.h"
-#import "DetailThirdCell.h"
+#import "DealParterInfoCell.h"
 #import "DetailMutipleWordsCell.h"
 #import "DetailOtherDealCell.h"
 #import "OtherDealsData.h"
@@ -97,7 +96,7 @@
     detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(titleView.frame)) style:UITableViewStyleGrouped];
 //    detailTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [detailTabView registerClass:[DetailHeaderCell class] forCellReuseIdentifier:@"DetailCell"];
-    [detailTabView registerClass:[DetailSecondCell class] forCellReuseIdentifier:@"DetailSecondCell"];
+    [detailTabView registerClass:[DealParterInfoCell class] forCellReuseIdentifier:@"DetailSecondCell"];
 //    [detailTabView registerClass:[DetailThirdCell class] forCellReuseIdentifier:@"DetailThirdCell"];
     [detailTabView registerClass:[DetailMutipleWordsCell class] forCellReuseIdentifier:@"DetailFourthCell"];
     [detailTabView registerClass:[DetailMutipleWordsCell class] forCellReuseIdentifier:@"DetailFourthCell1"];
@@ -191,7 +190,7 @@
     }
     else if (indexPath.section == 1)
     {
-        DetailSecondCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSecondCell" forIndexPath:indexPath];
+        DealParterInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSecondCell" forIndexPath:indexPath];
         [cell refreshSecondCell:dataDict];
         return cell;
     }

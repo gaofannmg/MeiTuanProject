@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 gaofan. All rights reserved.
 //
 
-#import "DetailSecondCell.h"
+#import "DealParterInfoCell.h"
 
-@interface DetailSecondCell ()
+@interface DealParterInfoCell ()
 {
     UILabel *userLabel;
     UILabel *titleLabel;
@@ -20,7 +20,7 @@
 }
 @end
 
-@implementation DetailSecondCell
+@implementation DealParterInfoCell
 
 -(instancetype) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
