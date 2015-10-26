@@ -23,6 +23,9 @@
     NSDictionary *dataDict;
 
     NSMutableArray *otherDealsArray;
+    
+    UIButton *moreCellBtn;
+    BOOL isExpand; //是否展开，默认收起
 }
 @end
 
@@ -64,10 +67,11 @@
     [detailTabView registerClass:[DetailSecondCell class] forCellReuseIdentifier:@"DetailSecondCell"];
 //    [detailTabView registerClass:[DetailThirdCell class] forCellReuseIdentifier:@"DetailThirdCell"];
     [detailTabView registerClass:[DetailFourthCell class] forCellReuseIdentifier:@"DetailFourthCell"];
+    [detailTabView registerClass:[DetailFourthCell class] forCellReuseIdentifier:@"DetailFourthCell1"];
     [detailTabView registerClass:[DetailSixthCell class] forCellReuseIdentifier:@"DetailSixthCell"];
     
     caucateCell = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell"];
-    caucateCell1 = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell"];
+    caucateCell1 = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell1"];
     
     detailTabView.delegate = self;
     detailTabView.dataSource = self;
@@ -122,7 +126,19 @@
 {
     if(section == 4)
     {
-        return 3;
+        if (otherDealsArray.count <= 3)
+        {
+            return otherDealsArray.count;
+        }
+        
+        if (isExpand)
+        {
+            return otherDealsArray.count;
+        }
+        else
+        {
+            return 3;
+        }
     }
     else
     {
@@ -159,7 +175,7 @@
 
     }
     else if (indexPath.section ==3){
-        DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell" forIndexPath:indexPath];
+        DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell1" forIndexPath:indexPath];
         NSDictionary *restrictionsDic = dataDict[@"restrictions"];
         NSString *listStr = restrictionsDic[@"special_tips"];
         NSArray *list=[listStr componentsSeparatedByString:@"\n"];
@@ -175,7 +191,9 @@
     else if (indexPath.section == 4){
         DetailSixthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSixthCell" forIndexPath:indexPath];
         
-        [cell refreshSixthCell:otherDealsArray[indexPath.row]];
+        NSDictionary *temDict = otherDealsArray[indexPath.row];
+        
+        [cell refreshSixthCell:temDict];
         return cell;
     }
 //    else
@@ -264,13 +282,32 @@
     {
         UIView *temHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIN_WIDTH, 40)];
         temHeaderView.backgroundColor = [UIColor whiteColor];
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
-        btn.frame = CGRectMake(10, 0, WIN_WIDTH - 20, 40);
-        btn.backgroundColor = [UIColor whiteColor];
-        [btn setTitle:@"还有7个团购" forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btn addTarget:self action:@selector(moreGroupPurchase) forControlEvents:UIControlEventTouchUpInside];
-        [temHeaderView addSubview:btn];
+        moreCellBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+        moreCellBtn.frame = CGRectMake(10, 0, WIN_WIDTH - 20, 40);
+        moreCellBtn.backgroundColor = [UIColor whiteColor];
+        
+        NSString *titleString = @"";
+        
+        if (isExpand)
+        {
+            titleString = @"收起";
+        }
+        else
+        {
+            if (otherDealsArray.count > 3)
+            {
+                titleString = [NSString stringWithFormat:@"还有%ld个团购",otherDealsArray.count -3];
+            }
+            else
+            {
+                titleString = @"";
+            }
+        }
+        
+        [moreCellBtn setTitle:titleString forState:UIControlStateNormal];
+        [moreCellBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [moreCellBtn addTarget:self action:@selector(moreGroupPurchase) forControlEvents:UIControlEventTouchUpInside];
+        [temHeaderView addSubview:moreCellBtn];
          return temHeaderView;
     }
    
@@ -279,8 +316,14 @@
 }
 - (void)moreGroupPurchase
 {
-    DetailSixthCell *cell = [detailTabView dequeueReusableCellWithIdentifier:@"DetailSixthCell" forIndexPath:otherDealsArray];
- 
+    isExpand = !isExpand;
+    
+    [detailTabView reloadData];
+    
+    if (isExpand)
+    {
+        [detailTabView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:otherDealsArray.count - 1 inSection:4] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 @end
