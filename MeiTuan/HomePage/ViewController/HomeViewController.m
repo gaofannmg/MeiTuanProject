@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "HomeCollectionViewCell.h"
 #import "DealDetailViewController.h"
+#import "CityListViewController.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
@@ -34,6 +35,7 @@
     cityBtn.frame = CGRectMake(10, 20 , 80, 40);
     [cityBtn setTitle:@"城市" forState:UIControlStateNormal];
     cityBtn.backgroundColor = [UIColor whiteColor];
+    [cityBtn addTarget:self action:@selector(cityButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:cityBtn];
     
     UIView *searchView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(cityBtn.frame) + 5, cityBtn.frame.origin.y, 200, cityBtn.frame.size.height)];
@@ -162,6 +164,11 @@
     cityBtn.backgroundColor = color;
 }
 
+- (void)cityButtonClick
+{
+    CityListViewController *cityListVC = [[CityListViewController alloc] init];
+    [self.navigationController pushViewController:cityListVC animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

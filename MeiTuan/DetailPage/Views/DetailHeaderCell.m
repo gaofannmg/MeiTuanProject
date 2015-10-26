@@ -64,7 +64,7 @@
     NSString *urlStr = [dic objectForKey:@"image_url"];
     [titleImageView sd_setImageWithURL:[NSURL URLWithString:urlStr]];
     titleImageView.contentMode = UIViewContentModeScaleAspectFill;
-    titleImageView.backgroundColor = [UIColor redColor];
+    titleImageView.backgroundColor = [UIColor clearColor];
     titleImageView.clipsToBounds = YES;
     [self.contentView addSubview:titleImageView];
     

@@ -14,6 +14,11 @@
 		49265B401BDE8D680062F025 /* DetailMutipleWordsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49265B341BDE8D680062F025 /* DetailMutipleWordsCell.m */; settings = {ASSET_TAGS = (); }; };
 		49265B411BDE8D680062F025 /* DetailOtherDealCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49265B361BDE8D680062F025 /* DetailOtherDealCell.m */; settings = {ASSET_TAGS = (); }; };
 		49265B421BDE8D680062F025 /* DealParterInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49265B381BDE8D680062F025 /* DealParterInfoCell.m */; settings = {ASSET_TAGS = (); }; };
+		49265B4A1BDE90C10062F025 /* CityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49265B491BDE90C10062F025 /* CityListViewController.m */; settings = {ASSET_TAGS = (); }; };
+		49265B511BDE94120062F025 /* categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49265B4D1BDE94120062F025 /* categories.plist */; settings = {ASSET_TAGS = (); }; };
+		49265B521BDE94120062F025 /* cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49265B4E1BDE94120062F025 /* cities.plist */; settings = {ASSET_TAGS = (); }; };
+		49265B531BDE94120062F025 /* cityGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49265B4F1BDE94120062F025 /* cityGroups.plist */; settings = {ASSET_TAGS = (); }; };
+		49265B541BDE94120062F025 /* sorts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49265B501BDE94120062F025 /* sorts.plist */; settings = {ASSET_TAGS = (); }; };
 		A600E40C1BDCEBA100A8F20B /* CommonMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A600E40B1BDCEBA100A8F20B /* CommonMethod.m */; };
 		A610EBB01BCEAE1300B25B4D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB831BCEAE1300B25B4D /* HomeViewController.m */; };
 		A610EBB11BCEAE1300B25B4D /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB861BCEAE1300B25B4D /* HomeCollectionViewCell.m */; };
@@ -68,6 +73,12 @@
 		49265B361BDE8D680062F025 /* DetailOtherDealCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailOtherDealCell.m; sourceTree = "<group>"; };
 		49265B371BDE8D680062F025 /* DealParterInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealParterInfoCell.h; sourceTree = "<group>"; };
 		49265B381BDE8D680062F025 /* DealParterInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealParterInfoCell.m; sourceTree = "<group>"; };
+		49265B481BDE90C10062F025 /* CityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityListViewController.h; sourceTree = "<group>"; };
+		49265B491BDE90C10062F025 /* CityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityListViewController.m; sourceTree = "<group>"; };
+		49265B4D1BDE94120062F025 /* categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = categories.plist; sourceTree = "<group>"; };
+		49265B4E1BDE94120062F025 /* cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cities.plist; sourceTree = "<group>"; };
+		49265B4F1BDE94120062F025 /* cityGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityGroups.plist; sourceTree = "<group>"; };
+		49265B501BDE94120062F025 /* sorts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sorts.plist; sourceTree = "<group>"; };
 		A600E40A1BDCEBA100A8F20B /* CommonMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethod.h; sourceTree = "<group>"; };
 		A600E40B1BDCEBA100A8F20B /* CommonMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethod.m; sourceTree = "<group>"; };
 		A610EB821BCEAE1300B25B4D /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -187,6 +198,58 @@
 				49265B381BDE8D680062F025 /* DealParterInfoCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		49265B441BDE902C0062F025 /* SearchFilter */ = {
+			isa = PBXGroup;
+			children = (
+				49265B451BDE902C0062F025 /* Commom */,
+				49265B461BDE902C0062F025 /* ViewController */,
+				49265B471BDE902C0062F025 /* Views */,
+			);
+			path = SearchFilter;
+			sourceTree = "<group>";
+		};
+		49265B451BDE902C0062F025 /* Commom */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Commom;
+			sourceTree = "<group>";
+		};
+		49265B461BDE902C0062F025 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				49265B481BDE90C10062F025 /* CityListViewController.h */,
+				49265B491BDE90C10062F025 /* CityListViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		49265B471BDE902C0062F025 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49265B4B1BDE94120062F025 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				49265B4C1BDE94120062F025 /* PlistData */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		49265B4C1BDE94120062F025 /* PlistData */ = {
+			isa = PBXGroup;
+			children = (
+				49265B4D1BDE94120062F025 /* categories.plist */,
+				49265B4E1BDE94120062F025 /* cities.plist */,
+				49265B4F1BDE94120062F025 /* cityGroups.plist */,
+				49265B501BDE94120062F025 /* sorts.plist */,
+			);
+			path = PlistData;
 			sourceTree = "<group>";
 		};
 		498486891BDD295B00D26111 /* Common */ = {
@@ -310,7 +373,9 @@
 			children = (
 				A610EB7F1BCEAE1300B25B4D /* HomePage */,
 				49265B271BDE8D680062F025 /* DetailPage */,
+				49265B441BDE902C0062F025 /* SearchFilter */,
 				A610EB871BCEAE1300B25B4D /* Lib */,
+				49265B4B1BDE94120062F025 /* Resource */,
 				A670840B1BC943EA00F6A40F /* AppDelegate.h */,
 				A670840C1BC943EA00F6A40F /* AppDelegate.m */,
 				A67084111BC943EA00F6A40F /* Main.storyboard */,
@@ -428,9 +493,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49265B511BDE94120062F025 /* categories.plist in Resources */,
 				A67084131BC943EA00F6A40F /* Main.storyboard in Resources */,
+				49265B541BDE94120062F025 /* sorts.plist in Resources */,
 				A67084181BC943EA00F6A40F /* LaunchScreen.xib in Resources */,
+				49265B521BDE94120062F025 /* cities.plist in Resources */,
 				A67084151BC943EA00F6A40F /* Images.xcassets in Resources */,
+				49265B531BDE94120062F025 /* cityGroups.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49265B4A1BDE90C10062F025 /* CityListViewController.m in Sources */,
 				A610EBB21BCEAE1300B25B4D /* DPAPI.m in Sources */,
 				A600E40C1BDCEBA100A8F20B /* CommonMethod.m in Sources */,
 				49265B421BDE8D680062F025 /* DealParterInfoCell.m in Sources */,
