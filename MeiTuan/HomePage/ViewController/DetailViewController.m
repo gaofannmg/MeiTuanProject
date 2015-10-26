@@ -187,12 +187,13 @@
         cell.detailVC = self;
 //        NSDictionary *dic = array[indexPath.row];
         [cell refreshCell:dataDict];
-        cell.userInteractionEnabled = YES;
+        cell.userInteractionEnabled = NO;
         return cell;
     }
     else if (indexPath.section == 1) {
         DetailSecondCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSecondCell" forIndexPath:indexPath];
         [cell refreshSecondCell:dataDict];
+        cell.userInteractionEnabled = NO;
         return cell;
     }
     
@@ -204,6 +205,7 @@
         NSString *stringList = dataDict[@"details"];
         NSArray *list=[stringList componentsSeparatedByString:@"\n"];
         [cell refreshFourthCell:dataDict labelArray:list];
+        cell.userInteractionEnabled = NO;
         return cell;
 
     }
@@ -213,6 +215,7 @@
         NSString *listStr = restrictionsDic[@"special_tips"];
         NSArray *list=[listStr componentsSeparatedByString:@"\n"];
         [cell refreshFourthCell:dataDict labelArray:list];
+        cell.userInteractionEnabled = NO;
         return cell;
     }
 //    else if (indexPath.section ==4)
@@ -227,6 +230,7 @@
         NSDictionary *temDict = otherDealsArray[indexPath.row];
         
         [cell refreshSixthCell:temDict];
+        cell.userInteractionEnabled = NO;
         return cell;
     }
 //    else
