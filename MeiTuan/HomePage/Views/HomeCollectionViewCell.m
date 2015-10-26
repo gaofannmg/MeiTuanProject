@@ -1,14 +1,14 @@
 //
-//  MTCollectionViewCell.m
+//  HomeCollectionViewCell.m
 //  MeiTuan
 //
 //  Created by gaofan on 15/10/11.
 //  Copyright (c) 2015年 gaofan. All rights reserved.
 //
 
-#import "MTCollectionViewCell.h"
+#import "HomeCollectionViewCell.h"
 
-@interface MTCollectionViewCell ()
+@interface HomeCollectionViewCell ()
 {
     UILabel *nameLabel;
     UILabel *detailsLabel;//详情
@@ -18,7 +18,7 @@
 }
 @end
 
-@implementation MTCollectionViewCell
+@implementation HomeCollectionViewCell
 
 - (instancetype)initWithFrame:(CGRect)frame
 {

@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 gaofan. All rights reserved.
 //
 
-#import "DetailCell.h"
+#import "DetailHeaderCell.h"
 
 
-@interface DetailCell ()
+@interface DetailHeaderCell ()
 {
     UIImageView *titleImageView;
     UIButton *outBtn;
@@ -24,7 +24,7 @@
 
 @end
 
-@implementation DetailCell
+@implementation DetailHeaderCell
 
 - (instancetype) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

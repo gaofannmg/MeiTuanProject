@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 gaofan. All rights reserved.
 //
 
-#import "DetailSixthCell.h"
+#import "DetailOtherDealCell.h"
 
-@interface DetailSixthCell ()
+@interface DetailOtherDealCell ()
 {
     UILabel *originalLabel;//原价
     UILabel *currentLabel;//现价
@@ -17,7 +17,7 @@
 }
 @end
 
-@implementation DetailSixthCell
+@implementation DetailOtherDealCell
 
 - (instancetype) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {

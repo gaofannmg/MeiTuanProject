@@ -6,19 +6,19 @@
 //  Copyright (c) 2015年 gaofan. All rights reserved.
 //
 
-#import "DetailViewController.h"
-#import "DetailCell.h"
+#import "DealDetailViewController.h"
+#import "DetailHeaderCell.h"
 #import "DetailSecondCell.h"
 #import "DetailThirdCell.h"
-#import "DetailFourthCell.h"
-#import "DetailSixthCell.h"
+#import "DetailMutipleWordsCell.h"
+#import "DetailOtherDealCell.h"
 #import "OtherDealsData.h"
 #import "BuyWebViewController.h"
 
-@interface DetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface DealDetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
-    DetailFourthCell *caucateCell;
-    DetailFourthCell *caucateCell1;
+    DetailMutipleWordsCell *caucateCell;
+    DetailMutipleWordsCell *caucateCell1;
     UITableView *detailTabView;
     NSDictionary *dataDict;
 
@@ -34,7 +34,9 @@
 
 @end
 
-@implementation DetailViewController
+@implementation DealDetailViewController
+
+#pragma mark -- page life
 
 - (instancetype) init
 {
@@ -94,12 +96,12 @@
     
     detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(titleView.frame)) style:UITableViewStyleGrouped];
 //    detailTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [detailTabView registerClass:[DetailCell class] forCellReuseIdentifier:@"DetailCell"];
+    [detailTabView registerClass:[DetailHeaderCell class] forCellReuseIdentifier:@"DetailCell"];
     [detailTabView registerClass:[DetailSecondCell class] forCellReuseIdentifier:@"DetailSecondCell"];
 //    [detailTabView registerClass:[DetailThirdCell class] forCellReuseIdentifier:@"DetailThirdCell"];
-    [detailTabView registerClass:[DetailFourthCell class] forCellReuseIdentifier:@"DetailFourthCell"];
-    [detailTabView registerClass:[DetailFourthCell class] forCellReuseIdentifier:@"DetailFourthCell1"];
-    [detailTabView registerClass:[DetailSixthCell class] forCellReuseIdentifier:@"DetailSixthCell"];
+    [detailTabView registerClass:[DetailMutipleWordsCell class] forCellReuseIdentifier:@"DetailFourthCell"];
+    [detailTabView registerClass:[DetailMutipleWordsCell class] forCellReuseIdentifier:@"DetailFourthCell1"];
+    [detailTabView registerClass:[DetailOtherDealCell class] forCellReuseIdentifier:@"DetailSixthCell"];
     
     caucateCell = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell"];
     caucateCell1 = [detailTabView dequeueReusableCellWithIdentifier:@"DetailFourthCell1"];
@@ -112,10 +114,7 @@
     [self getDealDetailData];
 }
 
-- (void) clickView
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+#pragma mark -- 发送请求回调方法
 
 - (void) getDealDetailData
 {
@@ -125,7 +124,7 @@
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
 }
-#pragma mark -- 发送请求回调方法
+
 //成功
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
 {
@@ -147,6 +146,8 @@
 {
     
 }
+
+#pragma mark -- tableViewDelegate
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -181,25 +182,23 @@
 {
     if (indexPath.section == 0) {
         
-        DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
+        DetailHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
         self.cellBuyButton = cell.curBuyButton;
         [self.cellBuyButton addTarget:self action:@selector(buyButtonClick) forControlEvents:UIControlEventTouchUpInside];
         cell.detailVC = self;
-//        NSDictionary *dic = array[indexPath.row];
         [cell refreshCell:dataDict];
         return cell;
     }
-    else if (indexPath.section == 1) {
+    else if (indexPath.section == 1)
+    {
         DetailSecondCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSecondCell" forIndexPath:indexPath];
         [cell refreshSecondCell:dataDict];
         return cell;
     }
     
-    else if (indexPath.section == 2) {
-//        DetailThirdCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailThirdCell" forIndexPath:indexPath];
-//        [cell refreshThirdCell:nil];
-//        return cell;
-        DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell" forIndexPath:indexPath];
+    else if (indexPath.section == 2)
+    {
+        DetailMutipleWordsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell" forIndexPath:indexPath];
         NSString *stringList = dataDict[@"details"];
         NSArray *list=[stringList componentsSeparatedByString:@"\n"];
         [cell refreshFourthCell:dataDict labelArray:list];
@@ -207,33 +206,21 @@
 
     }
     else if (indexPath.section ==3){
-        DetailFourthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell1" forIndexPath:indexPath];
+        DetailMutipleWordsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFourthCell1" forIndexPath:indexPath];
         NSDictionary *restrictionsDic = dataDict[@"restrictions"];
         NSString *listStr = restrictionsDic[@"special_tips"];
         NSArray *list=[listStr componentsSeparatedByString:@"\n"];
         [cell refreshFourthCell:dataDict labelArray:list];
         return cell;
     }
-//    else if (indexPath.section ==4)
-//    {
-//        DetailFifthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailFifthCell" forIndexPath:indexPath];
-//        [cell refreshFifthCell:detaFifthDict];
-//        return cell;
-//    }
     else if (indexPath.section == 4){
-        DetailSixthCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSixthCell" forIndexPath:indexPath];
+        DetailOtherDealCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSixthCell" forIndexPath:indexPath];
         
         NSDictionary *temDict = otherDealsArray[indexPath.row];
         
         [cell refreshSixthCell:temDict];
         return cell;
     }
-//    else
-//    {
-//        DetailSeventhCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailSeventhCell" forIndexPath:indexPath];
-//        [cell refreshThirdCell:nil];
-//        return cell;
-//    }
     return [UITableViewCell new];
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -346,18 +333,8 @@
     
     return nil;
 }
-- (void)moreGroupPurchase
-{
-    isExpand = !isExpand;
-    
-    [detailTabView reloadData];
-    
-    if (isExpand)
-    {
-        [detailTabView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:otherDealsArray.count - 1 inSection:4] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-    }
-}
 
+#pragma mark -- scrollViewDelegate
 
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -375,16 +352,37 @@
     }
 }
 
+#pragma mark -- event
+//返回
+- (void) clickView
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+//立即购买
 -(void) buyButtonClick
 {
     BuyWebViewController *buyWebView = [[BuyWebViewController alloc] init];
     NSArray *array = dataDict[@"businesses"];
-    if (array.count > 0) {
+    if (array.count > 0)
+    {
         NSDictionary *dic = [array firstObject];
         buyWebView.url = dic[@"h5_url"];
         [self.navigationController pushViewController:buyWebView animated:YES];
     }
+}
 
+//更多团购
+- (void)moreGroupPurchase
+{
+    isExpand = !isExpand;
+    
+    [detailTabView reloadData];
+    
+    if (isExpand)
+    {
+        [detailTabView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:otherDealsArray.count - 1 inSection:4] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 @end

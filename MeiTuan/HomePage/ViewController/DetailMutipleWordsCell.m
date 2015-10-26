@@ -6,16 +6,14 @@
 //  Copyright (c) 2015年 gaofan. All rights reserved.
 //
 
-#import "DetailFourthCell.h"
-#define winwidth [UIApplication sharedApplication].keyWindow.bounds.size.width
-#define winheight [UIApplication sharedApplication].keyWindow.bounds.size.height
+#import "DetailMutipleWordsCell.h"
 
-@interface DetailFourthCell ()
+@interface DetailMutipleWordsCell ()
 {
     
 }
 @end
-@implementation DetailFourthCell
+@implementation DetailMutipleWordsCell
 
 - (instancetype) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -50,7 +48,7 @@
         
         if (!requireLabel)
         {
-            requireLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0 , winwidth - 20, 10)];
+            requireLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0 , WIN_WIDTH - 20, 10)];
             requireLabel.backgroundColor = [UIColor whiteColor];
             requireLabel.text = labelArray[a];
             requireLabel.numberOfLines = 0;

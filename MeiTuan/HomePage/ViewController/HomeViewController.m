@@ -6,11 +6,11 @@
 //  Copyright (c) 2015年 gaofan. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "MTCollectionViewCell.h"
-#import "DetailViewController.h"
+#import "HomeViewController.h"
+#import "HomeCollectionViewCell.h"
+#import "DealDetailViewController.h"
 
-@interface ViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
+@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
     UILabel *titleLabel;
     NSArray *array;
@@ -19,7 +19,7 @@
 }
 @end
 
-@implementation ViewController
+@implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -76,7 +76,7 @@
     [self.view addSubview:cView];
     cView.delegate = self;
     cView.dataSource = self;
-    [cView registerClass:[MTCollectionViewCell class] forCellWithReuseIdentifier:@"MTCollectionViewCell"];
+    [cView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"MTCollectionViewCell"];
     
     UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height - 50, self.view.frame.size.width,50)];
     barView.backgroundColor = [UIColor clearColor];
@@ -143,7 +143,7 @@
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    MTCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTCollectionViewCell" forIndexPath:indexPath];
+    HomeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MTCollectionViewCell" forIndexPath:indexPath];
     NSDictionary *dic = array[indexPath.row];
     [cell refreshCell:dic];
     cell.userInteractionEnabled = YES;
@@ -151,7 +151,7 @@
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    DetailViewController *detailView = [[DetailViewController alloc] init];
+    DealDetailViewController *detailView = [[DealDetailViewController alloc] init];
     NSDictionary *dic = array[indexPath.row];
     detailView.dealId = [dic objectForKey:@"deal_id"];
     detailView.listVC = self;

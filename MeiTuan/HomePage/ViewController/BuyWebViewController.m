@@ -52,7 +52,7 @@
     splitView.backgroundColor = RGB(175, 175, 175);
     [titleView addSubview:splitView];
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame) - 44, WIN_WIDTH, WIN_HIGHT - (CGRectGetMaxY(titleView.frame) - 44))];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame) - 64, WIN_WIDTH, WIN_HIGHT - (CGRectGetMaxY(titleView.frame) - 64))];
     
     NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
     webView.delegate = self;
