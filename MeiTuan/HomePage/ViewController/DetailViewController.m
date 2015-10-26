@@ -26,7 +26,12 @@
     
     UIButton *moreCellBtn;
     BOOL isExpand; //是否展开，默认收起
+    UIView *titleView;
+    UIButton *titleViewBuyButton;
 }
+
+@property (nonatomic,weak) UIButton *cellBuyButton;
+
 @end
 
 @implementation DetailViewController
@@ -41,26 +46,52 @@
 }
 
 
+-(void) createNaigaitionBar
+{
+    titleView = [[UIView alloc] init];
+    titleView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64);
+    titleView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:titleView];
+    
+    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 100, 44)];
+    titleLable.center = CGPointMake(titleView.center.x, titleLable.center.y);
+    titleLable.text = @"团购详情";
+    titleLable.textColor = RGB(45, 45, 45);
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    titleLable.font = [UIFont systemFontOfSize:16];
+    [titleView addSubview:titleLable];
+    
+    UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    outBtn.frame = CGRectMake(5,20,60, 44);
+    outBtn.backgroundColor = [UIColor whiteColor];
+    [outBtn setTitle:@"返回" forState:UIControlStateNormal];
+    outBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [outBtn setTitleColor:RGB(45, 45, 45) forState:UIControlStateNormal];
+    [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
+    [titleView addSubview:outBtn];
+    
+    titleViewBuyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    titleViewBuyButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 100  - 5, 20 + (44 - 30)/2 , 100, 30);
+    titleViewBuyButton.backgroundColor = [UIColor orangeColor];
+    [titleViewBuyButton setTitle:@"立即抢购" forState:UIControlStateNormal];
+    titleViewBuyButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
+    [titleView addSubview:titleViewBuyButton];
+    [titleViewBuyButton addTarget:self action:@selector(buyButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    titleViewBuyButton.hidden = YES;
+    
+    UIView *splitView = [[UIView alloc] initWithFrame:CGRectMake(0, titleView.frame.size.height - 0.5, titleView.bounds.size.width, 0.5)];
+    splitView.backgroundColor = RGB(175, 175, 175);
+    [titleView addSubview:splitView];
+}
 
 -(void) viewDidLoad
 {
     [super viewDidLoad];
     
     self.view.backgroundColor =[UIColor whiteColor];
-    
-    UIView *titleView = [[UIView alloc] init];
-    titleView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64);
-    titleView.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:titleView];
-    
-    UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    outBtn.frame = CGRectMake(5,30,60, 30);
-    outBtn.backgroundColor = [UIColor whiteColor];
-    [outBtn setTitle:@"返回" forState:UIControlStateNormal];
-    [outBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
-    [titleView addSubview:outBtn];
 
+    [self createNaigaitionBar];
+    
     detailTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, self.view.frame.size.height - CGRectGetMaxY(titleView.frame)) style:UITableViewStyleGrouped];
 //    detailTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [detailTabView registerClass:[DetailCell class] forCellReuseIdentifier:@"DetailCell"];
@@ -151,6 +182,8 @@
     if (indexPath.section == 0) {
         
         DetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
+        self.cellBuyButton = cell.curBuyButton;
+        [self.cellBuyButton addTarget:self action:@selector(buyButtonClick) forControlEvents:UIControlEventTouchUpInside];
         cell.detailVC = self;
 //        NSDictionary *dic = array[indexPath.row];
         [cell refreshCell:dataDict];
@@ -324,6 +357,28 @@
     {
         [detailTabView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:otherDealsArray.count - 1 inSection:4] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
+}
+
+
+-(void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGRect newRect = [self.cellBuyButton convertRect:self.cellBuyButton.bounds toView:self.view];
+    
+    if (newRect.origin.y + newRect.size.height <= CGRectGetMaxY(titleView.frame))
+    {
+        titleViewBuyButton.hidden = NO;
+        self.cellBuyButton.hidden = YES;
+    }
+    else
+    {
+        titleViewBuyButton.hidden = YES;
+        self.cellBuyButton.hidden = NO;
+    }
+}
+
+-(void) buyButtonClick
+{
+    
 }
 
 @end

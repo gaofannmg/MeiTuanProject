@@ -13,6 +13,8 @@
 
 @property (nonatomic,weak) DetailViewController *detailVC;
 
+@property (nonatomic,weak) UIButton *curBuyButton;
+
 - (void) refreshCell:(NSDictionary *) dic;
 
 @end

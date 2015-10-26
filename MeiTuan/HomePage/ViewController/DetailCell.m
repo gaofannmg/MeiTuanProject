@@ -35,6 +35,7 @@
         originalpriceLabel = [[UILabel alloc] init];
         presentpriceLabel = [[UILabel alloc] init];
         buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.curBuyButton = buyBtn;
         [buyBtn addTarget:self action:@selector(buyBtnClick) forControlEvents:UIControlEventTouchUpInside];
         label1 = [[UILabel alloc] init];
         label2 = [[UILabel alloc] init];
@@ -90,7 +91,6 @@
     buyBtn.backgroundColor = [UIColor orangeColor];
     [buyBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
     buyBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
-    [buyBtn addTarget:self action:@selector(cColor) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:buyBtn];
     
     lineView.frame = CGRectMake(0, CGRectGetMaxY(originalpriceLabel.frame) +5, [UIScreen mainScreen].bounds.size.width, 0.5);
@@ -133,10 +133,7 @@
         label2.hidden = YES;
     }
 }
--(void)cColor
-{
-    
-}
+
 
 
 @end
