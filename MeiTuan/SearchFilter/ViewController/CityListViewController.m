@@ -7,8 +7,9 @@
 //
 
 #import "CityListViewController.h"
+#import "CityListViewCell.h"
 
-@interface CityListViewController ()
+@interface CityListViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
@@ -18,6 +19,40 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIN_WIDTH, 64)];
+    headView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:headView];
+    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    backButton.frame = CGRectMake(10,20,60, 40);
+    backButton.backgroundColor = [UIColor whiteColor];
+    [backButton setTitle:@"返回主页" forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backButton];
+    
+    UITableView *cityListTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(headView.frame), WIN_WIDTH, WIN_HIGHT -64) style:UITableViewStylePlain];
+    cityListTabView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:cityListTabView];
+    
+    [cityListTabView registerClass:[CityListViewCell class] forCellReuseIdentifier:@"CityListViewCell.h"];
+    cityListTabView.delegate = self;
+    cityListTabView.dataSource = self;
+    
+}
+- (void) clickHomeView
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CityListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityListViewCell.h" forIndexPath:indexPath];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {
