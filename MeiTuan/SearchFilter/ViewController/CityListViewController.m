@@ -12,7 +12,7 @@
 @interface CityListViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *cityAry;
-    
+    NSMutableArray *keyArr;
 }
 @end
 
@@ -34,7 +34,8 @@
     [self.view addSubview:backButton];
     
     UITableView *cityListTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(headView.frame), WIN_WIDTH, WIN_HIGHT -64) style:UITableViewStylePlain];
-    cityListTabView.backgroundColor = [UIColor greenColor];
+    cityListTabView.backgroundColor = [UIColor whiteColor];
+    cityListTabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:cityListTabView];
     
     [cityListTabView registerClass:[CityListViewCell class] forCellReuseIdentifier:@"CityListViewCell.h"];
@@ -44,11 +45,24 @@
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cityGroups" ofType:@"plist"];
     cityAry = [[NSArray alloc] initWithContentsOfFile:plistPath];
     
+    keyArr =  [NSMutableArray array];
+    
+    for (int i = 0; i <cityAry.count; i ++)
+    {
+        NSDictionary *dic = cityAry[i];
+        [keyArr addObject:dic[@"title"]];
+    }
 }
 - (void) clickHomeView
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return keyArr;
+}
+
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     return cityAry.count;
@@ -63,9 +77,33 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *cityDic = cityAry[indexPath.section];
+    NSArray *sectionAry = cityDic[@"cities"];
+    NSString *cityName = sectionAry[indexPath.row];
+    
     CityListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityListViewCell.h" forIndexPath:indexPath];
-    [cell refreshCell:cityAry];
+    [cell refreshCell:cityName];
+    
     return cell;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIN_WIDTH, 20)];
+    titleView.backgroundColor = RGB(230, 230, 230);
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0,titleView.frame.size.width, titleView.frame.size.height)];
+    NSDictionary *dic = cityAry[section];
+    NSString *titleStr = dic[@"title"];
+    label.text = titleStr;
+    [titleView addSubview:label];
+    
+    return titleView;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,12 @@
 
 #import "CityListViewCell.h"
 
+@interface CityListViewCell ()
+{
+    
+}
+@end
+
 @implementation CityListViewCell
 
 - (instancetype) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -18,11 +24,9 @@
     return self;
 }
 
-- (void) refreshCell:(NSArray *) array
+- (void) refreshCell:(NSString *) cityName
 {
-    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIN_WIDTH, self.contentView.frame.size.height)];
-    textLabel.text = @"";
-    [self.contentView addSubview:textLabel];
+    self.textLabel.text = cityName;
 }
 
 

@@ -86,14 +86,14 @@
 
     UIButton *typeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     typeButton.frame = CGRectMake(7, 0, barView.frame.size.width/3, barView.frame.size.height-5);
-    [typeButton setTitle:@"区域" forState:UIControlStateNormal];
+    [typeButton setTitle:@"分类" forState:UIControlStateNormal];
     typeButton.backgroundColor = [UIColor grayColor];
     typeButton.alpha = 0.8;
     [barView addSubview:typeButton];
     
     UIButton *screeningButton = [UIButton buttonWithType:UIButtonTypeCustom];
     screeningButton.frame = CGRectMake(CGRectGetMaxX(typeButton.frame),0,typeButton.frame.size.width, typeButton.frame.size.height);
-    [screeningButton setTitle:@"筛选" forState:UIControlStateNormal];
+    [screeningButton setTitle:@"区域" forState:UIControlStateNormal];
     screeningButton.backgroundColor =[UIColor grayColor];
     screeningButton.alpha = 0.8;
     [barView addSubview:screeningButton];
