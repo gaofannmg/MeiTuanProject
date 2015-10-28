@@ -10,6 +10,6 @@
 
 @interface CityListViewCell : UITableViewCell
 
-- (void) refreshCell:(NSDictionary *) dic;
+- (void) refreshCell:(NSArray *) array;
 
 @end

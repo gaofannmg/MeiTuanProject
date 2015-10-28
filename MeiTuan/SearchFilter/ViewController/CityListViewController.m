@@ -10,7 +10,10 @@
 #import "CityListViewCell.h"
 
 @interface CityListViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    NSArray *cityAry;
+    
+}
 @end
 
 @implementation CityListViewController
@@ -38,20 +41,30 @@
     cityListTabView.delegate = self;
     cityListTabView.dataSource = self;
     
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cityGroups" ofType:@"plist"];
+    cityAry = [[NSArray alloc] initWithContentsOfFile:plistPath];
+    
 }
 - (void) clickHomeView
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return cityAry.count;
+}
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    NSDictionary *cityDic = cityAry[section];
+    NSArray *sectionAry = cityDic[@"cities"];
+    return sectionAry.count;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CityListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityListViewCell.h" forIndexPath:indexPath];
+    [cell refreshCell:cityAry];
     return cell;
 }
 

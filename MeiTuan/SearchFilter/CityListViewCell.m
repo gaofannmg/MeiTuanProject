@@ -18,9 +18,11 @@
     return self;
 }
 
-- (void) refreshCell:(NSDictionary *) dic
+- (void) refreshCell:(NSArray *) array
 {
-    
+    UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, WIN_WIDTH, self.contentView.frame.size.height)];
+    textLabel.text = @"";
+    [self.contentView addSubview:textLabel];
 }
 
 
