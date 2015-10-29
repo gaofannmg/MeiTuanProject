@@ -85,9 +85,18 @@
     CityListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityListViewCell.h" forIndexPath:indexPath];
     [cell refreshCell:cityName];
     
-    HomeViewController *homeStr = [[HomeViewController alloc] init];
-    homeStr.cityNameStr = self.str;
     return cell;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *cityDic = cityAry[indexPath.section];
+    NSArray *sectionAry = cityDic[@"cities"];
+    NSString *cityName = sectionAry[indexPath.row];
+    
+    [self.basicVC selectCity:cityName];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

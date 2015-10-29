@@ -35,7 +35,7 @@
     cityBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     cityBtn.frame = CGRectMake(10, 20 , 80, 40);
 
-    [cityBtn setTitle:self.cityNameStr forState:UIControlStateNormal];
+    [cityBtn setTitle:@"北京" forState:UIControlStateNormal];
     cityBtn.backgroundColor = [UIColor whiteColor];
     [cityBtn addTarget:self action:@selector(cityButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:cityBtn];
@@ -169,7 +169,13 @@
 - (void)cityButtonClick
 {
     CityListViewController *cityListVC = [[CityListViewController alloc] init];
+    cityListVC.basicVC = self;
     [self.navigationController pushViewController:cityListVC animated:YES];
+}
+
+- (void) selectCity:(NSString *) cityName
+{
+    [cityBtn setTitle:cityName forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

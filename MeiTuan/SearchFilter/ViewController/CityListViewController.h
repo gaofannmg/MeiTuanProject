@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeViewController.h"
 
 @interface CityListViewController : UIViewController
 
-@property (nonatomic,strong) NSString *str;
+@property (nonatomic,weak) HomeViewController *basicVC;
 
 @end
