@@ -10,4 +10,6 @@
 
 @interface CityListViewController : UIViewController
 
+@property (nonatomic,strong) NSString *str;
+
 @end

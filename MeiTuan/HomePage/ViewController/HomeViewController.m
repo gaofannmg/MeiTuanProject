@@ -10,6 +10,7 @@
 #import "HomeCollectionViewCell.h"
 #import "DealDetailViewController.h"
 #import "CityListViewController.h"
+#import "CityListViewCell.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
@@ -33,7 +34,8 @@
     
     cityBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     cityBtn.frame = CGRectMake(10, 20 , 80, 40);
-    [cityBtn setTitle:@"城市" forState:UIControlStateNormal];
+
+    [cityBtn setTitle:self.cityNameStr forState:UIControlStateNormal];
     cityBtn.backgroundColor = [UIColor whiteColor];
     [cityBtn addTarget:self action:@selector(cityButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:cityBtn];

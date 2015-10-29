@@ -12,4 +12,5 @@
 
 - (void) refreshCell:(NSString *) cityName;
 
+
 @end

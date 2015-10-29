@@ -10,6 +10,8 @@
 
 @interface HomeViewController : UIViewController
 
+@property (nonatomic,strong) NSString *cityNameStr;
+
 - (void)changeBtnColor:(UIColor *) color;
 
 @end

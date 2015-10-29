@@ -8,7 +8,7 @@
 
 #import "CityListViewController.h"
 #import "CityListViewCell.h"
-
+#import "HomeViewController.h"
 @interface CityListViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSArray *cityAry;
@@ -56,6 +56,7 @@
 - (void) clickHomeView
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -84,6 +85,8 @@
     CityListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityListViewCell.h" forIndexPath:indexPath];
     [cell refreshCell:cityName];
     
+    HomeViewController *homeStr = [[HomeViewController alloc] init];
+    homeStr.cityNameStr = self.str;
     return cell;
 }
 

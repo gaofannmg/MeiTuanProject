@@ -7,6 +7,7 @@
 //
 
 #import "CityListViewCell.h"
+#import "CityListViewController.h"
 
 @interface CityListViewCell ()
 {
@@ -27,6 +28,8 @@
 - (void) refreshCell:(NSString *) cityName
 {
     self.textLabel.text = cityName;
+    CityListViewController *cityList = [[CityListViewController alloc] init];
+    cityList.str = self.textLabel.text;
 }
 
 
