@@ -12,6 +12,7 @@
 #import "CityListViewController.h"
 #import "CityListViewCell.h"
 #import "SortPopView.h"
+#import "SeachViewController.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
@@ -58,6 +59,7 @@
     searchBtn.frame = CGRectMake(CGRectGetMaxX(searchImageView.frame) + 10, searchImageView.frame.origin.y, 100, 30);
     searchBtn.backgroundColor = [UIColor clearColor];
     [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    [searchBtn addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
     [searchView addSubview:searchBtn];
     
     UIButton *wapBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -229,6 +231,12 @@
         backView.alpha = 0;
         sortPopView.frame = CGRectMake(sortPopView.frame.origin.x, self.view.frame.size.height, sortPopView.frame.size.width, sortPopView.frame.size.height);
     }];
+}
+
+-(void) searchClick
+{
+    SeachViewController *searchVC = [[SeachViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
