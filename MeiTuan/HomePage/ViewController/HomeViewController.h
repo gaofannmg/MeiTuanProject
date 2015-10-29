@@ -12,5 +12,6 @@
 
 - (void)changeBtnColor:(UIColor *) color;
 - (void) selectCity:(NSString *) cityName;
+-(void) sortWithText:(NSString *) sortTxt;
 @end
 

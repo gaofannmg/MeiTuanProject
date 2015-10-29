@@ -11,6 +11,7 @@
 #import "DealDetailViewController.h"
 #import "CityListViewController.h"
 #import "CityListViewCell.h"
+#import "SortPopView.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
@@ -105,6 +106,7 @@
     [sortButton setTitle:@"排序" forState:UIControlStateNormal];
     sortButton.backgroundColor =[UIColor grayColor];
     sortButton.alpha = 0.8;
+    [sortButton addTarget:self action:@selector(sortViewClick) forControlEvents:UIControlEventTouchUpInside];
     [barView addSubview:sortButton];
     
     [self getHttpData];
@@ -176,6 +178,57 @@
 - (void) selectCity:(NSString *) cityName
 {
     [cityBtn setTitle:cityName forState:UIControlStateNormal];
+}
+
+- (void) sortViewClick
+{
+    UIView *backView = [self.view viewWithTag:333];
+    
+    if (!backView)
+    {
+        backView = [[UIView alloc] initWithFrame:self.view.bounds];
+        backView.backgroundColor = [UIColor blackColor];
+        backView.tag = 333;
+        backView.alpha = 0;
+        [self.view addSubview:backView];
+        
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(removeViewClick)];
+        [backView addGestureRecognizer:tapGes];
+        
+    }
+    
+    SortPopView *sortPopView = [self.view viewWithTag:555];
+    
+    if (!sortPopView)
+    {
+        sortPopView = [[SortPopView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44 *7)];
+        sortPopView.tag = 555;
+        sortPopView.basicVC = self;
+        [self.view addSubview:sortPopView];
+    }
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        backView.alpha = 0.5;
+        sortPopView.frame = CGRectMake(sortPopView.frame.origin.x, self.view.frame.size.height - 44 *7, sortPopView.frame.size.width, sortPopView.frame.size.height);
+    }];
+}
+
+-(void) sortWithText:(NSString *) sortTxt
+{
+    //排序 to do
+    
+    [self removeViewClick];
+}
+
+- (void) removeViewClick
+{
+    UIView *backView = [self.view viewWithTag:333];
+    SortPopView *sortPopView = [self.view viewWithTag:555];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        backView.alpha = 0;
+        sortPopView.frame = CGRectMake(sortPopView.frame.origin.x, self.view.frame.size.height, sortPopView.frame.size.width, sortPopView.frame.size.height);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

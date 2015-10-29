@@ -19,6 +19,8 @@
 		49265B521BDE94120062F025 /* cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49265B4E1BDE94120062F025 /* cities.plist */; };
 		49265B531BDE94120062F025 /* cityGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49265B4F1BDE94120062F025 /* cityGroups.plist */; };
 		49265B541BDE94120062F025 /* sorts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49265B501BDE94120062F025 /* sorts.plist */; };
+		492A9F751BE26B8300F47AB2 /* SortPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 492A9F741BE26B8300F47AB2 /* SortPopView.m */; };
+		492A9F781BE26DC200F47AB2 /* SortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 492A9F771BE26DC200F47AB2 /* SortCell.m */; };
 		A600E40C1BDCEBA100A8F20B /* CommonMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A600E40B1BDCEBA100A8F20B /* CommonMethod.m */; };
 		A610EBB01BCEAE1300B25B4D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB831BCEAE1300B25B4D /* HomeViewController.m */; };
 		A610EBB11BCEAE1300B25B4D /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB861BCEAE1300B25B4D /* HomeCollectionViewCell.m */; };
@@ -80,6 +82,10 @@
 		49265B4E1BDE94120062F025 /* cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cities.plist; sourceTree = "<group>"; };
 		49265B4F1BDE94120062F025 /* cityGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityGroups.plist; sourceTree = "<group>"; };
 		49265B501BDE94120062F025 /* sorts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sorts.plist; sourceTree = "<group>"; };
+		492A9F731BE26B8300F47AB2 /* SortPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortPopView.h; sourceTree = "<group>"; };
+		492A9F741BE26B8300F47AB2 /* SortPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortPopView.m; sourceTree = "<group>"; };
+		492A9F761BE26DC200F47AB2 /* SortCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortCell.h; sourceTree = "<group>"; };
+		492A9F771BE26DC200F47AB2 /* SortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortCell.m; sourceTree = "<group>"; };
 		A600E40A1BDCEBA100A8F20B /* CommonMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethod.h; sourceTree = "<group>"; };
 		A600E40B1BDCEBA100A8F20B /* CommonMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethod.m; sourceTree = "<group>"; };
 		A610EB821BCEAE1300B25B4D /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -234,6 +240,10 @@
 			children = (
 				A6E78A111BDFB2A40024101E /* CityListViewCell.h */,
 				A6E78A121BDFB2A40024101E /* CityListViewCell.m */,
+				492A9F731BE26B8300F47AB2 /* SortPopView.h */,
+				492A9F741BE26B8300F47AB2 /* SortPopView.m */,
+				492A9F761BE26DC200F47AB2 /* SortCell.h */,
+				492A9F771BE26DC200F47AB2 /* SortCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -525,6 +535,7 @@
 				49265B4A1BDE90C10062F025 /* CityListViewController.m in Sources */,
 				A610EBB21BCEAE1300B25B4D /* DPAPI.m in Sources */,
 				A600E40C1BDCEBA100A8F20B /* CommonMethod.m in Sources */,
+				492A9F751BE26B8300F47AB2 /* SortPopView.m in Sources */,
 				49265B421BDE8D680062F025 /* DealParterInfoCell.m in Sources */,
 				A610EBBB1BCEAE1300B25B4D /* SDWebImageManager.m in Sources */,
 				A610EBB61BCEAE1300B25B4D /* SDImageCache.m in Sources */,
@@ -534,6 +545,7 @@
 				A610EBBD1BCEAE1300B25B4D /* UIButton+WebCache.m in Sources */,
 				A610EBB51BCEAE1300B25B4D /* NSData+ImageContentType.m in Sources */,
 				A610EBBC1BCEAE1300B25B4D /* SDWebImagePrefetcher.m in Sources */,
+				492A9F781BE26DC200F47AB2 /* SortCell.m in Sources */,
 				A610EBB91BCEAE1300B25B4D /* SDWebImageDownloader.m in Sources */,
 				A610EBB01BCEAE1300B25B4D /* HomeViewController.m in Sources */,
 				A610EBC01BCEAE1300B25B4D /* UIImage+WebP.m in Sources */,
