@@ -8,8 +8,10 @@
 
 #import "SeachViewController.h"
 
-@interface SeachViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+@interface SeachViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+{
+    UITextField *textField;
+}
 @end
 
 @implementation SeachViewController
@@ -23,27 +25,31 @@
     seachTitleView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:seachTitleView];
     
-    UIButton *backBut = [UIButton buttonWithType:UIButtonTypeSystem];
-    backBut.backgroundColor = [UIColor whiteColor];
-    backBut.frame = CGRectMake(10, 20, 80, 40);
-    [backBut setTitle:@"返回" forState:UIControlStateNormal];
-    [backBut addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
-    [seachTitleView addSubview:backBut];
+//    UIButton *backBut = [UIButton buttonWithType:UIButtonTypeSystem];
+//    backBut.backgroundColor = [UIColor whiteColor];
+//    backBut.frame = CGRectMake(10, 20, 80, 40);
+//    [backBut setTitle:@"返回" forState:UIControlStateNormal];
+//    [backBut addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
+//    [seachTitleView addSubview:backBut];
     
     UIButton *removeBut = [UIButton buttonWithType:UIButtonTypeSystem];
     removeBut.backgroundColor = [UIColor whiteColor];
     removeBut.frame = CGRectMake(self.view.frame.size.width - 90, 20, 80, 40);
-    [removeBut setTitle:@"取消" forState:UIControlStateNormal];
+    [removeBut setTitle:@"返回" forState:UIControlStateNormal];
+    [removeBut addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
     [seachTitleView addSubview:removeBut];
 
     
-    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(backBut.frame)+10, 20,170, 40)];
+    textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 20,170, 40)];
     textField.backgroundColor = [UIColor whiteColor];
     textField.layer.masksToBounds = YES;
     textField.layer.cornerRadius = 20.0;
     textField.layer.borderColor = [[UIColor clearColor] CGColor];
     textField.layer.borderWidth = 0.5;
-
+    textField.placeholder = @"请输入搜索内容";
+    textField.textAlignment = UITextAlignmentCenter;
+    textField.clearButtonMode = UITextFieldViewModeAlways;
+    textField.delegate = self;
     [seachTitleView addSubview:textField];
     
     UITableView *seachTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(seachTitleView.frame), self.view.frame.size.width, self.view.frame.size.height - seachTitleView.frame.size.height) style:UITableViewStylePlain];
@@ -70,10 +76,35 @@
     return  cell;
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [textField resignFirstResponder];
+}
+
 - (void) clickHomeView
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (void) clearText
+{
+    
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
