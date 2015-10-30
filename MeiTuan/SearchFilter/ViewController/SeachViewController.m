@@ -8,7 +8,7 @@
 
 #import "SeachViewController.h"
 
-@interface SeachViewController ()
+@interface SeachViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
@@ -17,8 +17,62 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    UIView *seachTitleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
+    seachTitleView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:seachTitleView];
+    
+    UIButton *backBut = [UIButton buttonWithType:UIButtonTypeSystem];
+    backBut.backgroundColor = [UIColor whiteColor];
+    backBut.frame = CGRectMake(10, 20, 80, 40);
+    [backBut setTitle:@"返回" forState:UIControlStateNormal];
+    [backBut addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
+    [seachTitleView addSubview:backBut];
+    
+    UIButton *removeBut = [UIButton buttonWithType:UIButtonTypeSystem];
+    removeBut.backgroundColor = [UIColor whiteColor];
+    removeBut.frame = CGRectMake(self.view.frame.size.width - 90, 20, 80, 40);
+    [removeBut setTitle:@"取消" forState:UIControlStateNormal];
+    [seachTitleView addSubview:removeBut];
+
+    
+    UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(backBut.frame)+10, 20,170, 40)];
+    textField.backgroundColor = [UIColor whiteColor];
+    textField.layer.masksToBounds = YES;
+    textField.layer.cornerRadius = 20.0;
+    textField.layer.borderColor = [[UIColor clearColor] CGColor];
+    textField.layer.borderWidth = 0.5;
+
+    [seachTitleView addSubview:textField];
+    
+    UITableView *seachTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(seachTitleView.frame), self.view.frame.size.width, self.view.frame.size.height - seachTitleView.frame.size.height) style:UITableViewStylePlain];
+    seachTabView.delegate = self;
+    seachTabView.dataSource = self;
+    seachTabView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:seachTabView];
+}
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell =[[UITableViewCell alloc] init];
+  
+    return  cell;
+}
+
+- (void) clickHomeView
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
