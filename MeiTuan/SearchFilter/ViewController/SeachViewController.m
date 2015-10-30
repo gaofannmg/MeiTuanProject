@@ -40,7 +40,7 @@
     [seachTitleView addSubview:removeBut];
 
     
-    textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 20,170, 40)];
+    textField = [[UITextField alloc] initWithFrame:CGRectMake(30, 20,240, 40)];
     textField.backgroundColor = [UIColor whiteColor];
     textField.layer.masksToBounds = YES;
     textField.layer.cornerRadius = 20.0;
