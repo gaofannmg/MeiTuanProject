@@ -367,7 +367,7 @@
     {
         NSDictionary *dic = [array firstObject];
         buyWebView.url = dic[@"h5_url"];
-        [self.navigationController pushViewController:buyWebView animated:YES];
+        [self presentViewController:buyWebView animated:YES completion:nil];
     }
 }
 
