@@ -7,10 +7,15 @@
 //
 
 #import "FilterViewController.h"
+#import "LeftFilterCell.h"
 
-@interface FilterViewController ()
+@interface FilterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-     UIView *titleView;
+    UIView *titleView;
+    UITableView *leftTabView;
+    UITableView *rightTabVIew;
+    NSInteger leftSelectIndex;
+    NSInteger rightSelectIndex;
 }
 @end
 
@@ -20,6 +25,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor greenColor];
+    
+    rightSelectIndex = -1;
     
     [self createNaigaitionBar];
     
@@ -35,7 +42,7 @@
     
     UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 100, 44)];
     titleLable.center = CGPointMake(titleView.center.x, titleLable.center.y);
-    titleLable.text = @"分类";
+    titleLable.text = self.str;
     titleLable.textColor = RGB(45, 45, 45);
     titleLable.textAlignment = NSTextAlignmentCenter;
     titleLable.font = [UIFont systemFontOfSize:16];
@@ -57,7 +64,87 @@
 
 - (void) createUI
 {
+    leftTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width * 0.28, self.view.frame.size.height - titleView.frame.size.height) style:UITableViewStylePlain];
+    leftTabView.backgroundColor = [UIColor grayColor];
+    leftTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:leftTabView];
+    
+    rightTabVIew = [[UITableView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftTabView.frame), CGRectGetMaxY(titleView.frame), self.view.frame.size.width - leftTabView.frame.size.width,self.view.frame.size.height - titleView.frame.size.height) style:UITableViewStylePlain];
+    rightTabVIew.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:rightTabVIew];
+    
+    [leftTabView registerClass:[LeftFilterCell class] forCellReuseIdentifier:@"leftCell"];
+    [rightTabVIew registerClass:[UITableViewCell class] forCellReuseIdentifier:@"rightCell"];
+    
+    leftTabView.dataSource = self;
+    leftTabView.delegate = self;
+   
+    rightTabVIew.dataSource = self;
+    rightTabVIew.delegate = self;
+}
 
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView == leftTabView)
+    {
+        return 20;
+    }
+    else
+    {
+        return 22;
+    }
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == leftTabView)
+    {
+        LeftFilterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftCell"];
+        if (indexPath.row == leftSelectIndex)
+        {
+            [cell refreshCell:@"行政区" isSelect:YES];
+        }
+        else
+        {
+            [cell refreshCell:@"行政区" isSelect:NO];
+        }
+        
+        return cell;
+    }
+    else
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rightCell"];
+        cell.textLabel.text = @"不限";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        if (indexPath.row == rightSelectIndex)
+        {
+            cell.textLabel.textColor = [UIColor redColor];
+        }
+        else
+        {
+            cell.textLabel.textColor = RGB(45, 45, 45);
+        }
+        
+        return cell;
+    }
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == leftTabView) {
+        leftSelectIndex = indexPath.row;
+        [leftTabView reloadData];
+    }
+    else
+    {
+        rightSelectIndex = indexPath.row;
+        [rightTabVIew reloadData];
+    }
 }
 
 //返回

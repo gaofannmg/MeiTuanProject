@@ -10,7 +10,7 @@
 
 @interface SeachViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
-    UITextField *textField;
+    UITextField *searchTextField;
 }
 @end
 
@@ -40,17 +40,17 @@
     [seachTitleView addSubview:removeBut];
 
     
-    textField = [[UITextField alloc] initWithFrame:CGRectMake(30, 20,240, 40)];
-    textField.backgroundColor = [UIColor whiteColor];
-    textField.layer.masksToBounds = YES;
-    textField.layer.cornerRadius = 20.0;
-    textField.layer.borderColor = [[UIColor clearColor] CGColor];
-    textField.layer.borderWidth = 0.5;
-    textField.placeholder = @"请输入搜索内容";
-    textField.textAlignment = UITextAlignmentCenter;
-    textField.clearButtonMode = UITextFieldViewModeAlways;
-    textField.delegate = self;
-    [seachTitleView addSubview:textField];
+    searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 20,240, 40)];
+    searchTextField.backgroundColor = [UIColor whiteColor];
+    searchTextField.layer.masksToBounds = YES;
+    searchTextField.layer.cornerRadius = 20.0;
+    searchTextField.layer.borderColor = [[UIColor clearColor] CGColor];
+    searchTextField.layer.borderWidth = 0.5;
+    searchTextField.placeholder = @"请输入搜索内容";
+    searchTextField.textAlignment = NSTextAlignmentCenter;
+    searchTextField.clearButtonMode = UITextFieldViewModeAlways;
+    searchTextField.delegate = self;
+    [seachTitleView addSubview:searchTextField];
     
     UITableView *seachTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(seachTitleView.frame), self.view.frame.size.width, self.view.frame.size.height - seachTitleView.frame.size.height) style:UITableViewStylePlain];
     seachTabView.delegate = self;
@@ -78,7 +78,8 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [textField resignFirstResponder];
+//    [searchTextField resignFirstResponder];
+    [self.view endEditing:YES];
 }
 
 - (void) clickHomeView
@@ -94,7 +95,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    [searchTextField resignFirstResponder];
     return YES;
 }
 

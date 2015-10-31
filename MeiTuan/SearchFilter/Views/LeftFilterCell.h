@@ -1,5 +1,5 @@
 //
-//  FilterViewController.h
+//  LeftFilterCell.h
 //  MeiTuan
 //
 //  Created by GaoYong on 15/10/31.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FilterViewController : UIViewController
+@interface LeftFilterCell : UITableViewCell
 
-@property (nonatomic,weak) NSString *str;
+- (void) refreshCell:(NSString *) text isSelect:(BOOL) isSelect;
 
 @end

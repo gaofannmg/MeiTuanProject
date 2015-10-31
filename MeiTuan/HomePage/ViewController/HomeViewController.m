@@ -245,11 +245,13 @@
 - (void) typeFilterClick
 {
     FilterViewController *typeFilterVC = [[FilterViewController alloc] init];
+    typeFilterVC.str =@"分类";
     [self presentViewController:typeFilterVC animated:YES completion:nil];
 }
 - (void) screenFilterClick
 {
     FilterViewController *screenFilterVC = [[FilterViewController alloc] init];
+    screenFilterVC.str = @"区域";
     [self presentViewController:screenFilterVC animated:YES completion:nil];
 }
 
