@@ -13,6 +13,7 @@
 #import "CityListViewCell.h"
 #import "SortPopView.h"
 #import "SeachViewController.h"
+#import "FilterViewController.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
@@ -94,6 +95,7 @@
     [typeButton setTitle:@"分类" forState:UIControlStateNormal];
     typeButton.backgroundColor = [UIColor grayColor];
     typeButton.alpha = 0.8;
+    [typeButton addTarget:self action:@selector(typeFilterClick) forControlEvents:UIControlEventTouchUpInside];
     [barView addSubview:typeButton];
     
     UIButton *screeningButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -101,6 +103,7 @@
     [screeningButton setTitle:@"区域" forState:UIControlStateNormal];
     screeningButton.backgroundColor =[UIColor grayColor];
     screeningButton.alpha = 0.8;
+    [screeningButton addTarget:self action:@selector(screenFilterClick) forControlEvents:UIControlEventTouchUpInside];
     [barView addSubview:screeningButton];
     
     UIButton *sortButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -237,6 +240,17 @@
 {
     SeachViewController *searchVC = [[SeachViewController alloc] init];
     [self.navigationController pushViewController:searchVC animated:YES];
+}
+
+- (void) typeFilterClick
+{
+    FilterViewController *typeFilterVC = [[FilterViewController alloc] init];
+    [self presentViewController:typeFilterVC animated:YES completion:nil];
+}
+- (void) screenFilterClick
+{
+    FilterViewController *screenFilterVC = [[FilterViewController alloc] init];
+    [self presentViewController:screenFilterVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
