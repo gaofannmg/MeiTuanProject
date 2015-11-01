@@ -36,44 +36,37 @@
     [self.view addSubview:titleView];
     
     cityBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    cityBtn.frame = CGRectMake(10, 20 , 80, 40);
-
+    cityBtn.frame = CGRectMake(10, 20 , 50, 40);
     [cityBtn setTitle:@"北京" forState:UIControlStateNormal];
     cityBtn.backgroundColor = [UIColor whiteColor];
     [cityBtn addTarget:self action:@selector(cityButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:cityBtn];
     
-    UIView *searchView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(cityBtn.frame) + 5, cityBtn.frame.origin.y, 200, cityBtn.frame.size.height)];
-    searchView.backgroundColor = [UIColor whiteColor];
-    searchView.layer.masksToBounds = YES;
-    searchView.layer.cornerRadius = 20.0;
-    searchView.layer.borderColor = [[UIColor clearColor] CGColor];
-    searchView.layer.borderWidth = 0.5;
-    [titleView addSubview:searchView];
+    CGFloat searchBarHeight = 34;
     
-    UIImageView *searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 5, 25, 25)];
-    searchImageView.backgroundColor = [UIColor whiteColor];
-    searchImageView.image = [UIImage imageNamed:@"icon_search"];
-    [searchView addSubview:searchImageView];
-    
-    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    searchBtn.frame = CGRectMake(CGRectGetMaxX(searchImageView.frame) + 10, searchImageView.frame.origin.y, 100, 30);
-    searchBtn.backgroundColor = [UIColor clearColor];
+    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    CGFloat seachBtnPointX = CGRectGetMaxX(cityBtn.frame) + 10;
+    searchBtn.frame = CGRectMake(seachBtnPointX, 20 + (44 - searchBarHeight)/2, WIN_WIDTH - seachBtnPointX - 15, searchBarHeight);
+    searchBtn.backgroundColor = [UIColor whiteColor];
+    searchBtn.layer.masksToBounds = YES;
+    searchBtn.layer.cornerRadius = searchBarHeight/2;
+    searchBtn.layer.borderColor = [[UIColor clearColor] CGColor];
+    searchBtn.layer.borderWidth = 0.5;
     [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
-    [searchView addSubview:searchBtn];
+    [titleView addSubview:searchBtn];
     
-    UIButton *wapBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    wapBtn.frame = CGRectMake(CGRectGetMaxX(searchView.frame) + 5, cityBtn.frame.origin.y, 50, cityBtn.frame.size.height);
-    wapBtn.backgroundColor = [UIColor whiteColor];
-    [titleView addSubview:wapBtn];
+    UIImageView *searchImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, searchBtn.frame.size.height /2 - 8, 16, 16)];
+    searchImageView.backgroundColor = [UIColor whiteColor];
+    searchImageView.image = [UIImage imageNamed:@"icon_search"];
+    [searchBtn addSubview:searchImageView];
     
     CGFloat span = 5;
     CGFloat cellWidth = (self.view.bounds.size.width - 3 * span)/ 2;
     CGFloat cellHeight = cellWidth;
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(cellWidth , cellHeight +50);
+    layout.itemSize = CGSizeMake(cellWidth , cellHeight +70);
     layout.minimumInteritemSpacing = span;
     layout.minimumLineSpacing = span;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
@@ -86,7 +79,7 @@
     cView.dataSource = self;
     [cView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"MTCollectionViewCell"];
     
-    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height - 50, self.view.frame.size.width,50)];
+    UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0,WIN_HIGHT - 50,WIN_WIDTH,50)];
     barView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:barView];
 
@@ -239,7 +232,7 @@
 -(void) searchClick
 {
     SeachViewController *searchVC = [[SeachViewController alloc] init];
-    [self.navigationController pushViewController:searchVC animated:YES];
+    [self.navigationController pushViewController:searchVC animated:NO];
 }
 
 - (void) typeFilterClick

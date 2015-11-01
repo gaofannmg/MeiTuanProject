@@ -31,16 +31,15 @@
 //    [backBut setTitle:@"返回" forState:UIControlStateNormal];
 //    [backBut addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
 //    [seachTitleView addSubview:backBut];
-    
+  
     UIButton *removeBut = [UIButton buttonWithType:UIButtonTypeSystem];
     removeBut.backgroundColor = [UIColor whiteColor];
-    removeBut.frame = CGRectMake(self.view.frame.size.width - 90, 20, 80, 40);
+    removeBut.frame = CGRectMake(WIN_WIDTH - 90, 20, 80, 40);
     [removeBut setTitle:@"返回" forState:UIControlStateNormal];
     [removeBut addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
     [seachTitleView addSubview:removeBut];
-
     
-    searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(30, 20,240, 40)];
+    searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMinX(removeBut.frame) - 210, 20,200, 40)];
     searchTextField.backgroundColor = [UIColor whiteColor];
     searchTextField.layer.masksToBounds = YES;
     searchTextField.layer.cornerRadius = 20.0;
@@ -84,7 +83,7 @@
 
 - (void) clickHomeView
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void) clearText
