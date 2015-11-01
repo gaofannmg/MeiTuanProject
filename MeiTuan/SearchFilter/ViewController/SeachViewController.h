@@ -12,5 +12,6 @@
 @interface SeachViewController : UIViewController
 
 @property (nonatomic,weak) HomeViewController *homeVC;
+@property (nonatomic,copy) NSString *seachString;
 
 @end

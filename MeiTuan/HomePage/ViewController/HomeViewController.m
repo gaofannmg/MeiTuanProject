@@ -37,27 +37,24 @@
     [self.view addSubview:titleView];
     
     cityBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    cityBtn.frame = CGRectMake(10, 20 , 50, 40);
+    cityBtn.frame = CGRectMake(WIN_WIDTH - 80, 20 , 60, 40);
     [cityBtn setTitle:@"北京" forState:UIControlStateNormal];
     cityBtn.backgroundColor = [UIColor whiteColor];
     [cityBtn addTarget:self action:@selector(cityButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:cityBtn];
     
-    CGFloat searchBarHeight = 34;
-    
     searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    CGFloat seachBtnPointX = CGRectGetMaxX(cityBtn.frame) + 10;
-    searchBtn.frame = CGRectMake(seachBtnPointX, 20 + (44 - searchBarHeight)/2, WIN_WIDTH - seachBtnPointX - 15, searchBarHeight);
+    searchBtn.frame = CGRectMake(20, 25, WIN_WIDTH - 20 - 10 - cityBtn.frame.size.width - 20, 34);
     searchBtn.backgroundColor = [UIColor whiteColor];
     searchBtn.layer.masksToBounds = YES;
-    searchBtn.layer.cornerRadius = searchBarHeight/2;
+    searchBtn.layer.cornerRadius = searchBtn.frame.size.height/2;
     searchBtn.layer.borderColor = [[UIColor clearColor] CGColor];
     searchBtn.layer.borderWidth = 0.5;
     searchBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     searchBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     searchBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 0);
     [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
-    [searchBtn setTitleColor:RGB(100, 100 ,100) forState:UIControlStateNormal];
+    [searchBtn setTitleColor:RGB(200, 200 ,200) forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:searchBtn];
     
@@ -117,7 +114,24 @@
 
 -(void) searchWithKeyWord:(NSString *) keyWord
 {
-    [searchBtn setTitle:keyWord forState:UIControlStateNormal];
+    if (![keyWord isEqual:@"搜索"])
+    {
+        [searchBtn setTitleColor:RGB(100, 100 ,100) forState:UIControlStateNormal];
+    }
+    else
+    {
+        [searchBtn setTitleColor:RGB(200, 200 ,200) forState:UIControlStateNormal];
+    }
+    
+    if (keyWord.length > 0)
+    {
+        [searchBtn setTitle:keyWord forState:UIControlStateNormal];
+    }
+    else
+    {
+        [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+        [searchBtn setTitleColor:RGB(200, 200 ,200) forState:UIControlStateNormal];
+    }
     
     [self getHttpDataBySearchKeyWords:keyWord];
 }
@@ -258,6 +272,12 @@
 {
     SeachViewController *searchVC = [[SeachViewController alloc] init];
     searchVC.homeVC = self;
+    
+    if (![searchBtn.titleLabel.text isEqual:@"搜索"])
+    {
+        searchVC.seachString = searchBtn.titleLabel.text;
+    }
+    
     [self.navigationController pushViewController:searchVC animated:NO];
 }
 
