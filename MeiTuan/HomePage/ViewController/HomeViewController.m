@@ -21,6 +21,7 @@
     NSArray *array;
     UICollectionView *cView;
     UIButton *cityBtn;
+    UIButton *searchBtn;
 }
 @end
 
@@ -44,7 +45,7 @@
     
     CGFloat searchBarHeight = 34;
     
-    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat seachBtnPointX = CGRectGetMaxX(cityBtn.frame) + 10;
     searchBtn.frame = CGRectMake(seachBtnPointX, 20 + (44 - searchBarHeight)/2, WIN_WIDTH - seachBtnPointX - 15, searchBarHeight);
     searchBtn.backgroundColor = [UIColor whiteColor];
@@ -52,7 +53,11 @@
     searchBtn.layer.cornerRadius = searchBarHeight/2;
     searchBtn.layer.borderColor = [[UIColor clearColor] CGColor];
     searchBtn.layer.borderWidth = 0.5;
+    searchBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    searchBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    searchBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 30, 0, 0);
     [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    [searchBtn setTitleColor:RGB(100, 100 ,100) forState:UIControlStateNormal];
     [searchBtn addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:searchBtn];
     
@@ -110,6 +115,13 @@
     [self getHttpData];
 }
 
+-(void) searchWithKeyWord:(NSString *) keyWord
+{
+    [searchBtn setTitle:keyWord forState:UIControlStateNormal];
+    
+    [self getHttpDataBySearchKeyWords:keyWord];
+}
+
 - (void) getHttpData
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -120,6 +132,19 @@
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 }
+
+- (void) getHttpDataBySearchKeyWords:(NSString *) keyWord
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:@"公寓式酒店" forKey:@"category"];
+    [params setObject:[NSNumber numberWithInt:1] forKey:@"page"];
+    [params setObject:@"北京" forKey:@"city"];
+    [params setObject:keyWord forKey:@"keyword"];
+    //    NSLog(@"发送请求的参数: %@", params.allValues);
+    DPAPI *api = [[DPAPI alloc] init];
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+}
+
 #pragma mark -- 发送请求回调方法
 //成功
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
@@ -232,6 +257,7 @@
 -(void) searchClick
 {
     SeachViewController *searchVC = [[SeachViewController alloc] init];
+    searchVC.homeVC = self;
     [self.navigationController pushViewController:searchVC animated:NO];
 }
 

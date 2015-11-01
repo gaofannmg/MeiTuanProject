@@ -13,5 +13,6 @@
 - (void)changeBtnColor:(UIColor *) color;
 - (void) selectCity:(NSString *) cityName;
 -(void) sortWithText:(NSString *) sortTxt;
+-(void) searchWithKeyWord:(NSString *) keyWord;
 @end
 

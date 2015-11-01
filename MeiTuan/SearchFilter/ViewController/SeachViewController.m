@@ -11,6 +11,8 @@
 @interface SeachViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 {
     UITextField *searchTextField;
+    UITableView *seachTabView;
+    
 }
 @end
 
@@ -35,7 +37,7 @@
     UIButton *removeBut = [UIButton buttonWithType:UIButtonTypeSystem];
     removeBut.backgroundColor = [UIColor whiteColor];
     removeBut.frame = CGRectMake(WIN_WIDTH - 90, 20, 80, 40);
-    [removeBut setTitle:@"返回" forState:UIControlStateNormal];
+    [removeBut setTitle:@"取消" forState:UIControlStateNormal];
     [removeBut addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
     [seachTitleView addSubview:removeBut];
     
@@ -49,13 +51,19 @@
     searchTextField.textAlignment = NSTextAlignmentCenter;
     searchTextField.clearButtonMode = UITextFieldViewModeAlways;
     searchTextField.delegate = self;
+    searchTextField.returnKeyType = UIReturnKeySearch;
+    [searchTextField addTarget:self  action:@selector(valueChanged:)  forControlEvents:UIControlEventAllEditingEvents];
     [seachTitleView addSubview:searchTextField];
     
-    UITableView *seachTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(seachTitleView.frame), self.view.frame.size.width, self.view.frame.size.height - seachTitleView.frame.size.height) style:UITableViewStylePlain];
+    seachTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(seachTitleView.frame), self.view.frame.size.width, self.view.frame.size.height - seachTitleView.frame.size.height) style:UITableViewStylePlain];
     seachTabView.delegate = self;
     seachTabView.dataSource = self;
     seachTabView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:seachTabView];
+    seachTabView.hidden = YES;
+    
+    UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
+    [self.view addGestureRecognizer:tapGes];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -91,15 +99,39 @@
     
 }
 
+- (void) endEditing
+{
+    [self.view endEditing:YES];
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if (textField.text.length <= 0) {
+        return NO;
+    }
+    
     [searchTextField resignFirstResponder];
+    
+    //1.把搜索词传回首页 请求网络 刷新数据
+    [self.homeVC searchWithKeyWord:textField.text];
+    
+    //2.这个页面推出
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    
     return YES;
 }
 
-
-
+-(void) valueChanged:(UITextField *) textControl
+{
+    if (textControl.text.length > 0)
+    {
+        seachTabView.hidden = NO;
+    }
+    else
+    {
+        seachTabView.hidden = YES;
+    }
+}
 
 
 

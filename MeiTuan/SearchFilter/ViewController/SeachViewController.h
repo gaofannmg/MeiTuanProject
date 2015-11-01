@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeViewController.h"
 
 @interface SeachViewController : UIViewController
+
+@property (nonatomic,weak) HomeViewController *homeVC;
 
 @end
