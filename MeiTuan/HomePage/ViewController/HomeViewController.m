@@ -14,6 +14,7 @@
 #import "SortPopView.h"
 #import "SeachViewController.h"
 #import "FilterViewController.h"
+#import "FindDealsRequestFactory.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
@@ -22,6 +23,7 @@
     UICollectionView *cView;
     UIButton *cityBtn;
     UIButton *searchBtn;
+    FindDealsRequestFactory *requsetModelFactory;
 }
 @end
 
@@ -109,6 +111,8 @@
     [sortButton addTarget:self action:@selector(sortViewClick) forControlEvents:UIControlEventTouchUpInside];
     [barView addSubview:sortButton];
     
+    requsetModelFactory = [[FindDealsRequestFactory alloc] initWithCity:cityBtn.titleLabel.text];
+
     [self getHttpData];
 }
 
@@ -138,23 +142,21 @@
 
 - (void) getHttpData
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@"公寓式酒店" forKey:@"category"];
-    [params setObject:[NSNumber numberWithInt:1] forKey:@"page"];
-    [params setObject:@"北京" forKey:@"city"];
-    //    NSLog(@"发送请求的参数: %@", params.allValues);
+    NSMutableDictionary *params = [requsetModelFactory getDefaultSearchDict];
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 }
 
 - (void) getHttpDataBySearchKeyWords:(NSString *) keyWord
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@"公寓式酒店" forKey:@"category"];
-    [params setObject:[NSNumber numberWithInt:1] forKey:@"page"];
-    [params setObject:@"北京" forKey:@"city"];
-    [params setObject:keyWord forKey:@"keyword"];
-    //    NSLog(@"发送请求的参数: %@", params.allValues);
+    NSMutableDictionary *params = [requsetModelFactory getKeyWordsDict:keyWord];
+    DPAPI *api = [[DPAPI alloc] init];
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+}
+
+- (void) getHttpDataByCityName:(NSString *) cityName
+{
+    NSMutableDictionary *params = [requsetModelFactory getCityDict:cityName];
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 }
@@ -215,6 +217,7 @@
 - (void) selectCity:(NSString *) cityName
 {
     [cityBtn setTitle:cityName forState:UIControlStateNormal];
+    [self getHttpDataByCityName:cityName];
 }
 
 - (void) sortViewClick

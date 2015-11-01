@@ -24,6 +24,7 @@
 		492A9F7B1BE283BB00F47AB2 /* SeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 492A9F7A1BE283BB00F47AB2 /* SeachViewController.m */; };
 		49CEFEC21BE463230041C039 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFEC11BE463230041C039 /* FilterViewController.m */; };
 		49CEFEC51BE513140041C039 /* LeftFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFEC41BE513140041C039 /* LeftFilterCell.m */; };
+		49CEFECC1BE668630041C039 /* FindDealsRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFECB1BE668630041C039 /* FindDealsRequestFactory.m */; };
 		A600E40C1BDCEBA100A8F20B /* CommonMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A600E40B1BDCEBA100A8F20B /* CommonMethod.m */; };
 		A610EBB01BCEAE1300B25B4D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB831BCEAE1300B25B4D /* HomeViewController.m */; };
 		A610EBB11BCEAE1300B25B4D /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB861BCEAE1300B25B4D /* HomeCollectionViewCell.m */; };
@@ -95,6 +96,8 @@
 		49CEFEC11BE463230041C039 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		49CEFEC31BE513140041C039 /* LeftFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftFilterCell.h; sourceTree = "<group>"; };
 		49CEFEC41BE513140041C039 /* LeftFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftFilterCell.m; sourceTree = "<group>"; };
+		49CEFECA1BE668630041C039 /* FindDealsRequestFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindDealsRequestFactory.h; sourceTree = "<group>"; };
+		49CEFECB1BE668630041C039 /* FindDealsRequestFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindDealsRequestFactory.m; sourceTree = "<group>"; };
 		A600E40A1BDCEBA100A8F20B /* CommonMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethod.h; sourceTree = "<group>"; };
 		A600E40B1BDCEBA100A8F20B /* CommonMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethod.m; sourceTree = "<group>"; };
 		A610EB821BCEAE1300B25B4D /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -282,9 +285,11 @@
 			path = PlistData;
 			sourceTree = "<group>";
 		};
-		498486891BDD295B00D26111 /* Common */ = {
+		49CEFEC61BE667D00041C039 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				49CEFECA1BE668630041C039 /* FindDealsRequestFactory.h */,
+				49CEFECB1BE668630041C039 /* FindDealsRequestFactory.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -292,7 +297,7 @@
 		A610EB7F1BCEAE1300B25B4D /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				498486891BDD295B00D26111 /* Common */,
+				49CEFEC61BE667D00041C039 /* Common */,
 				A610EB811BCEAE1300B25B4D /* ViewController */,
 				A610EB841BCEAE1300B25B4D /* Views */,
 			);
@@ -556,6 +561,7 @@
 				A610EBBB1BCEAE1300B25B4D /* SDWebImageManager.m in Sources */,
 				A610EBB61BCEAE1300B25B4D /* SDImageCache.m in Sources */,
 				A610EBBA1BCEAE1300B25B4D /* SDWebImageDownloaderOperation.m in Sources */,
+				49CEFECC1BE668630041C039 /* FindDealsRequestFactory.m in Sources */,
 				A610EBC31BCEAE1300B25B4D /* UIView+WebCacheOperation.m in Sources */,
 				49CEFEC21BE463230041C039 /* FilterViewController.m in Sources */,
 				A610EBB31BCEAE1300B25B4D /* DPRequest.m in Sources */,
