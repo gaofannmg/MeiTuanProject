@@ -22,9 +22,11 @@
 		492A9F751BE26B8300F47AB2 /* SortPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 492A9F741BE26B8300F47AB2 /* SortPopView.m */; };
 		492A9F781BE26DC200F47AB2 /* SortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 492A9F771BE26DC200F47AB2 /* SortCell.m */; };
 		492A9F7B1BE283BB00F47AB2 /* SeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 492A9F7A1BE283BB00F47AB2 /* SeachViewController.m */; };
-		49CEFEC21BE463230041C039 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFEC11BE463230041C039 /* FilterViewController.m */; };
+		49CEFEC21BE463230041C039 /* BaseFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFEC11BE463230041C039 /* BaseFilterViewController.m */; };
 		49CEFEC51BE513140041C039 /* LeftFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFEC41BE513140041C039 /* LeftFilterCell.m */; };
 		49CEFECC1BE668630041C039 /* FindDealsRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFECB1BE668630041C039 /* FindDealsRequestFactory.m */; };
+		49CEFED21BE7ABE30041C039 /* CatagoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFED11BE7ABE30041C039 /* CatagoryFilterViewController.m */; };
+		49CEFED51BE7AC570041C039 /* RegionFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFED41BE7AC570041C039 /* RegionFilterViewController.m */; };
 		A600E40C1BDCEBA100A8F20B /* CommonMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A600E40B1BDCEBA100A8F20B /* CommonMethod.m */; };
 		A610EBB01BCEAE1300B25B4D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB831BCEAE1300B25B4D /* HomeViewController.m */; };
 		A610EBB11BCEAE1300B25B4D /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB861BCEAE1300B25B4D /* HomeCollectionViewCell.m */; };
@@ -92,12 +94,16 @@
 		492A9F771BE26DC200F47AB2 /* SortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortCell.m; sourceTree = "<group>"; };
 		492A9F791BE283BB00F47AB2 /* SeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeachViewController.h; sourceTree = "<group>"; };
 		492A9F7A1BE283BB00F47AB2 /* SeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeachViewController.m; sourceTree = "<group>"; };
-		49CEFEC01BE463230041C039 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
-		49CEFEC11BE463230041C039 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		49CEFEC01BE463230041C039 /* BaseFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFilterViewController.h; sourceTree = "<group>"; };
+		49CEFEC11BE463230041C039 /* BaseFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFilterViewController.m; sourceTree = "<group>"; };
 		49CEFEC31BE513140041C039 /* LeftFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftFilterCell.h; sourceTree = "<group>"; };
 		49CEFEC41BE513140041C039 /* LeftFilterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftFilterCell.m; sourceTree = "<group>"; };
 		49CEFECA1BE668630041C039 /* FindDealsRequestFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindDealsRequestFactory.h; sourceTree = "<group>"; };
 		49CEFECB1BE668630041C039 /* FindDealsRequestFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindDealsRequestFactory.m; sourceTree = "<group>"; };
+		49CEFED01BE7ABE30041C039 /* CatagoryFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatagoryFilterViewController.h; sourceTree = "<group>"; };
+		49CEFED11BE7ABE30041C039 /* CatagoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatagoryFilterViewController.m; sourceTree = "<group>"; };
+		49CEFED31BE7AC570041C039 /* RegionFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionFilterViewController.h; sourceTree = "<group>"; };
+		49CEFED41BE7AC570041C039 /* RegionFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionFilterViewController.m; sourceTree = "<group>"; };
 		A600E40A1BDCEBA100A8F20B /* CommonMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethod.h; sourceTree = "<group>"; };
 		A600E40B1BDCEBA100A8F20B /* CommonMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethod.m; sourceTree = "<group>"; };
 		A610EB821BCEAE1300B25B4D /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -245,8 +251,12 @@
 				49265B491BDE90C10062F025 /* CityListViewController.m */,
 				492A9F791BE283BB00F47AB2 /* SeachViewController.h */,
 				492A9F7A1BE283BB00F47AB2 /* SeachViewController.m */,
-				49CEFEC01BE463230041C039 /* FilterViewController.h */,
-				49CEFEC11BE463230041C039 /* FilterViewController.m */,
+				49CEFEC01BE463230041C039 /* BaseFilterViewController.h */,
+				49CEFEC11BE463230041C039 /* BaseFilterViewController.m */,
+				49CEFED01BE7ABE30041C039 /* CatagoryFilterViewController.h */,
+				49CEFED11BE7ABE30041C039 /* CatagoryFilterViewController.m */,
+				49CEFED31BE7AC570041C039 /* RegionFilterViewController.h */,
+				49CEFED41BE7AC570041C039 /* RegionFilterViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -561,9 +571,10 @@
 				A610EBBB1BCEAE1300B25B4D /* SDWebImageManager.m in Sources */,
 				A610EBB61BCEAE1300B25B4D /* SDImageCache.m in Sources */,
 				A610EBBA1BCEAE1300B25B4D /* SDWebImageDownloaderOperation.m in Sources */,
+				49CEFED21BE7ABE30041C039 /* CatagoryFilterViewController.m in Sources */,
 				49CEFECC1BE668630041C039 /* FindDealsRequestFactory.m in Sources */,
 				A610EBC31BCEAE1300B25B4D /* UIView+WebCacheOperation.m in Sources */,
-				49CEFEC21BE463230041C039 /* FilterViewController.m in Sources */,
+				49CEFEC21BE463230041C039 /* BaseFilterViewController.m in Sources */,
 				A610EBB31BCEAE1300B25B4D /* DPRequest.m in Sources */,
 				A610EBBD1BCEAE1300B25B4D /* UIButton+WebCache.m in Sources */,
 				A610EBB51BCEAE1300B25B4D /* NSData+ImageContentType.m in Sources */,
@@ -583,6 +594,7 @@
 				49265B3E1BDE8D680062F025 /* DealDetailViewController.m in Sources */,
 				A670840D1BC943EA00F6A40F /* AppDelegate.m in Sources */,
 				49265B3F1BDE8D680062F025 /* DetailHeaderCell.m in Sources */,
+				49CEFED51BE7AC570041C039 /* RegionFilterViewController.m in Sources */,
 				A670840A1BC943EA00F6A40F /* main.m in Sources */,
 				A610EBBF1BCEAE1300B25B4D /* UIImage+MultiFormat.m in Sources */,
 				49265B3D1BDE8D680062F025 /* BuyWebViewController.m in Sources */,

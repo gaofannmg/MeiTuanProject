@@ -1,25 +1,24 @@
 //
 //  FilterViewController.m
 //  MeiTuan
-//  分类与区域公用VC
+//  分类与区域基类
 //  Created by GaoYong on 15/10/31.
 //  Copyright © 2015年 gaofan. All rights reserved.
 //
 
-#import "FilterViewController.h"
+#import "BaseFilterViewController.h"
 #import "LeftFilterCell.h"
+#import "CatagoryFilterViewController.h"
 
-@interface FilterViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface BaseFilterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UIView *titleView;
-    UITableView *leftTabView;
-    UITableView *rightTabVIew;
     NSInteger leftSelectIndex;
     NSInteger rightSelectIndex;
 }
 @end
 
-@implementation FilterViewController
+@implementation BaseFilterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,9 +39,8 @@
     titleView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:titleView];
     
-    UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 100, 44)];
+    titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 100, 44)];
     titleLable.center = CGPointMake(titleView.center.x, titleLable.center.y);
-    titleLable.text = self.str;
     titleLable.textColor = RGB(45, 45, 45);
     titleLable.textAlignment = NSTextAlignmentCenter;
     titleLable.font = [UIFont systemFontOfSize:16];
@@ -91,11 +89,11 @@
 {
     if (tableView == leftTabView)
     {
-        return 20;
+        return leftArray.count;
     }
     else
     {
-        return 22;
+        return rightArray.count;
     }
 }
 
@@ -104,21 +102,24 @@
     if (tableView == leftTabView)
     {
         LeftFilterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftCell"];
+        NSDictionary *dict = leftArray[indexPath.row];
+        NSString *titleName = dict[@"name"];
         if (indexPath.row == leftSelectIndex)
         {
-            [cell refreshCell:@"行政区" isSelect:YES];
+            [cell refreshCell:titleName isSelect:YES];
         }
         else
         {
-            [cell refreshCell:@"行政区" isSelect:NO];
+            [cell refreshCell:titleName isSelect:NO];
         }
         
         return cell;
     }
     else
     {
+        NSString *rightTitle = rightArray[indexPath.row];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rightCell"];
-        cell.textLabel.text = @"不限";
+        cell.textLabel.text = rightTitle;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         if (indexPath.row == rightSelectIndex)
@@ -136,9 +137,15 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (tableView == leftTabView) {
+    if (tableView == leftTabView)
+    {
         leftSelectIndex = indexPath.row;
         [leftTabView reloadData];
+        //刷新右边数据
+        NSDictionary *leftDataDict =leftArray[indexPath.row];
+        rightArray = leftDataDict[@"subcategories"];
+        
+        [rightTabVIew reloadData];
     }
     else
     {

@@ -13,8 +13,10 @@
 #import "CityListViewCell.h"
 #import "SortPopView.h"
 #import "SeachViewController.h"
-#import "FilterViewController.h"
+#import "BaseFilterViewController.h"
 #import "FindDealsRequestFactory.h"
+#import "CatagoryFilterViewController.h"
+#import "RegionFilterViewController.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
@@ -322,14 +324,12 @@
 
 - (void) typeFilterClick
 {
-    FilterViewController *typeFilterVC = [[FilterViewController alloc] init];
-    typeFilterVC.str =@"分类";
+    CatagoryFilterViewController *typeFilterVC = [[CatagoryFilterViewController alloc] init];
     [self presentViewController:typeFilterVC animated:YES completion:nil];
 }
 - (void) screenFilterClick
 {
-    FilterViewController *screenFilterVC = [[FilterViewController alloc] init];
-    screenFilterVC.str = @"区域";
+    RegionFilterViewController *screenFilterVC = [[RegionFilterViewController alloc] init];
     [self presentViewController:screenFilterVC animated:YES completion:nil];
 }
 
