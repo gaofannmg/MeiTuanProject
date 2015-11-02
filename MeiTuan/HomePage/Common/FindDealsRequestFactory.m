@@ -58,6 +58,15 @@
     return dict;
 }
 
+- (NSMutableDictionary *) getSortTxt: (NSNumber *) sortTxt
+{
+    self.sort = sortTxt.intValue ;
+   
+    NSMutableDictionary *dict = [self convertToDictFromModel];
+    
+    return dict;
+}
+
 -(NSMutableDictionary *) convertToDictFromModel
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];

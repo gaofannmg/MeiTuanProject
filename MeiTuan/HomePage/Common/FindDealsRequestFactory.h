@@ -30,4 +30,6 @@
 
 - (NSMutableDictionary *) getCityDict: (NSString *) cityName;
 
+- (NSMutableDictionary *) getSortTxt:(NSNumber *)sortTxt;
+
 @end

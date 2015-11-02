@@ -161,6 +161,8 @@
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 }
 
+
+
 #pragma mark -- 发送请求回调方法
 //成功
 - (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
@@ -256,7 +258,41 @@
 -(void) sortWithText:(NSString *) sortTxt
 {
     //排序 to do
-    
+    //结果排序，1:默认，2:价格低优先，3:价格高优先，4:购买人数多优先，5:最新发布优先，6:即将结束优先，7:离经纬度坐标距离近优先
+    int sortNumber = 1;
+    if ([sortTxt  isEqual: @"默认排序"])
+    {
+        sortNumber = 1;
+    }
+    else if ([sortTxt isEqual:@"价格最低"])
+    {
+        sortNumber = 2;
+    }
+    else if ([sortTxt isEqual:@"价格最高"])
+    {
+        sortNumber = 3;
+    }
+    else if ([sortTxt isEqual:@"人气最高"])
+    {
+        sortNumber = 4;
+    }
+    else if ([sortTxt isEqual:@"最新发布"])
+    {
+        sortNumber = 5;
+    }
+    else if ([sortTxt isEqual:@"即将结束"])
+    {
+        sortNumber = 6;
+    }
+    else if ([sortTxt isEqual:@"离我最近"])
+    {
+        sortNumber = 7;
+    }
+    NSNumber *number = [NSNumber numberWithInt:sortNumber];
+    NSMutableDictionary *params = [requsetModelFactory getSortTxt:number];
+    DPAPI *api = [[DPAPI alloc] init];
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+   
     [self removeViewClick];
 }
 
