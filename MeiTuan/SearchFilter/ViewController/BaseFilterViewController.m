@@ -65,12 +65,12 @@
 - (void) createUI
 {
     leftTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width * 0.28, self.view.frame.size.height - titleView.frame.size.height) style:UITableViewStylePlain];
-    leftTabView.backgroundColor = [UIColor grayColor];
+    leftTabView.backgroundColor = RGB(231, 231, 231);
     leftTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:leftTabView];
     
     rightTabVIew = [[UITableView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftTabView.frame), CGRectGetMaxY(titleView.frame), self.view.frame.size.width - leftTabView.frame.size.width,self.view.frame.size.height - titleView.frame.size.height) style:UITableViewStylePlain];
-    rightTabVIew.backgroundColor = [UIColor greenColor];
+    rightTabVIew.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:rightTabVIew];
     
     [leftTabView registerClass:[LeftFilterCell class] forCellReuseIdentifier:@"leftCell"];

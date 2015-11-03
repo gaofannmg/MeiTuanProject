@@ -330,6 +330,7 @@
 - (void) screenFilterClick
 {
     RegionFilterViewController *screenFilterVC = [[RegionFilterViewController alloc] init];
+    screenFilterVC.cityName = cityBtn.titleLabel.text;
     [self presentViewController:screenFilterVC animated:YES completion:nil];
 }
 

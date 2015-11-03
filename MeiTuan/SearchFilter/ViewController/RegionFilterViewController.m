@@ -7,6 +7,7 @@
 //
 
 #import "RegionFilterViewController.h"
+#import "HomeViewController.h"
 
 @interface RegionFilterViewController ()
 {
@@ -24,7 +25,7 @@
     for (int i = 0; i< dataArray.count;  i++)
     {
         NSDictionary *regionDic = dataArray[i];
-        if ([regionDic[@"name"] isEqual:@"北京"])
+        if ([regionDic[@"name"] isEqual:self.cityName])
         {
             leftArray = [regionDic objectForKey:@"regions"];
             break;
