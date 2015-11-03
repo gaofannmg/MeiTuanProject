@@ -27,6 +27,8 @@
     
     rightSelectIndex = -1;
     
+    rightArrayKeyString = @"subcategories";
+    
     [self createNaigaitionBar];
     
     [self createUI];
@@ -143,7 +145,7 @@
         [leftTabView reloadData];
         //刷新右边数据
         NSDictionary *leftDataDict =leftArray[indexPath.row];
-        rightArray = leftDataDict[@"subcategories"];
+        rightArray = leftDataDict[rightArrayKeyString];
         
         [rightTabVIew reloadData];
     }

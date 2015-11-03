@@ -29,6 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.]
     titleLable.text = @"分类";
+    rightArrayKeyString = @"subcategories";
 }
 
 - (void)didReceiveMemoryWarning {

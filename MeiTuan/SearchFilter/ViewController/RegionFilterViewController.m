@@ -9,16 +9,40 @@
 #import "RegionFilterViewController.h"
 
 @interface RegionFilterViewController ()
-
+{
+    
+}
 @end
 
 @implementation RegionFilterViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"plist"];
+    NSArray *dataArray = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
+    
+    for (int i = 0; i< dataArray.count;  i++)
+    {
+        NSDictionary *regionDic = dataArray[i];
+        if ([regionDic[@"name"] isEqual:@"北京"])
+        {
+            leftArray = [regionDic objectForKey:@"regions"];
+            break;
+        }
+    }
+
+    if (leftArray.count > 0)
+    {
+        NSDictionary *leftDataDict = [leftArray firstObject];
+        
+        rightArray = leftDataDict[@"subcategories"];
+    }
+        [super viewDidLoad];
+
     // Do any additional setup after loading the view.
     
     titleLable.text = @"区域";
+    rightArrayKeyString = @"subregions";
 }
 
 - (void)didReceiveMemoryWarning {

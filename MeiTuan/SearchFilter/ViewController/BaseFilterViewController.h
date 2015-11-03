@@ -15,6 +15,7 @@
     NSMutableArray *rightArray;
     UITableView *leftTabView;
     UITableView *rightTabVIew;
+    NSString *rightArrayKeyString;
 }
 
 @end
