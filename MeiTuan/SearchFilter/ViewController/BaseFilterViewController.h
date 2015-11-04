@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeViewController.h"
 
 @interface BaseFilterViewController : UIViewController
+
 {
     UILabel *titleLable;
     NSMutableArray *leftArray;
@@ -17,5 +19,7 @@
     UITableView *rightTabVIew;
     NSString *rightArrayKeyString;
 }
+@property (nonatomic,weak) HomeViewController *homeVC;
+
 
 @end

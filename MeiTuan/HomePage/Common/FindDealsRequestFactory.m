@@ -67,6 +67,39 @@
     return dict;
 }
 
+- (NSMutableDictionary *) getCategoryDict:(NSString *)category
+{
+    if ([category isEqual:@"全部分类"])
+    {
+        self.category = nil;
+    }
+    else
+    {
+        self.category = category;
+    }
+    
+    NSMutableDictionary *dict = [self convertToDictFromModel];
+    
+    return dict;
+}
+
+- (NSMutableDictionary *) getRegionDict:(NSString *)region
+{
+    if ([region isEqual:@"全部"])
+    {
+        self.region = nil;
+    }
+    else
+    {
+        self.region = region;
+    }
+    
+    NSMutableDictionary *dict = [self convertToDictFromModel];
+    
+    return dict;
+}
+
+
 -(NSMutableDictionary *) convertToDictFromModel
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];

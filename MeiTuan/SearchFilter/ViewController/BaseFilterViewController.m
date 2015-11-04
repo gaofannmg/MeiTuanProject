@@ -9,6 +9,7 @@
 #import "BaseFilterViewController.h"
 #import "LeftFilterCell.h"
 #import "CatagoryFilterViewController.h"
+#import "RegionFilterViewController.h"
 
 @interface BaseFilterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -147,12 +148,53 @@
         NSDictionary *leftDataDict =leftArray[indexPath.row];
         rightArray = leftDataDict[rightArrayKeyString];
         
-        [rightTabVIew reloadData];
+        //1.要传值给homeviewcontroller 2.让homeviewcontroller用心的条件字符串catogtyString刷新数据
+        if (!rightArray || rightArray.count == 0)
+        {
+            NSString *catogtyString = [leftDataDict objectForKey:@"name"];
+            [self setFilterByName:catogtyString];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+               
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
+            });
+        }
+        else
+        {
+            [rightTabVIew reloadData];
+        }
     }
     else
     {
         rightSelectIndex = indexPath.row;
         [rightTabVIew reloadData];
+        if ([rightArray[indexPath.row] isEqual:@"全部"])
+        {
+            NSDictionary *leftDataDict =leftArray[leftSelectIndex];
+            [self setFilterByName:leftDataDict[@"name"]];
+        }
+        else
+        {
+            [self setFilterByName:rightArray[indexPath.row]];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        });
+    }
+}
+
+-(void) setFilterByName:(NSString *) newFiterString
+{
+    if ([self isKindOfClass:[CatagoryFilterViewController class]])
+    {
+        [self.homeVC selectCatagoryByName:newFiterString];
+    }
+    else if([self isKindOfClass:[RegionFilterViewController class]])
+    {
+        [self.homeVC selectRegion:newFiterString];
     }
 }
 

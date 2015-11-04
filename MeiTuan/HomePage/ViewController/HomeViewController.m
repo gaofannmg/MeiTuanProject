@@ -163,7 +163,19 @@
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 }
 
+- (void) getHttpByRegionName:(NSString *) regionName
+{
+    NSMutableDictionary *params = [requsetModelFactory getRegionDict:regionName];
+    DPAPI *api = [[DPAPI alloc] init];
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+}
 
+- (void) getHttpByCatagoryName:(NSString *) catagoryName
+{
+    NSMutableDictionary *params = [requsetModelFactory getCategoryDict:catagoryName];
+    DPAPI *api = [[DPAPI alloc] init];
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+}
 
 #pragma mark -- 发送请求回调方法
 //成功
@@ -222,6 +234,16 @@
 {
     [cityBtn setTitle:cityName forState:UIControlStateNormal];
     [self getHttpDataByCityName:cityName];
+}
+
+- (void) selectRegion:(NSString *) regionString
+{
+    [self getHttpByRegionName:regionString];
+}
+
+- (void) selectCatagoryByName:(NSString *) catagoryNameString
+{
+    [self getHttpByCatagoryName:catagoryNameString];
 }
 
 - (void) sortViewClick
@@ -325,11 +347,13 @@
 - (void) typeFilterClick
 {
     CatagoryFilterViewController *typeFilterVC = [[CatagoryFilterViewController alloc] init];
+    typeFilterVC.homeVC = self;
     [self presentViewController:typeFilterVC animated:YES completion:nil];
 }
 - (void) screenFilterClick
 {
     RegionFilterViewController *screenFilterVC = [[RegionFilterViewController alloc] init];
+    screenFilterVC.homeVC = self;
     screenFilterVC.cityName = cityBtn.titleLabel.text;
     [self presentViewController:screenFilterVC animated:YES completion:nil];
 }

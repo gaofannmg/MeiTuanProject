@@ -28,8 +28,12 @@
 //关键词搜索
 -(NSMutableDictionary *) getKeyWordsDict:(NSString *) keyWords;
 
-- (NSMutableDictionary *) getCityDict: (NSString *) cityName;
+- (NSMutableDictionary *) getCityDict:(NSString *) cityName;
 
 - (NSMutableDictionary *) getSortTxt:(NSNumber *)sortTxt;
+
+- (NSMutableDictionary *) getCategoryDict:(NSString *)category;
+
+- (NSMutableDictionary *) getRegionDict:(NSString *)region;
 
 @end
