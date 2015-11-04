@@ -15,6 +15,7 @@
     UILabel *presentPriceLabel;//现价
     UILabel *originalPriceLabel;//原价
     UILabel *soldLabel;//售出
+    UIImageView *imageView;
 }
 @end
 
@@ -29,6 +30,7 @@
         presentPriceLabel = [[UILabel alloc] init];
         originalPriceLabel = [[UILabel alloc] init];
         soldLabel = [[UILabel alloc] init];
+        imageView = [[UIImageView alloc] init];
         
         self.contentView.backgroundColor = [UIColor whiteColor];
     }
@@ -45,7 +47,6 @@
     long soldLabelStr = [dic[@"purchase_count"] longValue];
     NSString *imageUrlStr = dic[@"image_url"];
 
-    UIImageView *imageView = [[UIImageView alloc] init];
     imageView.frame = CGRectMake(2, 2, self.contentView.frame.size.width -4, 120);
     [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlStr]];
     [self.contentView addSubview:imageView];

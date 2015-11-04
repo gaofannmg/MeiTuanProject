@@ -44,6 +44,7 @@
     
     titleLable.text = @"区域";
     rightArrayKeyString = @"subregions";
+    leftTitleKey = @"name";
 }
 
 - (void)didReceiveMemoryWarning {

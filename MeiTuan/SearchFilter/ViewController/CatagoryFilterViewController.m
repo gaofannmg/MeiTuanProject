@@ -8,7 +8,7 @@
 
 #import "CatagoryFilterViewController.h"
 
-@interface CatagoryFilterViewController ()
+@interface CatagoryFilterViewController ()<DPRequestDelegate>
 
 @end
 
@@ -16,8 +16,40 @@
 
 - (void)viewDidLoad
 {
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"categories" ofType:@"plist"];
-    leftArray = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.]
+    titleLable.text = @"分类";
+    rightArrayKeyString = @"subcategories";
+    leftTitleKey = @"category_name";
+    [self requestHttpData];
+}
+
+-(void) requestHttpData
+{
+    DPAPI *api = [[DPAPI alloc] init];
+    [api requestWithURL:@"v1/metadata/get_categories_with_deals" params:nil delegate:self];
+}
+
+#pragma mark -- 发送请求回调方法
+//成功
+- (void)request:(DPRequest *)request didFinishLoadingWithResult:(id)result
+{
+    //result 字典
+    NSLog(@"%@",result);
+    
+    NSArray *dataArray = [result objectForKey:@"categories"];
+    
+    if (![dataArray isKindOfClass:[NSArray class]] || dataArray.count < 1)
+    {
+        return;
+    }
+    
+    leftArray = [NSMutableArray array];
+    [leftArray addObjectsFromArray:dataArray];
+    
+    NSDictionary *dict = @{@"category_name":@"全部分类"};
+    
+    [leftArray insertObject:dict atIndex:0];
     
     if (leftArray.count > 0)
     {
@@ -26,11 +58,15 @@
         rightArray = leftDataDict[@"subcategories"];
     }
     
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.]
-    titleLable.text = @"分类";
-    rightArrayKeyString = @"subcategories";
+    [leftTabView reloadData];
+    [rightTabVIew reloadData];
 }
+//失败
+- (void)request:(DPRequest *)request didFailWithError:(NSError *)error
+{
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

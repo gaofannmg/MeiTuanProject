@@ -26,6 +26,8 @@
     UIButton *cityBtn;
     UIButton *searchBtn;
     FindDealsRequestFactory *requsetModelFactory;
+    CatagoryFilterViewController *typeFilterVC;
+    RegionFilterViewController *screenFilterVC;
 }
 @end
 
@@ -346,13 +348,21 @@
 
 - (void) typeFilterClick
 {
-    CatagoryFilterViewController *typeFilterVC = [[CatagoryFilterViewController alloc] init];
+    if (!typeFilterVC)
+    {
+        typeFilterVC = [[CatagoryFilterViewController alloc] init];
+    }
+    
     typeFilterVC.homeVC = self;
     [self presentViewController:typeFilterVC animated:YES completion:nil];
 }
 - (void) screenFilterClick
 {
-    RegionFilterViewController *screenFilterVC = [[RegionFilterViewController alloc] init];
+    if (!screenFilterVC)
+    {
+        screenFilterVC = [[RegionFilterViewController alloc] init];
+    }
+    
     screenFilterVC.homeVC = self;
     screenFilterVC.cityName = cityBtn.titleLabel.text;
     [self presentViewController:screenFilterVC animated:YES completion:nil];

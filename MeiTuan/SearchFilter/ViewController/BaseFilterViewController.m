@@ -106,7 +106,9 @@
     {
         LeftFilterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"leftCell"];
         NSDictionary *dict = leftArray[indexPath.row];
-        NSString *titleName = dict[@"name"];
+        
+        NSString *titleName = dict[leftTitleKey];
+
         if (indexPath.row == leftSelectIndex)
         {
             [cell refreshCell:titleName isSelect:YES];
@@ -148,10 +150,11 @@
         NSDictionary *leftDataDict =leftArray[indexPath.row];
         rightArray = leftDataDict[rightArrayKeyString];
         
-        //1.要传值给homeviewcontroller 2.让homeviewcontroller用心的条件字符串catogtyString刷新数据
+        [rightTabVIew reloadData];
+        
         if (!rightArray || rightArray.count == 0)
         {
-            NSString *catogtyString = [leftDataDict objectForKey:@"name"];
+            NSString *catogtyString = [leftDataDict objectForKey:leftTitleKey];
             [self setFilterByName:catogtyString];
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -159,10 +162,6 @@
                 [self dismissViewControllerAnimated:YES completion:nil];
                 
             });
-        }
-        else
-        {
-            [rightTabVIew reloadData];
         }
     }
     else
@@ -172,7 +171,7 @@
         if ([rightArray[indexPath.row] isEqual:@"全部"])
         {
             NSDictionary *leftDataDict =leftArray[leftSelectIndex];
-            [self setFilterByName:leftDataDict[@"name"]];
+            [self setFilterByName:leftDataDict[leftTitleKey]];
         }
         else
         {

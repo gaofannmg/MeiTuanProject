@@ -18,6 +18,7 @@
     UITableView *leftTabView;
     UITableView *rightTabVIew;
     NSString *rightArrayKeyString;
+    NSString *leftTitleKey;
 }
 @property (nonatomic,weak) HomeViewController *homeVC;
 
