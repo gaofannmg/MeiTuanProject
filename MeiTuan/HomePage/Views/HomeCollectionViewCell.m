@@ -64,32 +64,35 @@
     detailsLabel.numberOfLines = 0;
     [self.contentView addSubview:detailsLabel];
     
-    presentPriceLabel.frame = CGRectMake(2, CGRectGetMaxY(detailsLabel.frame) +5, 60, 20);
+    presentPriceLabel.frame = CGRectMake(1, CGRectGetMaxY(detailsLabel.frame) +5, 55, 20);
     presentPriceLabel.backgroundColor = [UIColor clearColor];
     NSNumber *presentNumber = [NSNumber numberWithDouble:presentPriceLabelStr];
     NSString *presentString = [presentNumber stringValue];
     NSString *presentStr = [NSString stringWithFormat:@"￥%@",presentString];
     presentPriceLabel.text = presentStr;
+    presentPriceLabel.font = [UIFont systemFontOfSize:12];
     presentPriceLabel.textColor = [UIColor redColor];
     [self.contentView addSubview:presentPriceLabel];
    
-    originalPriceLabel.frame = CGRectMake(CGRectGetMaxX(presentPriceLabel.frame) +10, CGRectGetMaxY(detailsLabel.frame) +5,40, 20);
+    originalPriceLabel.frame = CGRectMake(CGRectGetMaxX(presentPriceLabel.frame) +1, CGRectGetMaxY(detailsLabel.frame) +5,45, 20);
     originalPriceLabel.backgroundColor = [UIColor clearColor];
     originalPriceLabel.font = [UIFont systemFontOfSize:11];
     NSNumber *originalNumber = [NSNumber numberWithDouble:originalPriceLabelStr];
     NSString *originalString = [originalNumber stringValue];
     NSString *originaStr = [NSString stringWithFormat:@"￥%@",originalString];
     originalPriceLabel.text = originaStr;
+    originalPriceLabel.font = [UIFont systemFontOfSize:10];
     originalPriceLabel.textColor = RGB(85, 85, 85);
     [self.contentView addSubview:originalPriceLabel];
    
-    soldLabel.frame = CGRectMake(CGRectGetMaxX(originalPriceLabel.frame) +2, CGRectGetMaxY(detailsLabel.frame) +5, 55, 20);
+    soldLabel.frame = CGRectMake(self.contentView.frame.size.width - 71, CGRectGetMaxY(detailsLabel.frame) +5,70, 20);
     soldLabel.backgroundColor = [UIColor clearColor];
     soldLabel.font = [UIFont systemFontOfSize:11];
     NSNumber *soldNumber = [NSNumber numberWithDouble:soldLabelStr];
     NSString *soldString = [soldNumber stringValue];
     NSString *soldStr = [NSString stringWithFormat:@"已售出%@",soldString];
     soldLabel.text = soldStr;
+    soldLabel.font = [UIFont systemFontOfSize:10];
     soldLabel.textColor = RGB(85, 85, 85);
     [self.contentView addSubview:soldLabel];
 }
