@@ -71,10 +71,9 @@
     
     CGFloat span = 5;
     CGFloat cellWidth = (self.view.bounds.size.width - 3 * span)/ 2;
-    CGFloat cellHeight = cellWidth;
     
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
-    layout.itemSize = CGSizeMake(cellWidth , cellHeight +70);
+    layout.itemSize = CGSizeMake(cellWidth , 243);
     layout.minimumInteritemSpacing = span;
     layout.minimumLineSpacing = span;
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
