@@ -16,6 +16,7 @@
     UIView *titleView;
     NSInteger leftSelectIndex;
     NSInteger rightSelectIndex;
+    NSInteger leftNewSelectIndex;
 }
 @end
 
@@ -111,7 +112,10 @@
 
         if (indexPath.row == leftSelectIndex)
         {
+            [rightTabVIew reloadData];
+            rightSelectIndex = -2;
             [cell refreshCell:titleName isSelect:YES];
+        
         }
         else
         {
@@ -119,6 +123,8 @@
         }
         
         return cell;
+        
+
     }
     else
     {
@@ -126,8 +132,8 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rightCell"];
         cell.textLabel.text = rightTitle;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        if (indexPath.row == rightSelectIndex)
+
+      if (rightSelectIndex == indexPath.row)
         {
             cell.textLabel.textColor = [UIColor redColor];
         }
@@ -135,8 +141,9 @@
         {
             cell.textLabel.textColor = RGB(45, 45, 45);
         }
-        
+
         return cell;
+
     }
 }
 
