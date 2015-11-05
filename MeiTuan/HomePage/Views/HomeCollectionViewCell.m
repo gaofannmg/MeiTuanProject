@@ -47,17 +47,17 @@
     long soldLabelStr = [dic[@"purchase_count"] longValue];
     NSString *imageUrlStr = dic[@"image_url"];
 
-    imageView.frame = CGRectMake(2, 2, self.contentView.frame.size.width -4, 120);
+    imageView.frame = CGRectMake(1, 2, self.contentView.frame.size.width -2, 120);
     [imageView sd_setImageWithURL:[NSURL URLWithString:imageUrlStr]];
     [self.contentView addSubview:imageView];
    
-    nameLabel.frame = CGRectMake(1,CGRectGetMaxY(imageView.frame) +1, imageView.frame.size.width+5, 20);
+    nameLabel.frame = CGRectMake(1,CGRectGetMaxY(imageView.frame) +1, self.contentView.frame.size.width, 20);
     nameLabel.backgroundColor = [UIColor clearColor];
     nameLabel.text = titleStr;
     nameLabel.font = [UIFont systemFontOfSize:15];
     [self.contentView addSubview:nameLabel];
    
-    detailsLabel.frame = CGRectMake(2, CGRectGetMaxY(nameLabel.frame) +2, imageView.frame.size.width -2, 50);
+    detailsLabel.frame = CGRectMake(1, CGRectGetMaxY(nameLabel.frame) +2,self.contentView.frame.size.width, 50);
     detailsLabel.backgroundColor = [UIColor clearColor];
     detailsLabel.text = detailsLabelStr;
     detailsLabel.font = [UIFont systemFontOfSize:10];
@@ -74,17 +74,6 @@
     presentPriceLabel.textColor = [UIColor redColor];
     [self.contentView addSubview:presentPriceLabel];
    
-    originalPriceLabel.frame = CGRectMake(CGRectGetMaxX(presentPriceLabel.frame) +1, CGRectGetMaxY(detailsLabel.frame) +5,45, 20);
-    originalPriceLabel.backgroundColor = [UIColor clearColor];
-    originalPriceLabel.font = [UIFont systemFontOfSize:11];
-    NSNumber *originalNumber = [NSNumber numberWithDouble:originalPriceLabelStr];
-    NSString *originalString = [originalNumber stringValue];
-    NSString *originaStr = [NSString stringWithFormat:@"￥%@",originalString];
-    originalPriceLabel.text = originaStr;
-    originalPriceLabel.font = [UIFont systemFontOfSize:10];
-    originalPriceLabel.textColor = RGB(85, 85, 85);
-    [self.contentView addSubview:originalPriceLabel];
-   
     soldLabel.frame = CGRectMake(self.contentView.frame.size.width - 71, CGRectGetMaxY(detailsLabel.frame) +5,70, 20);
     soldLabel.backgroundColor = [UIColor clearColor];
     soldLabel.font = [UIFont systemFontOfSize:11];
@@ -95,5 +84,16 @@
     soldLabel.font = [UIFont systemFontOfSize:10];
     soldLabel.textColor = RGB(85, 85, 85);
     [self.contentView addSubview:soldLabel];
+    
+    originalPriceLabel.frame = CGRectMake(CGRectGetMaxX(presentPriceLabel.frame) +1, CGRectGetMaxY(detailsLabel.frame) +5,self.contentView.frame.size.width -1 - presentPriceLabel.frame.size.width -1- soldLabel.frame.size.width, 20);
+    originalPriceLabel.backgroundColor = [UIColor clearColor];
+    originalPriceLabel.font = [UIFont systemFontOfSize:11];
+    NSNumber *originalNumber = [NSNumber numberWithDouble:originalPriceLabelStr];
+    NSString *originalString = [originalNumber stringValue];
+    NSString *originaStr = [NSString stringWithFormat:@"￥%@",originalString];
+    originalPriceLabel.text = originaStr;
+    originalPriceLabel.font = [UIFont systemFontOfSize:10];
+    originalPriceLabel.textColor = RGB(85, 85, 85);
+    [self.contentView addSubview:originalPriceLabel];
 }
 @end
