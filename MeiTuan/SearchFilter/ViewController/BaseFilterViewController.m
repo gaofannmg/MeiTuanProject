@@ -16,7 +16,7 @@
     UIView *titleView;
     NSInteger leftSelectIndex;
     NSInteger rightSelectIndex;
-    NSInteger leftNewSelectIndex;
+    NSInteger leftSelectUIIndex; //用于ui选中
 }
 @end
 
@@ -28,12 +28,30 @@
     self.view.backgroundColor = [UIColor greenColor];
     
     rightSelectIndex = -1;
+    leftSelectUIIndex = 0;
+    leftSelectIndex = 0;
     
     rightArrayKeyString = @"subcategories";
     
     [self createNaigaitionBar];
     
     [self createUI];
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (leftSelectIndex > 0)
+    {
+        leftSelectUIIndex = leftSelectIndex;
+        [leftTabView reloadData];
+        //刷新右边数据
+        NSDictionary *leftDataDict =leftArray[leftSelectIndex];
+        rightArray = leftDataDict[rightArrayKeyString];
+        
+        [rightTabVIew reloadData];
+    }
 }
 
 -(void) createNaigaitionBar
@@ -110,12 +128,9 @@
         
         NSString *titleName = dict[leftTitleKey];
 
-        if (indexPath.row == leftSelectIndex)
+        if (indexPath.row == leftSelectUIIndex)
         {
-            [rightTabVIew reloadData];
-            rightSelectIndex = -2;
             [cell refreshCell:titleName isSelect:YES];
-        
         }
         else
         {
@@ -133,7 +148,7 @@
         cell.textLabel.text = rightTitle;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-      if (rightSelectIndex == indexPath.row)
+        if (leftSelectIndex == leftSelectUIIndex && rightSelectIndex == indexPath.row)
         {
             cell.textLabel.textColor = [UIColor redColor];
         }
@@ -151,7 +166,7 @@
 {
     if (tableView == leftTabView)
     {
-        leftSelectIndex = indexPath.row;
+        leftSelectUIIndex = indexPath.row;
         [leftTabView reloadData];
         //刷新右边数据
         NSDictionary *leftDataDict =leftArray[indexPath.row];
@@ -164,6 +179,9 @@
             NSString *catogtyString = [leftDataDict objectForKey:leftTitleKey];
             [self setFilterByName:catogtyString];
             
+            rightSelectIndex = -1;
+            leftSelectIndex = leftSelectUIIndex;
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -174,6 +192,7 @@
     else
     {
         rightSelectIndex = indexPath.row;
+        leftSelectIndex = leftSelectUIIndex;
         [rightTabVIew reloadData];
         if ([rightArray[indexPath.row] isEqual:@"全部"])
         {
