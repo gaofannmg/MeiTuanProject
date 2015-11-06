@@ -36,4 +36,6 @@
 
 - (NSMutableDictionary *) getRegionDict:(NSString *)region;
 
+- (NSMutableDictionary *) getsortLatitude:(double)latitude longitude:(double)longitude radius:(int)radius;
+
 @end

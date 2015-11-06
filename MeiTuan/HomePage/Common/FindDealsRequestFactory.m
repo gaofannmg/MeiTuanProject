@@ -66,6 +66,15 @@
     
     return dict;
 }
+//附近搜索
+- (NSMutableDictionary *) getsortLatitude:(double)latitude longitude:(double)longitude radius:(int)radius
+{
+    self.latitude = latitude;
+    self.longitude = longitude;
+    self.radius = radius;
+    NSMutableDictionary *dict = [self convertToDictFromModel];
+    return dict;
+}
 
 - (NSMutableDictionary *) getCategoryDict:(NSString *)category
 {
@@ -159,10 +168,14 @@
         [params setObject:@(self.pageSize) forKey:@"limit"];
     }
     
-    if (self.latitude > 0 && self.longitude > 0 && self.radius > 0)
+    if (self.latitude > 0 && self.longitude > 0)
     {
         [params setObject:@(self.latitude) forKey:@"latitude"];
         [params setObject:@(self.longitude) forKey:@"longitude"];
+    }
+    
+    if (self.radius > 0)
+    {
         [params setObject:@(self.radius) forKey:@"radius"];
     }
     

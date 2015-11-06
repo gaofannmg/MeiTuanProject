@@ -149,7 +149,9 @@
     if (curLocation.latitude > 0 && curLocation.longitude > 0)
     {
         //定位成功，用经纬度和半径搜索
-        
+        NSMutableDictionary *params = [requsetModelFactory getsortLatitude:curLocation.latitude longitude:curLocation.longitude radius:3000];
+        DPAPI *api = [[DPAPI alloc] init];
+        [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
     }
     else
     {
@@ -291,7 +293,8 @@
 
 -(void) sortWithText:(NSString *) sortTxt
 {
-    //排序 to do
+    requsetModelFactory.latitude = 0;
+    requsetModelFactory.longitude = 0;
     //结果排序，1:默认，2:价格低优先，3:价格高优先，4:购买人数多优先，5:最新发布优先，6:即将结束优先，7:离经纬度坐标距离近优先
     int sortNumber = 1;
     if ([sortTxt  isEqual: @"默认排序"])
@@ -321,6 +324,9 @@
     else if ([sortTxt isEqual:@"离我最近"])
     {
         sortNumber = 7;
+        
+        requsetModelFactory.latitude = [LocationMgr shareInstance].curLocation.latitude;
+        requsetModelFactory.longitude = [LocationMgr shareInstance].curLocation.longitude;
     }
     NSNumber *number = [NSNumber numberWithInt:sortNumber];
     NSMutableDictionary *params = [requsetModelFactory getSortTxt:number];

@@ -70,15 +70,7 @@
 {
     NSString *sortName = dataArray[indexPath.row];
     
-    if ([sortName isEqual:@"离我最近"])
-    {
-        [self.basicVC getHttpData];
-    }
-    
-    else
-    {
-        [self.basicVC sortWithText:sortName];
-    }
+    [self.basicVC sortWithText:sortName];
 }
 
 /*
