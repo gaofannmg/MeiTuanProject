@@ -40,6 +40,8 @@
     currentLabel.textColor = [UIColor redColor];
     currentLabel.font = [UIFont systemFontOfSize:15.0];
     [self.contentView addSubview:currentLabel];
+    [currentLabel sizeToFit];
+    currentLabel.center = CGPointMake(currentLabel.center.x, self.contentView.center.y);
     
     originalLabel.frame = CGRectMake(CGRectGetMaxX(currentLabel.frame) +10, 0, 30, 30);
    NSNumber *originaNumber = dic[@"list_price"];
@@ -48,6 +50,8 @@
     originalLabel.textColor = [UIColor grayColor];
     originalLabel.font = [UIFont systemFontOfSize:12.0];
     [self.contentView addSubview:originalLabel];
+    [originalLabel sizeToFit];
+    originalLabel.center = CGPointMake(originalLabel.center.x, currentLabel.center.y);
     
     cutView.frame = CGRectMake(originalLabel.frame.origin.x - 5, originalLabel.center.y, originalLabel.frame.size.width, 1);
     cutView.backgroundColor = [UIColor grayColor];
@@ -59,6 +63,8 @@
     titleLabel.text = titleStr;
     titleLabel.font = [UIFont systemFontOfSize:12.0];
     [self.contentView addSubview:titleLabel];
+    [titleLabel sizeToFit];
+    titleLabel.center = CGPointMake(titleLabel.center.x, originalLabel.center.y);
 }
 
 - (void)awakeFromNib {

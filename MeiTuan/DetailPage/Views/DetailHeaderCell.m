@@ -76,6 +76,8 @@
     originalpriceLabel.font =[UIFont systemFontOfSize:15.0];
     originalpriceLabel.textColor = [UIColor redColor];
     [self.contentView addSubview:originalpriceLabel];
+    [originalpriceLabel sizeToFit];
+
     
     presentpriceLabel.frame = CGRectMake(CGRectGetMaxX(originalpriceLabel.frame) +5,originalpriceLabel.frame.origin.y,50, 30);
     presentpriceLabel.backgroundColor = [UIColor clearColor];
@@ -85,6 +87,8 @@
     presentpriceLabel.font =[UIFont systemFontOfSize:12.0];
     presentpriceLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:presentpriceLabel];
+    [presentpriceLabel sizeToFit];
+    presentpriceLabel.center = CGPointMake(presentpriceLabel.center.x, originalpriceLabel.center.y);
     
     presentCutView.frame = CGRectMake(presentpriceLabel.frame.origin.x - 5, presentpriceLabel.center.y, presentpriceLabel.frame.size.width, 1);
     presentCutView.backgroundColor = [UIColor grayColor];
@@ -95,8 +99,9 @@
     [buyBtn setTitle:@"立即抢购" forState:UIControlStateNormal];
     buyBtn.titleLabel.font = [UIFont systemFontOfSize:15.0];
     [self.contentView addSubview:buyBtn];
+    buyBtn.center = CGPointMake(buyBtn.center.x, presentpriceLabel.center.y);
     
-    lineView.frame = CGRectMake(0, CGRectGetMaxY(originalpriceLabel.frame) +5, [UIScreen mainScreen].bounds.size.width, 0.5);
+    lineView.frame = CGRectMake(0, CGRectGetMaxY(buyBtn.frame) +2, [UIScreen mainScreen].bounds.size.width, 0.5);
     lineView.backgroundColor = [UIColor grayColor];
     [self.contentView addSubview:lineView];//分割线
     
