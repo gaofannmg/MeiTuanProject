@@ -145,9 +145,17 @@
 
 - (void) getHttpData
 {
-    NSMutableDictionary *params = [requsetModelFactory getDefaultSearchDict];
-    DPAPI *api = [[DPAPI alloc] init];
-    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    CLLocationCoordinate2D curLocation = [LocationMgr shareInstance].curLocation;
+    if (curLocation.latitude > 0 && curLocation.longitude > 0)
+    {
+        //定位成功，用经纬度和半径搜索
+    }
+    else
+    {
+        NSMutableDictionary *params = [requsetModelFactory getDefaultSearchDict];
+        DPAPI *api = [[DPAPI alloc] init];
+        [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    }
 }
 
 - (void) getHttpDataBySearchKeyWords:(NSString *) keyWord

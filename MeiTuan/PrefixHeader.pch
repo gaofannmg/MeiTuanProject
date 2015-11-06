@@ -20,5 +20,6 @@
 #import "UIImageView+WebCache.h"
 #import "DPAPI.h"
 #import "CommonMethod.h"
+#import "LocationMgr.h"
 
 #endif

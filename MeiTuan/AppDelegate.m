@@ -24,6 +24,7 @@
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
     
+    [LocationMgr shareInstance];
     
     return YES;
 }
