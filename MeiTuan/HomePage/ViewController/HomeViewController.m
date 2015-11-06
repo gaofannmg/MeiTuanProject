@@ -149,6 +149,7 @@
     if (curLocation.latitude > 0 && curLocation.longitude > 0)
     {
         //定位成功，用经纬度和半径搜索
+        
     }
     else
     {

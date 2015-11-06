@@ -57,7 +57,7 @@
     
     return dict;
 }
-
+//排序
 - (NSMutableDictionary *) getSortTxt: (NSNumber *) sortTxt
 {
     self.sort = sortTxt.intValue ;

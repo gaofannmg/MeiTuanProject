@@ -16,6 +16,7 @@
 - (void) searchWithKeyWord:(NSString *) keyWord;
 - (void) selectRegion:(NSString *) regionString;
 - (void) selectCatagoryByName:(NSString *) catagoryNameString;
+- (void) getHttpData;
 
 @end
 
