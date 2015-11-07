@@ -72,7 +72,7 @@
     soldLabel.text = soldStr;
     [soldLabel sizeToFit];
     soldLabel.frame = CGRectMake(1, self.contentView.frame.size.height - soldLabel.frame.size.height - 3,self.contentView.frame.size.width, soldLabel.frame.size.height);
-    soldLabel.backgroundColor = [UIColor yellowColor];
+    soldLabel.backgroundColor = [UIColor clearColor];
     soldLabel.font = [UIFont systemFontOfSize:13];
     
     
@@ -80,7 +80,7 @@
     [self.contentView addSubview:soldLabel];
     
     presentPriceLabel.frame = CGRectMake(1, CGRectGetMinY(soldLabel.frame) - 3 - 20,self.contentView.frame.size.width/2 - 1, 20);
-    presentPriceLabel.backgroundColor = [UIColor greenColor];
+    presentPriceLabel.backgroundColor = [UIColor clearColor];
     NSString *presentStr = [NSString stringWithFormat:@"￥%0.1f",presentPriceLabelStr];
     presentPriceLabel.text = presentStr;
     presentPriceLabel.font = [UIFont systemFontOfSize:15];
@@ -90,7 +90,7 @@
     [presentPriceLabel sizeToFit];
     
     originalPriceLabel.frame = CGRectMake(CGRectGetMaxX(presentPriceLabel.frame)+10, presentPriceLabel.frame.origin.y , presentPriceLabel.frame.size.width, 20);
-    originalPriceLabel.backgroundColor = [UIColor blueColor];
+    originalPriceLabel.backgroundColor = [UIColor clearColor];
     originalPriceLabel.font = [UIFont systemFontOfSize:13];
     NSNumber *originalNumber = [NSNumber numberWithDouble:originalPriceLabelStr];
     NSString *originalString = [originalNumber stringValue];

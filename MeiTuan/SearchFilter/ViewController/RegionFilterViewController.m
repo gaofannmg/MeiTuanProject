@@ -17,8 +17,8 @@
 
 @implementation RegionFilterViewController
 
-- (void)viewDidLoad {
-    
+- (void) viewWillAppear:(BOOL)animated
+{
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"plist"];
     NSArray *dataArray = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     
@@ -31,20 +31,24 @@
             break;
         }
     }
-
+    
     if (leftArray.count > 0)
     {
         NSDictionary *leftDataDict = [leftArray firstObject];
         
         rightArray = leftDataDict[@"subcategories"];
     }
-        [super viewDidLoad];
-
+    [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     
     titleLable.text = @"区域";
     rightArrayKeyString = @"subregions";
     leftTitleKey = @"name";
+}
+
+- (void)viewDidLoad {
+
 }
 
 - (void)didReceiveMemoryWarning {

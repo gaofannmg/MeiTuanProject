@@ -180,6 +180,7 @@
     NSMutableDictionary *params = [requsetModelFactory getRegionDict:regionName];
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    
 }
 
 - (void) getHttpByCatagoryName:(NSString *) catagoryName
@@ -379,6 +380,9 @@
     
     screenFilterVC.homeVC = self;
     screenFilterVC.cityName = cityBtn.titleLabel.text;
+    //city Name 给左边tabView 请求数据
+    
+    
     [self presentViewController:screenFilterVC animated:YES completion:nil];
 }
 
