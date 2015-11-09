@@ -17,15 +17,26 @@
 
 @implementation RegionFilterViewController
 
+-(void) viewDidLoad
+{
+    [super viewDidLoad];
+    
+    titleLable.text = @"区域";
+    rightArrayKeyString = @"subregions";
+    leftTitleKey = @"name";
+}
+
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"plist"];
     NSArray *dataArray = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     
     for (int i = 0; i< dataArray.count;  i++)
     {
         NSDictionary *regionDic = dataArray[i];
-        if ([regionDic[@"name"] isEqual:self.cityName])
+        if ([regionDic[leftTitleKey] isEqual:self.cityName])
         {
             leftArray = [regionDic objectForKey:@"regions"];
             break;
@@ -36,23 +47,20 @@
     {
         NSDictionary *leftDataDict = [leftArray firstObject];
         
-        rightArray = leftDataDict[@"subcategories"];
+        rightArray = leftDataDict[rightArrayKeyString];
 
     }
-
-    [super viewDidLoad];
     
     // Do any additional setup after loading the view.
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:@"附近" forKey:@"name"];
-    [leftArray insertObject:dic atIndex:0];
-    titleLable.text = @"区域";
-    rightArrayKeyString = @"subregions";
-    leftTitleKey = @"name";
-}
-
-- (void)viewDidLoad {
     
-    [super viewDidLoad];
+    NSArray *subCattegoriesArr = @[@"500m",@"1000m",@"1500m",@"2000m",@"3000m"];
+    
+    dic[rightArrayKeyString] = subCattegoriesArr;
+    
+    [leftArray insertObject:dic atIndex:0];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
