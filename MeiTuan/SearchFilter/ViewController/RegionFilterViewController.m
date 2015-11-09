@@ -37,18 +37,22 @@
         NSDictionary *leftDataDict = [leftArray firstObject];
         
         rightArray = leftDataDict[@"subcategories"];
+
     }
+
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
-    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:@"附近" forKey:@"name"];
+    [leftArray insertObject:dic atIndex:0];
     titleLable.text = @"区域";
     rightArrayKeyString = @"subregions";
     leftTitleKey = @"name";
 }
 
 - (void)viewDidLoad {
-
+    
+    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {

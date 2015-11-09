@@ -72,7 +72,7 @@
     [titleView addSubview:outBtn];
     
     titleViewBuyButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    titleViewBuyButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 100  - 5, 20 + (44 - 30)/2 , 100, 30);
+    titleViewBuyButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 100  - 5, 20 + (44 - 30)/2, 100, 30);
     titleViewBuyButton.backgroundColor = [UIColor orangeColor];
     [titleViewBuyButton setTitle:@"立即抢购" forState:UIControlStateNormal];
     titleViewBuyButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
