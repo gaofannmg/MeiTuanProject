@@ -28,8 +28,6 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"plist"];
     NSArray *dataArray = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     
@@ -48,7 +46,7 @@
         NSDictionary *leftDataDict = [leftArray firstObject];
         
         rightArray = leftDataDict[rightArrayKeyString];
-
+        
     }
     
     // Do any additional setup after loading the view.
@@ -60,7 +58,7 @@
     
     [leftArray insertObject:dic atIndex:0];
     
-
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {

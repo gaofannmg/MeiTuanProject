@@ -215,6 +215,8 @@
     NSLog(@"%@",result);
     array = [result objectForKey:@"deals"];
     [cView reloadData];
+    
+    [cView setContentOffset:CGPointMake(0, 0)];
 }
 //失败
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error

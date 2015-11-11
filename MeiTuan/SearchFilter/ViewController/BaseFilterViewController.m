@@ -42,7 +42,10 @@
 {
     [super viewWillAppear:animated];
     
-    if (leftSelectIndex > 0)
+    NSDictionary *leftDataDict =leftArray[leftSelectIndex];
+    NSString *selectTitle = [leftDataDict objectForKey:leftTitleKey];
+    
+    if (![selectTitle isEqual:@"全部"])
     {
         leftSelectUIIndex = leftSelectIndex;
         [leftTabView reloadData];
