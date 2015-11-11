@@ -149,7 +149,7 @@
     if (curLocation.latitude > 0 && curLocation.longitude > 0)
     {
         //定位成功，用经纬度和半径搜索
-        NSMutableDictionary *params = [requsetModelFactory getsortLatitude:curLocation.latitude longitude:curLocation.longitude radius:3000];
+        NSMutableDictionary *params = [requsetModelFactory getsortLatitude:curLocation.latitude longitude:curLocation.longitude radius:1000];
         DPAPI *api = [[DPAPI alloc] init];
         [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
     }
@@ -188,6 +188,23 @@
     NSMutableDictionary *params = [requsetModelFactory getCategoryDict:catagoryName];
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+}
+
+- (void) getNearbyHttpData:(int) radius
+{
+    CLLocationCoordinate2D curLocation = [LocationMgr shareInstance].curLocation;
+    if (curLocation.latitude > 0 && curLocation.longitude > 0)
+    {
+        //定位成功，用经纬度和半径搜索
+        requsetModelFactory.region = nil; //附近搜索，置空区域
+        NSMutableDictionary *params = [requsetModelFactory getsortLatitude:curLocation.latitude longitude:curLocation.longitude radius:radius];
+        DPAPI *api = [[DPAPI alloc] init];
+        [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    }
+    else
+    {
+        //弹出定位失败提示
+    }
 }
 
 #pragma mark -- 发送请求回调方法
@@ -252,6 +269,7 @@
 - (void) selectRegion:(NSString *) regionString
 {
     [self getHttpByRegionName:regionString];
+   
 }
 
 - (void) selectCatagoryByName:(NSString *) catagoryNameString

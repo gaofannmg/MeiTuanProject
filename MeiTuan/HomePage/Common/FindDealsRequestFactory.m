@@ -103,6 +103,14 @@
         self.region = region;
     }
     
+    self.radius = 0;
+    
+    if (self.sort != 7)
+    {
+        self.latitude = 0;
+        self.longitude = 0;
+    }
+    
     NSMutableDictionary *dict = [self convertToDictFromModel];
     
     return dict;

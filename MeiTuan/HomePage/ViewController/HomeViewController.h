@@ -17,6 +17,6 @@
 - (void) selectRegion:(NSString *) regionString;
 - (void) selectCatagoryByName:(NSString *) catagoryNameString;
 - (void) getHttpData;
-
+- (void) getNearbyHttpData:(int) radius;
 @end
 

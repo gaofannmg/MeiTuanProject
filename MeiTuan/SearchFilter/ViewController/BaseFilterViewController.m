@@ -177,7 +177,7 @@
         if (!rightArray || rightArray.count == 0)
         {
             NSString *catogtyString = [leftDataDict objectForKey:leftTitleKey];
-            [self setFilterByName:catogtyString];
+            [self setFilterByName:catogtyString leftTitle:catogtyString];
             
             rightSelectIndex = -1;
             leftSelectIndex = leftSelectUIIndex;
@@ -194,14 +194,14 @@
         rightSelectIndex = indexPath.row;
         leftSelectIndex = leftSelectUIIndex;
         [rightTabVIew reloadData];
+        NSDictionary *leftDataDict =leftArray[leftSelectIndex];
         if ([rightArray[indexPath.row] isEqual:@"全部"])
         {
-            NSDictionary *leftDataDict =leftArray[leftSelectIndex];
-            [self setFilterByName:leftDataDict[leftTitleKey]];
+            [self setFilterByName:leftDataDict[leftTitleKey] leftTitle:leftDataDict[leftTitleKey]];
         }
         else
         {
-            [self setFilterByName:rightArray[indexPath.row]];
+            [self setFilterByName:rightArray[indexPath.row] leftTitle:leftDataDict[leftTitleKey]];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -211,7 +211,13 @@
     }
 }
 
--(void) setFilterByName:(NSString *) newFiterString
+/**
+ *  选中某个选项
+ *
+ *  @param newFiterString 筛选词
+ *  @param leftTitle      当前左边选中的文字
+ */
+-(void) setFilterByName:(NSString *) newFiterString leftTitle:(NSString *) leftTitle
 {
     if ([self isKindOfClass:[CatagoryFilterViewController class]])
     {
@@ -219,7 +225,16 @@
     }
     else if([self isKindOfClass:[RegionFilterViewController class]])
     {
-        [self.homeVC selectRegion:newFiterString];
+        if ([leftTitle isEqual:@"附近"])
+        {
+            NSString *radusStr = [newFiterString stringByReplacingOccurrencesOfString:@"m" withString:@""];
+            int radus = radusStr.intValue;
+            [self.homeVC getNearbyHttpData:radus];
+        }
+        else
+        {
+            [self.homeVC selectRegion:newFiterString];
+        }
     }
 }
 
