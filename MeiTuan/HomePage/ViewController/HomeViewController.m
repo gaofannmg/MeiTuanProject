@@ -17,11 +17,12 @@
 #import "FindDealsRequestFactory.h"
 #import "CatagoryFilterViewController.h"
 #import "RegionFilterViewController.h"
+#import "UIScrollView+BottomRefreshControl.h"
 
 @interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
 {
     UILabel *titleLabel;
-    NSArray *array;
+    NSMutableArray *array;
     UICollectionView *cView;
     UIButton *cityBtn;
     UIButton *searchBtn;
@@ -40,6 +41,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    array = [NSMutableArray array];
 
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
     titleView.backgroundColor = [UIColor greenColor];
@@ -82,7 +85,7 @@
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.sectionInset = UIEdgeInsetsMake(span, span, span, span);
     
-    cView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - titleView.frame.size.height) collectionViewLayout:layout];
+    cView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width, [UIScreen mainScreen].bounds.size.height - titleView.frame.size.height - 50) collectionViewLayout:layout];
     cView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:cView];
     cView.delegate = self;
@@ -117,31 +120,60 @@
     [sortButton addTarget:self action:@selector(sortViewClick) forControlEvents:UIControlEventTouchUpInside];
     [barView addSubview:sortButton];
     
+    [self setUpRefreshControl];
+    
     requsetModelFactory = [[FindDealsRequestFactory alloc] initWithCity:cityBtn.titleLabel.text];
 
     [self getHttpData];
 }
 
+#pragma mark -- 创建刷新控件
+- (void)setUpRefreshControl
+{
+    UIRefreshControl *freshControl = [[UIRefreshControl alloc] init];
+    //设置其他的属性
+    //垂直方向的偏移量
+    freshControl.triggerVerticalOffset = 100;
+    //文本属性
+    freshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"正在等待..."];
+    //给刷新控件添加触发方法
+    [freshControl addTarget:self action:@selector(loadMoreDeals) forControlEvents:UIControlEventValueChanged];
+    
+    //加载到view
+    cView.bottomRefreshControl = freshControl;
+}
+
+//加载更多订单数据
+- (void)loadMoreDeals
+{
+    requsetModelFactory.pageIndex ++;
+    
+    [self getHttpData];
+}
 #pragma mark -- 获取数据
 /**
  *  首页默认搜索,定位成功走附近排序，否则走默认排序
  */
 - (void) getHttpData
 {
-    CLLocationCoordinate2D curLocation = [LocationMgr shareInstance].curLocation;
-    if (curLocation.latitude > 0 && curLocation.longitude > 0)
-    {
-        //定位成功，用经纬度和半径搜索
-        NSMutableDictionary *params = [requsetModelFactory getsortLatitude:curLocation.latitude longitude:curLocation.longitude radius:1000];
-        DPAPI *api = [[DPAPI alloc] init];
-        [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
-    }
-    else
-    {
-        NSMutableDictionary *params = [requsetModelFactory getDefaultSearchDict];
-        DPAPI *api = [[DPAPI alloc] init];
-        [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
-    }
+    NSMutableDictionary *params = [requsetModelFactory getDefaultSearchDict];
+    DPAPI *api = [[DPAPI alloc] init];
+    [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    
+//    CLLocationCoordinate2D curLocation = [LocationMgr shareInstance].curLocation;
+//    if (curLocation.latitude > 0 && curLocation.longitude > 0)
+//    {
+//        //定位成功，用经纬度和半径搜索
+//        NSMutableDictionary *params = [requsetModelFactory getsortLatitude:curLocation.latitude longitude:curLocation.longitude radius:1000];
+//        DPAPI *api = [[DPAPI alloc] init];
+//        [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+//    }
+//    else
+//    {
+//        NSMutableDictionary *params = [requsetModelFactory getDefaultSearchDict];
+//        DPAPI *api = [[DPAPI alloc] init];
+//        [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+//    }
 }
 
 /**
@@ -221,15 +253,30 @@
 {
     //result 字典
     NSLog(@"%@",result);
-    array = [result objectForKey:@"deals"];
+    
+    NSArray *dataArray = [result objectForKey:@"deals"];
+    
+    if (![dataArray isKindOfClass:[NSArray class]])
+    {
+        return;
+    }
+    
+    if(requsetModelFactory.pageIndex == 1)
+    {
+        [array removeAllObjects];
+    }
+    
+    [array addObjectsFromArray:dataArray];
     [cView reloadData];
     
-    [cView setContentOffset:CGPointMake(0, 0)];
+    //结束刷新动画
+    [cView.bottomRefreshControl endRefreshing];
 }
 //失败
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
 {
-    
+    //结束刷新动画
+    [cView.bottomRefreshControl endRefreshing];
 }
 
 #pragma mark --UICollectionViewDelegate
@@ -372,6 +419,15 @@
     }];
 }
 
+/**
+ *  重置分页
+ */
+-(void) resetPageInfo
+{
+    requsetModelFactory.pageIndex = 1;
+    [cView setContentOffset:CGPointMake(0, 0)];
+}
+
 #pragma mark -- 回调事件
 /**
  *  选择城市回调
@@ -380,6 +436,7 @@
  */
 - (void) selectCity:(NSString *) cityName
 {
+    [self resetPageInfo];
     [cityBtn setTitle:cityName forState:UIControlStateNormal];
     [self getHttpDataByCityName:cityName];
 }
@@ -410,6 +467,8 @@
         [searchBtn setTitleColor:RGB(200, 200 ,200) forState:UIControlStateNormal];
     }
     
+    [self resetPageInfo];
+    
     [self getHttpDataBySearchKeyWords:keyWord];
 }
 
@@ -420,6 +479,7 @@
  */
 -(void) sortWithText:(NSString *) sortTxt
 {
+    [self resetPageInfo];
     requsetModelFactory.latitude = 0;
     requsetModelFactory.longitude = 0;
     //结果排序，1:默认，2:价格低优先，3:价格高优先，4:购买人数多优先，5:最新发布优先，6:即将结束优先，7:离经纬度坐标距离近优先
@@ -470,6 +530,7 @@
  */
 - (void) selectRegion:(NSString *) regionString
 {
+    [self resetPageInfo];
     [self getHttpByRegionName:regionString];
     
 }
@@ -481,6 +542,7 @@
  */
 - (void) selectCatagoryByName:(NSString *) catagoryNameString
 {
+    [self resetPageInfo];
     [self getHttpByCatagoryName:catagoryNameString];
 }
 
