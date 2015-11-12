@@ -33,7 +33,10 @@
 
 @implementation HomeViewController
 
-- (void)viewDidLoad {
+#pragma mark -- 创建UI
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
@@ -119,30 +122,10 @@
     [self getHttpData];
 }
 
--(void) searchWithKeyWord:(NSString *) keyWord
-{
-    if (![keyWord isEqual:@"搜索"])
-    {
-        [searchBtn setTitleColor:RGB(100, 100 ,100) forState:UIControlStateNormal];
-    }
-    else
-    {
-        [searchBtn setTitleColor:RGB(200, 200 ,200) forState:UIControlStateNormal];
-    }
-    
-    if (keyWord.length > 0)
-    {
-        [searchBtn setTitle:keyWord forState:UIControlStateNormal];
-    }
-    else
-    {
-        [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
-        [searchBtn setTitleColor:RGB(200, 200 ,200) forState:UIControlStateNormal];
-    }
-    
-    [self getHttpDataBySearchKeyWords:keyWord];
-}
-
+#pragma mark -- 获取数据
+/**
+ *  首页默认搜索,定位成功走附近排序，否则走默认排序
+ */
 - (void) getHttpData
 {
     CLLocationCoordinate2D curLocation = [LocationMgr shareInstance].curLocation;
@@ -161,6 +144,11 @@
     }
 }
 
+/**
+ *  关键词搜索
+ *
+ *  @param keyWord 关键词
+ */
 - (void) getHttpDataBySearchKeyWords:(NSString *) keyWord
 {
     NSMutableDictionary *params = [requsetModelFactory getKeyWordsDict:keyWord];
@@ -168,6 +156,11 @@
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 }
 
+/**
+ *  城市搜索
+ *
+ *  @param cityName 城市名
+ */
 - (void) getHttpDataByCityName:(NSString *) cityName
 {
     NSMutableDictionary *params = [requsetModelFactory getCityDict:cityName];
@@ -175,6 +168,11 @@
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 }
 
+/**
+ *  区域搜索
+ *
+ *  @param regionName 区域名
+ */
 - (void) getHttpByRegionName:(NSString *) regionName
 {
     NSMutableDictionary *params = [requsetModelFactory getRegionDict:regionName];
@@ -183,6 +181,11 @@
     
 }
 
+/**
+ *  分类搜索
+ *
+ *  @param catagoryName 分类名
+ */
 - (void) getHttpByCatagoryName:(NSString *) catagoryName
 {
     NSMutableDictionary *params = [requsetModelFactory getCategoryDict:catagoryName];
@@ -190,6 +193,11 @@
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 }
 
+/**
+ *  附近搜索
+ *
+ *  @param radius 半径值
+ */
 - (void) getNearbyHttpData:(int) radius
 {
     CLLocationCoordinate2D curLocation = [LocationMgr shareInstance].curLocation;
@@ -224,6 +232,8 @@
     
 }
 
+#pragma mark --UICollectionViewDelegate
+
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 2;
@@ -250,11 +260,12 @@
     detailView.listVC = self;
     [self.navigationController pushViewController:detailView animated:YES];
 }
-- (void)changeBtnColor:(UIColor *) color
-{
-    cityBtn.backgroundColor = color;
-}
 
+#pragma mark -- 点击事件
+
+/**
+ *  点击城市
+ */
 - (void)cityButtonClick
 {
     CityListViewController *cityListVC = [[CityListViewController alloc] init];
@@ -262,23 +273,56 @@
     [self.navigationController pushViewController:cityListVC animated:YES];
 }
 
-- (void) selectCity:(NSString *) cityName
+
+/**
+ *  点击搜索
+ */
+-(void) searchClick
 {
-    [cityBtn setTitle:cityName forState:UIControlStateNormal];
-    [self getHttpDataByCityName:cityName];
+    SeachViewController *searchVC = [[SeachViewController alloc] init];
+    searchVC.homeVC = self;
+    
+    if (![searchBtn.titleLabel.text isEqual:@"搜索"])
+    {
+        searchVC.seachString = searchBtn.titleLabel.text;
+    }
+    
+    [self.navigationController pushViewController:searchVC animated:NO];
 }
 
-- (void) selectRegion:(NSString *) regionString
+/**
+ *  分类
+ */
+- (void) typeFilterClick
 {
-    [self getHttpByRegionName:regionString];
-   
+    if (!typeFilterVC)
+    {
+        typeFilterVC = [[CatagoryFilterViewController alloc] init];
+    }
+    
+    typeFilterVC.homeVC = self;
+    [self presentViewController:typeFilterVC animated:YES completion:nil];
 }
 
-- (void) selectCatagoryByName:(NSString *) catagoryNameString
+/**
+ *  区域
+ */
+- (void) screenFilterClick
 {
-    [self getHttpByCatagoryName:catagoryNameString];
+    if (!screenFilterVC)
+    {
+        screenFilterVC = [[RegionFilterViewController alloc] init];
+    }
+    
+    screenFilterVC.homeVC = self;
+    screenFilterVC.cityName = cityBtn.titleLabel.text;
+
+    [self presentViewController:screenFilterVC animated:YES completion:nil];
 }
 
+/**
+ *  点击排序
+ */
 - (void) sortViewClick
 {
     UIView *backView = [self.view viewWithTag:333];
@@ -312,6 +356,68 @@
     }];
 }
 
+
+
+/**
+ *  移除排序
+ */
+- (void) removeViewClick
+{
+    UIView *backView = [self.view viewWithTag:333];
+    SortPopView *sortPopView = [self.view viewWithTag:555];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        backView.alpha = 0;
+        sortPopView.frame = CGRectMake(sortPopView.frame.origin.x, self.view.frame.size.height, sortPopView.frame.size.width, sortPopView.frame.size.height);
+    }];
+}
+
+#pragma mark -- 回调事件
+/**
+ *  选择城市回调
+ *
+ *  @param cityName 城市名
+ */
+- (void) selectCity:(NSString *) cityName
+{
+    [cityBtn setTitle:cityName forState:UIControlStateNormal];
+    [self getHttpDataByCityName:cityName];
+}
+
+/**
+ *  搜索回调
+ *
+ *  @param keyWord 关键词
+ */
+-(void) searchWithKeyWord:(NSString *) keyWord
+{
+    if (![keyWord isEqual:@"搜索"])
+    {
+        [searchBtn setTitleColor:RGB(100, 100 ,100) forState:UIControlStateNormal];
+    }
+    else
+    {
+        [searchBtn setTitleColor:RGB(200, 200 ,200) forState:UIControlStateNormal];
+    }
+    
+    if (keyWord.length > 0)
+    {
+        [searchBtn setTitle:keyWord forState:UIControlStateNormal];
+    }
+    else
+    {
+        [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+        [searchBtn setTitleColor:RGB(200, 200 ,200) forState:UIControlStateNormal];
+    }
+    
+    [self getHttpDataBySearchKeyWords:keyWord];
+}
+
+/**
+ *  排序回调
+ *
+ *  @param sortTxt 排序名
+ */
 -(void) sortWithText:(NSString *) sortTxt
 {
     requsetModelFactory.latitude = 0;
@@ -353,58 +459,32 @@
     NSMutableDictionary *params = [requsetModelFactory getSortTxt:number];
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
-   
+    
     [self removeViewClick];
 }
 
-- (void) removeViewClick
+/**
+ *  选择区域
+ *
+ *  @param regionString 区域名
+ */
+- (void) selectRegion:(NSString *) regionString
 {
-    UIView *backView = [self.view viewWithTag:333];
-    SortPopView *sortPopView = [self.view viewWithTag:555];
+    [self getHttpByRegionName:regionString];
     
-    [UIView animateWithDuration:0.3 animations:^{
-        backView.alpha = 0;
-        sortPopView.frame = CGRectMake(sortPopView.frame.origin.x, self.view.frame.size.height, sortPopView.frame.size.width, sortPopView.frame.size.height);
-    }];
 }
 
--(void) searchClick
+/**
+ *  选择分类
+ *
+ *  @param catagoryNameString 分类名
+ */
+- (void) selectCatagoryByName:(NSString *) catagoryNameString
 {
-    SeachViewController *searchVC = [[SeachViewController alloc] init];
-    searchVC.homeVC = self;
-    
-    if (![searchBtn.titleLabel.text isEqual:@"搜索"])
-    {
-        searchVC.seachString = searchBtn.titleLabel.text;
-    }
-    
-    [self.navigationController pushViewController:searchVC animated:NO];
+    [self getHttpByCatagoryName:catagoryNameString];
 }
 
-- (void) typeFilterClick
-{
-    if (!typeFilterVC)
-    {
-        typeFilterVC = [[CatagoryFilterViewController alloc] init];
-    }
-    
-    typeFilterVC.homeVC = self;
-    [self presentViewController:typeFilterVC animated:YES completion:nil];
-}
-- (void) screenFilterClick
-{
-    if (!screenFilterVC)
-    {
-        screenFilterVC = [[RegionFilterViewController alloc] init];
-    }
-    
-    screenFilterVC.homeVC = self;
-    screenFilterVC.cityName = cityBtn.titleLabel.text;
-    //city Name 给左边tabView 请求数据
-    
-    
-    [self presentViewController:screenFilterVC animated:YES completion:nil];
-}
+#pragma mark -- 内存警告
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

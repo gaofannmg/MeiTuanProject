@@ -37,7 +37,6 @@
         presentpriceLabel = [[UILabel alloc] init];
         buyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         self.curBuyButton = buyBtn;
-        [buyBtn addTarget:self action:@selector(buyBtnClick) forControlEvents:UIControlEventTouchUpInside];
         label1 = [[UILabel alloc] init];
         label2 = [[UILabel alloc] init];
         lineView = [[UIView alloc] init];//分割线
@@ -46,11 +45,6 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
-}
-
--(void) buyBtnClick
-{
-    [self.detailVC.listVC changeBtnColor:[UIColor redColor]];
 }
 
 - (void) refreshCell:(NSDictionary *) dic
