@@ -45,7 +45,7 @@
     array = [NSMutableArray array];
 
     UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
-    titleView.backgroundColor = [UIColor greenColor];
+    titleView.backgroundColor = RGB(248, 111, 93);
     [self.view addSubview:titleView];
     
     cityBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -93,30 +93,42 @@
     [cView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"MTCollectionViewCell"];
     
     UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0,WIN_HIGHT - 50,WIN_WIDTH,50)];
-    barView.backgroundColor = [UIColor clearColor];
+    barView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:barView];
 
     UIButton *typeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    typeButton.frame = CGRectMake(7, 0, barView.frame.size.width/3, barView.frame.size.height-5);
+    typeButton.frame = CGRectMake(7, 5, barView.frame.size.width/3, barView.frame.size.height-5);
     [typeButton setTitle:@"分类" forState:UIControlStateNormal];
-    typeButton.backgroundColor = [UIColor grayColor];
-    typeButton.alpha = 0.8;
+    typeButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    [typeButton setTitleColor:[UIColor grayColor]forState:UIControlStateNormal];
+    typeButton.backgroundColor = [UIColor clearColor];
     [typeButton addTarget:self action:@selector(typeFilterClick) forControlEvents:UIControlEventTouchUpInside];
     [barView addSubview:typeButton];
     
+    UIView *lineOneView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(typeButton.frame)+2, 15, 0.5, typeButton.frame.size.height - 20)];
+    lineOneView.backgroundColor = [UIColor grayColor];
+    [barView addSubview:lineOneView];
+    
     UIButton *screeningButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    screeningButton.frame = CGRectMake(CGRectGetMaxX(typeButton.frame),0,typeButton.frame.size.width, typeButton.frame.size.height);
+    screeningButton.frame = CGRectMake(CGRectGetMaxX(typeButton.frame),5,typeButton.frame.size.width, typeButton.frame.size.height);
     [screeningButton setTitle:@"区域" forState:UIControlStateNormal];
-    screeningButton.backgroundColor =[UIColor grayColor];
-    screeningButton.alpha = 0.8;
+    screeningButton.backgroundColor =[UIColor clearColor];
+    screeningButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    [screeningButton setTitleColor:[UIColor grayColor]forState:UIControlStateNormal];
     [screeningButton addTarget:self action:@selector(screenFilterClick) forControlEvents:UIControlEventTouchUpInside];
     [barView addSubview:screeningButton];
     
+    UIView *lineTwoView = [[UIView alloc] init];
+    lineTwoView.frame = CGRectMake(CGRectGetMaxX(screeningButton.frame)+2, 15, 0.5, lineOneView.frame.size.height);
+    lineTwoView.backgroundColor = [UIColor grayColor];
+    [barView addSubview:lineTwoView];
+    
     UIButton *sortButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    sortButton.frame = CGRectMake(CGRectGetMaxX(screeningButton.frame),0,typeButton.frame.size.width -14, screeningButton.frame.size.height);
+    sortButton.frame = CGRectMake(CGRectGetMaxX(screeningButton.frame),5,typeButton.frame.size.width -14, screeningButton.frame.size.height);
     [sortButton setTitle:@"排序" forState:UIControlStateNormal];
-    sortButton.backgroundColor =[UIColor grayColor];
-    sortButton.alpha = 0.8;
+    sortButton.backgroundColor =[UIColor clearColor];
+    sortButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    [sortButton setTitleColor:[UIColor grayColor]forState:UIControlStateNormal];
     [sortButton addTarget:self action:@selector(sortViewClick) forControlEvents:UIControlEventTouchUpInside];
     [barView addSubview:sortButton];
     

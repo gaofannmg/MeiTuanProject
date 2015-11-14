@@ -23,7 +23,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIN_WIDTH, 64)];
-    headView.backgroundColor = [UIColor blueColor];
+    headView.backgroundColor = RGB(248, 111, 93);
     [self.view addSubview:headView];
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
