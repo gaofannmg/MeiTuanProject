@@ -64,10 +64,9 @@
     
     UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     outBtn.frame = CGRectMake(5,20,60, 44);
-    outBtn.backgroundColor = [UIColor whiteColor];
-    [outBtn setTitle:@"返回" forState:UIControlStateNormal];
-    outBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [outBtn setTitleColor:RGB(45, 45, 45) forState:UIControlStateNormal];
+    outBtn.backgroundColor = [UIColor clearColor];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateNormal];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateHighlighted];    
     [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:outBtn];
     

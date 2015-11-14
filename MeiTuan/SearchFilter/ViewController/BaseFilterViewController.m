@@ -128,6 +128,7 @@
         NSDictionary *dict = leftArray[indexPath.row];
         
         NSString *titleName = dict[leftTitleKey];
+       
         
         if (indexPath.row == leftSelectUIIndex)
         
