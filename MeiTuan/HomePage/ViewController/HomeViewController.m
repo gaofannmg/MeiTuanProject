@@ -26,6 +26,7 @@
     UICollectionView *cView;
     UIButton *cityBtn;
     UIButton *searchBtn;
+    UIRefreshControl *refreshControl;
     FindDealsRequestFactory *requsetModelFactory;
     CatagoryFilterViewController *typeFilterVC;
     RegionFilterViewController *screenFilterVC;
@@ -95,7 +96,12 @@
     UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0,WIN_HIGHT - 50,WIN_WIDTH,50)];
     barView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:barView];
-
+    
+    //下拉刷新
+    refreshControl = [[UIRefreshControl alloc] init];
+    [cView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(getHttpData) forControlEvents:UIControlEventValueChanged];
+    
     UIButton *typeButton = [UIButton buttonWithType:UIButtonTypeCustom];
     typeButton.frame = CGRectMake(7, 5, barView.frame.size.width/3, barView.frame.size.height-5);
     [typeButton setTitle:@"分类" forState:UIControlStateNormal];
@@ -186,6 +192,8 @@
 //        DPAPI *api = [[DPAPI alloc] init];
 //        [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 //    }
+    
+    [refreshControl endRefreshing];
 }
 
 /**

@@ -25,8 +25,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor greenColor];
-    
     rightSelectIndex = -1;
     leftSelectUIIndex = 0;
     leftSelectIndex = 0;
@@ -130,19 +128,20 @@
         NSDictionary *dict = leftArray[indexPath.row];
         
         NSString *titleName = dict[leftTitleKey];
-
+        
         if (indexPath.row == leftSelectUIIndex)
+        
         {
             [cell refreshCell:titleName isSelect:YES];
         }
+        
         else
+        
         {
             [cell refreshCell:titleName isSelect:NO];
         }
         
         return cell;
-        
-
     }
     else
     {
@@ -150,7 +149,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rightCell"];
         cell.textLabel.text = rightTitle;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
         if (leftSelectIndex == leftSelectUIIndex && rightSelectIndex == indexPath.row)
         {
             cell.textLabel.textColor = [UIColor redColor];
