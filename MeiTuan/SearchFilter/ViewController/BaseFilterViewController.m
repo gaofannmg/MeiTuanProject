@@ -38,19 +38,13 @@
 {
     [super viewWillAppear:animated];
     
+    leftSelectUIIndex = leftSelectIndex;
+    [leftTabView reloadData];
+    //刷新右边数据
     NSDictionary *leftDataDict =leftArray[leftSelectIndex];
-    NSString *selectTitle = [leftDataDict objectForKey:leftTitleKey];
+    rightArray = leftDataDict[rightArrayKeyString];
     
-    if (![selectTitle isEqual:@"全部"])
-    {
-        leftSelectUIIndex = leftSelectIndex;
-        [leftTabView reloadData];
-        //刷新右边数据
-        NSDictionary *leftDataDict =leftArray[leftSelectIndex];
-        rightArray = leftDataDict[rightArrayKeyString];
-        
-        [rightTabVIew reloadData];
-    }
+    [rightTabVIew reloadData];
 }
 
 -(void) createNaigaitionBar

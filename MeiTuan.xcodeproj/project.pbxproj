@@ -23,7 +23,6 @@
 		492A9F751BE26B8300F47AB2 /* SortPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 492A9F741BE26B8300F47AB2 /* SortPopView.m */; };
 		492A9F781BE26DC200F47AB2 /* SortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 492A9F771BE26DC200F47AB2 /* SortCell.m */; };
 		492A9F7B1BE283BB00F47AB2 /* SeachViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 492A9F7A1BE283BB00F47AB2 /* SeachViewController.m */; };
-		497139251BEBB60C0003D0E1 /* LocationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 497139241BEBB60C0003D0E1 /* LocationMgr.m */; };
 		49873A3F1BF4EB5E0032B347 /* UIScrollView+BottomRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 49873A3E1BF4EB5E0032B347 /* UIScrollView+BottomRefreshControl.m */; };
 		49873A581BF4EBC20032B347 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 49873A421BF4EBC20032B347 /* MASCompositeConstraint.m */; };
 		49873A591BF4EBC20032B347 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 49873A451BF4EBC20032B347 /* MASConstraint.m */; };
@@ -39,6 +38,7 @@
 		49CEFECC1BE668630041C039 /* FindDealsRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFECB1BE668630041C039 /* FindDealsRequestFactory.m */; };
 		49CEFED21BE7ABE30041C039 /* CatagoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFED11BE7ABE30041C039 /* CatagoryFilterViewController.m */; };
 		49CEFED51BE7AC570041C039 /* RegionFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFED41BE7AC570041C039 /* RegionFilterViewController.m */; };
+		49F456661BF8707900F557B8 /* LocationMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F456651BF8707900F557B8 /* LocationMgr.m */; };
 		A600E40C1BDCEBA100A8F20B /* CommonMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = A600E40B1BDCEBA100A8F20B /* CommonMethod.m */; };
 		A610EBB01BCEAE1300B25B4D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB831BCEAE1300B25B4D /* HomeViewController.m */; };
 		A610EBB11BCEAE1300B25B4D /* HomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A610EB861BCEAE1300B25B4D /* HomeCollectionViewCell.m */; };
@@ -108,8 +108,6 @@
 		492A9F771BE26DC200F47AB2 /* SortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortCell.m; sourceTree = "<group>"; };
 		492A9F791BE283BB00F47AB2 /* SeachViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeachViewController.h; sourceTree = "<group>"; };
 		492A9F7A1BE283BB00F47AB2 /* SeachViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeachViewController.m; sourceTree = "<group>"; };
-		497139231BEBB60C0003D0E1 /* LocationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMgr.h; sourceTree = "<group>"; };
-		497139241BEBB60C0003D0E1 /* LocationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMgr.m; sourceTree = "<group>"; };
 		49873A3D1BF4EB5E0032B347 /* UIScrollView+BottomRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+BottomRefreshControl.h"; sourceTree = "<group>"; };
 		49873A3E1BF4EB5E0032B347 /* UIScrollView+BottomRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+BottomRefreshControl.m"; sourceTree = "<group>"; };
 		49873A411BF4EBC20032B347 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
@@ -145,6 +143,8 @@
 		49CEFED11BE7ABE30041C039 /* CatagoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatagoryFilterViewController.m; sourceTree = "<group>"; };
 		49CEFED31BE7AC570041C039 /* RegionFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegionFilterViewController.h; sourceTree = "<group>"; };
 		49CEFED41BE7AC570041C039 /* RegionFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegionFilterViewController.m; sourceTree = "<group>"; };
+		49F456641BF8707900F557B8 /* LocationMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMgr.h; sourceTree = "<group>"; };
+		49F456651BF8707900F557B8 /* LocationMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMgr.m; sourceTree = "<group>"; };
 		A600E40A1BDCEBA100A8F20B /* CommonMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonMethod.h; sourceTree = "<group>"; };
 		A600E40B1BDCEBA100A8F20B /* CommonMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonMethod.m; sourceTree = "<group>"; };
 		A610EB821BCEAE1300B25B4D /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -345,15 +345,6 @@
 			path = PlistData;
 			sourceTree = "<group>";
 		};
-		497139221BEBB60C0003D0E1 /* LocationMgr */ = {
-			isa = PBXGroup;
-			children = (
-				497139231BEBB60C0003D0E1 /* LocationMgr.h */,
-				497139241BEBB60C0003D0E1 /* LocationMgr.m */,
-			);
-			path = LocationMgr;
-			sourceTree = "<group>";
-		};
 		49873A3C1BF4EB5E0032B347 /* UIScrollView+BottomRefreshControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,6 +393,15 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		49F456631BF8707900F557B8 /* LocationMgr */ = {
+			isa = PBXGroup;
+			children = (
+				49F456641BF8707900F557B8 /* LocationMgr.h */,
+				49F456651BF8707900F557B8 /* LocationMgr.m */,
+			);
+			path = LocationMgr;
+			sourceTree = "<group>";
+		};
 		A610EB7F1BCEAE1300B25B4D /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,10 +433,10 @@
 		A610EB871BCEAE1300B25B4D /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				49F456631BF8707900F557B8 /* LocationMgr */,
 				49107F2C1BF82A6E00B0338E /* Catagory */,
 				49873A401BF4EBC20032B347 /* Masonry */,
 				49873A3C1BF4EB5E0032B347 /* UIScrollView+BottomRefreshControl */,
-				497139221BEBB60C0003D0E1 /* LocationMgr */,
 				A610EB881BCEAE1300B25B4D /* DPSDK */,
 				A610EB8E1BCEAE1300B25B4D /* SDWebImage */,
 				A600E40A1BDCEBA100A8F20B /* CommonMethod.h */,
@@ -671,6 +671,7 @@
 				A600E40C1BDCEBA100A8F20B /* CommonMethod.m in Sources */,
 				49873A601BF4EBC20032B347 /* View+MASAdditions.m in Sources */,
 				492A9F751BE26B8300F47AB2 /* SortPopView.m in Sources */,
+				49F456661BF8707900F557B8 /* LocationMgr.m in Sources */,
 				49265B421BDE8D680062F025 /* DealParterInfoCell.m in Sources */,
 				492A9F7B1BE283BB00F47AB2 /* SeachViewController.m in Sources */,
 				A610EBBB1BCEAE1300B25B4D /* SDWebImageManager.m in Sources */,
@@ -693,7 +694,6 @@
 				492A9F781BE26DC200F47AB2 /* SortCell.m in Sources */,
 				A610EBB91BCEAE1300B25B4D /* SDWebImageDownloader.m in Sources */,
 				A610EBB01BCEAE1300B25B4D /* HomeViewController.m in Sources */,
-				497139251BEBB60C0003D0E1 /* LocationMgr.m in Sources */,
 				A610EBC01BCEAE1300B25B4D /* UIImage+WebP.m in Sources */,
 				49CEFEC51BE513140041C039 /* LeftFilterCell.m in Sources */,
 				49265B401BDE8D680062F025 /* DetailMutipleWordsCell.m in Sources */,

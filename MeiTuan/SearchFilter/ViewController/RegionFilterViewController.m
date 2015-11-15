@@ -51,17 +51,22 @@
         
     }
     
-    // Do any additional setup after loading the view.
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:@"附近" forKey:@"name"];
-    
-    NSArray *subCattegoriesArr = @[@"500m",@"1000m",@"1500m",@"2000m",@"3000m"];
-    
-    dic[rightArrayKeyString] = subCattegoriesArr;
-    
-    [leftArray insertObject:dic atIndex:0];
+    //定位成功
+    if ([LocationMgr shareInstance].curLocation.latitude > 0 && [LocationMgr shareInstance].curLocation.longitude > 0)
+    {
+        if ([[LocationMgr shareInstance].curCityName isEqual:self.cityName])
+        {
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:@"附近" forKey:@"name"];
+            
+            NSArray *subCattegoriesArr = @[@"500m",@"1000m",@"1500m",@"2000m",@"3000m"];
+            
+            dic[rightArrayKeyString] = subCattegoriesArr;
+            
+            [leftArray insertObject:dic atIndex:0];
+        }
+    }
     
     //第一次创建执行，选中全部
-    
     if (isFirstViewWillAppear)
     {
         isFirstViewWillAppear = NO;
