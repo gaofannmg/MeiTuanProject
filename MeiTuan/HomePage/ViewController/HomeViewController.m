@@ -17,9 +17,10 @@
 #import "FindDealsRequestFactory.h"
 #import "CatagoryFilterViewController.h"
 #import "RegionFilterViewController.h"
-#import "UIScrollView+BottomRefreshControl.h"
+//#import "UIScrollView+BottomRefreshControl.h"
+#import "DJRefresh.h"
 
-@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate>
+@interface HomeViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DPRequestDelegate,DJRefreshDelegate>
 {
     UILabel *titleLabel;
     NSMutableArray *array;
@@ -31,6 +32,7 @@
     CatagoryFilterViewController *typeFilterVC;
     RegionFilterViewController *screenFilterVC;
     MBProgressHUD *HUD;
+    DJRefresh *_downrefresh;
 }
 @end
 
@@ -101,6 +103,10 @@
     cView.dataSource = self;
     [cView registerClass:[HomeCollectionViewCell class] forCellWithReuseIdentifier:@"MTCollectionViewCell"];
     
+    //加载更多控件
+    _downrefresh = [[DJRefresh alloc] initWithScrollView:cView delegate:self];
+    _downrefresh.bottomEnabled=YES;
+    
     UIView *barView = [[UIView alloc] initWithFrame:CGRectMake(0,WIN_HIGHT - 40,WIN_WIDTH,40)];
     barView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:barView];
@@ -150,27 +156,16 @@
     [sortButton addTarget:self action:@selector(sortViewClick) forControlEvents:UIControlEventTouchUpInside];
     [barView addSubview:sortButton];
     
-    [self setUpRefreshControl];
-    
     requsetModelFactory = [[FindDealsRequestFactory alloc] initWithCity:cityBtn.titleLabel.text];
 
     [self getHttpData];
 }
 
-#pragma mark -- 创建刷新控件
-- (void)setUpRefreshControl
+#pragma mark -- 加载更多回调
+
+- (void)refresh:(DJRefresh *)refresh didEngageRefreshDirection:(DJRefreshDirection)direction
 {
-    UIRefreshControl *freshControl = [[UIRefreshControl alloc] init];
-    //设置其他的属性
-    //垂直方向的偏移量
-    freshControl.triggerVerticalOffset = 100;
-    //文本属性
-    freshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"正在等待..."];
-    //给刷新控件添加触发方法
-    [freshControl addTarget:self action:@selector(loadMoreDeals) forControlEvents:UIControlEventValueChanged];
-    
-    //加载到view
-    cView.bottomRefreshControl = freshControl;
+    [self loadMoreDeals];
 }
 
 //加载更多订单数据
@@ -225,8 +220,6 @@
 //        DPAPI *api = [[DPAPI alloc] init];
 //        [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
 //    }
-    
-    [refreshControl endRefreshing];
 }
 
 /**
@@ -330,17 +323,30 @@
         [array removeAllObjects];
     }
     
+    if(dataArray.count == 0 || dataArray.count < requsetModelFactory.pageSize)
+    {
+        _downrefresh.bottomEnabled = NO;
+    }
+    else
+    {
+        _downrefresh.bottomEnabled = YES;
+    }
+    
     [array addObjectsFromArray:dataArray];
     [cView reloadData];
     
     //结束刷新动画
-    [cView.bottomRefreshControl endRefreshing];
+    [_downrefresh finishRefreshing];
+    
+    [refreshControl endRefreshing];
 }
 //失败
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
 {
     //结束刷新动画
-    [cView.bottomRefreshControl endRefreshing];
+    [_downrefresh finishRefreshing];
+    
+    [refreshControl endRefreshing];
     
     [self hideLoaing];
     
@@ -357,7 +363,7 @@
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

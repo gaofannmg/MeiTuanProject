@@ -37,6 +37,11 @@
 		4999F91B1BF8B62C00A8656C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999F91A1BF8B62C00A8656C /* Foundation.framework */; };
 		4999F91D1BF8B63500A8656C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999F91C1BF8B63500A8656C /* UIKit.framework */; };
 		4999F91F1BF8B63E00A8656C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999F91E1BF8B63E00A8656C /* CoreGraphics.framework */; };
+		4999F92D1BF8CBC700A8656C /* DJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4999F9221BF8CBC700A8656C /* DJRefresh.bundle */; };
+		4999F92E1BF8CBC700A8656C /* DJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999F9241BF8CBC700A8656C /* DJRefresh.m */; };
+		4999F92F1BF8CBC700A8656C /* DJRefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999F9271BF8CBC700A8656C /* DJRefreshBottomView.m */; };
+		4999F9301BF8CBC700A8656C /* DJRefreshTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999F92A1BF8CBC700A8656C /* DJRefreshTopView.m */; };
+		4999F9311BF8CBC700A8656C /* DJRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999F92C1BF8CBC700A8656C /* DJRefreshView.m */; };
 		49CEFEC21BE463230041C039 /* BaseFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFEC11BE463230041C039 /* BaseFilterViewController.m */; };
 		49CEFEC51BE513140041C039 /* LeftFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFEC41BE513140041C039 /* LeftFilterCell.m */; };
 		49CEFECC1BE668630041C039 /* FindDealsRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFECB1BE668630041C039 /* FindDealsRequestFactory.m */; };
@@ -142,6 +147,16 @@
 		4999F91A1BF8B62C00A8656C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4999F91C1BF8B63500A8656C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4999F91E1BF8B63E00A8656C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4999F9221BF8CBC700A8656C /* DJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DJRefresh.bundle; sourceTree = "<group>"; };
+		4999F9231BF8CBC700A8656C /* DJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefresh.h; sourceTree = "<group>"; };
+		4999F9241BF8CBC700A8656C /* DJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefresh.m; sourceTree = "<group>"; };
+		4999F9261BF8CBC700A8656C /* DJRefreshBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshBottomView.h; sourceTree = "<group>"; };
+		4999F9271BF8CBC700A8656C /* DJRefreshBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshBottomView.m; sourceTree = "<group>"; };
+		4999F9281BF8CBC700A8656C /* DJRefreshMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshMacro.h; sourceTree = "<group>"; };
+		4999F9291BF8CBC700A8656C /* DJRefreshTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshTopView.h; sourceTree = "<group>"; };
+		4999F92A1BF8CBC700A8656C /* DJRefreshTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshTopView.m; sourceTree = "<group>"; };
+		4999F92B1BF8CBC700A8656C /* DJRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshView.h; sourceTree = "<group>"; };
+		4999F92C1BF8CBC700A8656C /* DJRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshView.m; sourceTree = "<group>"; };
 		49CEFEC01BE463230041C039 /* BaseFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFilterViewController.h; sourceTree = "<group>"; };
 		49CEFEC11BE463230041C039 /* BaseFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFilterViewController.m; sourceTree = "<group>"; };
 		49CEFEC31BE513140041C039 /* LeftFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftFilterCell.h; sourceTree = "<group>"; };
@@ -415,6 +430,31 @@
 			name = FrameWork;
 			sourceTree = "<group>";
 		};
+		4999F9211BF8CBC700A8656C /* DJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				4999F9221BF8CBC700A8656C /* DJRefresh.bundle */,
+				4999F9231BF8CBC700A8656C /* DJRefresh.h */,
+				4999F9241BF8CBC700A8656C /* DJRefresh.m */,
+				4999F9251BF8CBC700A8656C /* DJRefreshView */,
+			);
+			path = DJRefresh;
+			sourceTree = "<group>";
+		};
+		4999F9251BF8CBC700A8656C /* DJRefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				4999F9261BF8CBC700A8656C /* DJRefreshBottomView.h */,
+				4999F9271BF8CBC700A8656C /* DJRefreshBottomView.m */,
+				4999F9281BF8CBC700A8656C /* DJRefreshMacro.h */,
+				4999F9291BF8CBC700A8656C /* DJRefreshTopView.h */,
+				4999F92A1BF8CBC700A8656C /* DJRefreshTopView.m */,
+				4999F92B1BF8CBC700A8656C /* DJRefreshView.h */,
+				4999F92C1BF8CBC700A8656C /* DJRefreshView.m */,
+			);
+			path = DJRefreshView;
+			sourceTree = "<group>";
+		};
 		49CEFEC61BE667D00041C039 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +504,7 @@
 		A610EB871BCEAE1300B25B4D /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				4999F9211BF8CBC700A8656C /* DJRefresh */,
 				4999F9161BF8B60400A8656C /* MBProgressHUD */,
 				49F456631BF8707900F557B8 /* LocationMgr */,
 				49107F2C1BF82A6E00B0338E /* Catagory */,
@@ -678,6 +719,7 @@
 				49265B541BDE94120062F025 /* sorts.plist in Resources */,
 				A67084181BC943EA00F6A40F /* LaunchScreen.xib in Resources */,
 				49265B521BDE94120062F025 /* cities.plist in Resources */,
+				4999F92D1BF8CBC700A8656C /* DJRefresh.bundle in Resources */,
 				A67084151BC943EA00F6A40F /* Images.xcassets in Resources */,
 				49265B531BDE94120062F025 /* cityGroups.plist in Resources */,
 			);
@@ -737,15 +779,19 @@
 				49265B3C1BDE8D680062F025 /* OtherDealsData.m in Sources */,
 				A610EBB41BCEAE1300B25B4D /* MKAnnotationView+WebCache.m in Sources */,
 				A610EBB71BCEAE1300B25B4D /* SDWebImageCompat.m in Sources */,
+				4999F9301BF8CBC700A8656C /* DJRefreshTopView.m in Sources */,
+				4999F92F1BF8CBC700A8656C /* DJRefreshBottomView.m in Sources */,
 				49265B3E1BDE8D680062F025 /* DealDetailViewController.m in Sources */,
 				A670840D1BC943EA00F6A40F /* AppDelegate.m in Sources */,
 				49265B3F1BDE8D680062F025 /* DetailHeaderCell.m in Sources */,
 				49CEFED51BE7AC570041C039 /* RegionFilterViewController.m in Sources */,
 				A670840A1BC943EA00F6A40F /* main.m in Sources */,
 				A610EBBF1BCEAE1300B25B4D /* UIImage+MultiFormat.m in Sources */,
+				4999F9311BF8CBC700A8656C /* DJRefreshView.m in Sources */,
 				49873A5F1BF4EBC20032B347 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				49265B3D1BDE8D680062F025 /* BuyWebViewController.m in Sources */,
 				A610EBC11BCEAE1300B25B4D /* UIImageView+HighlightedWebCache.m in Sources */,
+				4999F92E1BF8CBC700A8656C /* DJRefresh.m in Sources */,
 				49873A5A1BF4EBC20032B347 /* MASConstraintMaker.m in Sources */,
 				A6E78A131BDFB2A40024101E /* CityListViewCell.m in Sources */,
 				A610EBBE1BCEAE1300B25B4D /* UIImage+GIF.m in Sources */,
