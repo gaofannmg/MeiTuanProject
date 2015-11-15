@@ -22,5 +22,6 @@
 #import "CommonMethod.h"
 #import "LocationMgr.h"
 #import "UIImage+Color.h"
+#import "MBProgressHUD.h"
 
 #endif

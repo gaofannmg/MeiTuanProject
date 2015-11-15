@@ -44,6 +44,10 @@
     titleLabel.textColor = RGB(45, 45, 45);
     [headView addSubview:titleLabel];
     
+    UIView *splitView = [[UIView alloc] initWithFrame:CGRectMake(0, headView.frame.size.height - 0.5, headView.bounds.size.width, 0.5)];
+    splitView.backgroundColor = RGB(175, 175, 175);
+    [headView addSubview:splitView];
+    
     UITableView *cityListTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(headView.frame), WIN_WIDTH, WIN_HIGHT -64) style:UITableViewStylePlain];
     cityListTabView.backgroundColor = [UIColor whiteColor];
     cityListTabView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;

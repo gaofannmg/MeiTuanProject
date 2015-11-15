@@ -28,6 +28,8 @@
     BOOL isExpand; //是否展开，默认收起
     UIView *titleView;
     UIButton *titleViewBuyButton;
+    
+    MBProgressHUD *HUD;
 }
 
 @property (nonatomic,weak) UIButton *cellBuyButton;
@@ -117,6 +119,25 @@
 
 #pragma mark -- 发送请求回调方法
 
+
+-(void) showLoaing
+{
+    if (!HUD)
+    {
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        HUD.mode = MBProgressHUDModeIndeterminate;
+        HUD.labelText = @"正在加载...";
+        HUD.labelFont = [UIFont systemFontOfSize:14];
+        [self.view addSubview:HUD];
+    }
+    [HUD show:YES];
+}
+
+-(void) hideLoaing
+{
+    [HUD hide:YES];
+}
+
 - (void) getDealDetailData
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -124,6 +145,8 @@
     NSLog(@"发送请求的参数: %@", params.allValues);
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+  
+    [self showLoaing];
 }
 
 //成功
@@ -141,11 +164,20 @@
         
         [detailTabView reloadData];
     }
+    [self hideLoaing];
 }
 //失败
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
 {
+    [self hideLoaing];
     
+    MBProgressHUD *errorHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    errorHUD.mode = MBProgressHUDModeText;
+    errorHUD.labelText = @"网络不给力";
+    errorHUD.labelFont = [UIFont systemFontOfSize:12];
+    [self.view addSubview:errorHUD];
+    [errorHUD show:YES];
+    [errorHUD hide:YES afterDelay:1];
 }
 
 #pragma mark -- tableViewDelegate

@@ -103,4 +103,5 @@
     
     originalPriceLabel.center = CGPointMake(originalPriceLabel.center.x, presentPriceLabel.center.y);
 }
+
 @end

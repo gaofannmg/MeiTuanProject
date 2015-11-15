@@ -33,6 +33,10 @@
 		49873A5E1BF4EBC20032B347 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 49873A511BF4EBC20032B347 /* NSArray+MASAdditions.m */; };
 		49873A5F1BF4EBC20032B347 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 49873A541BF4EBC20032B347 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		49873A601BF4EBC20032B347 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 49873A561BF4EBC20032B347 /* View+MASAdditions.m */; };
+		4999F9191BF8B60400A8656C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4999F9181BF8B60400A8656C /* MBProgressHUD.m */; };
+		4999F91B1BF8B62C00A8656C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999F91A1BF8B62C00A8656C /* Foundation.framework */; };
+		4999F91D1BF8B63500A8656C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999F91C1BF8B63500A8656C /* UIKit.framework */; };
+		4999F91F1BF8B63E00A8656C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4999F91E1BF8B63E00A8656C /* CoreGraphics.framework */; };
 		49CEFEC21BE463230041C039 /* BaseFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFEC11BE463230041C039 /* BaseFilterViewController.m */; };
 		49CEFEC51BE513140041C039 /* LeftFilterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFEC41BE513140041C039 /* LeftFilterCell.m */; };
 		49CEFECC1BE668630041C039 /* FindDealsRequestFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 49CEFECB1BE668630041C039 /* FindDealsRequestFactory.m */; };
@@ -133,6 +137,11 @@
 		49873A551BF4EBC20032B347 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
 		49873A561BF4EBC20032B347 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
 		49873A571BF4EBC20032B347 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
+		4999F9171BF8B60400A8656C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		4999F9181BF8B60400A8656C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		4999F91A1BF8B62C00A8656C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4999F91C1BF8B63500A8656C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4999F91E1BF8B63E00A8656C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		49CEFEC01BE463230041C039 /* BaseFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseFilterViewController.h; sourceTree = "<group>"; };
 		49CEFEC11BE463230041C039 /* BaseFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseFilterViewController.m; sourceTree = "<group>"; };
 		49CEFEC31BE513140041C039 /* LeftFilterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftFilterCell.h; sourceTree = "<group>"; };
@@ -210,6 +219,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4999F91F1BF8B63E00A8656C /* CoreGraphics.framework in Frameworks */,
+				4999F91D1BF8B63500A8656C /* UIKit.framework in Frameworks */,
+				4999F91B1BF8B62C00A8656C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +396,25 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		4999F9161BF8B60400A8656C /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4999F9171BF8B60400A8656C /* MBProgressHUD.h */,
+				4999F9181BF8B60400A8656C /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		4999F9201BF8B64C00A8656C /* FrameWork */ = {
+			isa = PBXGroup;
+			children = (
+				4999F91E1BF8B63E00A8656C /* CoreGraphics.framework */,
+				4999F91C1BF8B63500A8656C /* UIKit.framework */,
+				4999F91A1BF8B62C00A8656C /* Foundation.framework */,
+			);
+			name = FrameWork;
+			sourceTree = "<group>";
+		};
 		49CEFEC61BE667D00041C039 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +464,7 @@
 		A610EB871BCEAE1300B25B4D /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				4999F9161BF8B60400A8656C /* MBProgressHUD */,
 				49F456631BF8707900F557B8 /* LocationMgr */,
 				49107F2C1BF82A6E00B0338E /* Catagory */,
 				49873A401BF4EBC20032B347 /* Masonry */,
@@ -529,6 +561,7 @@
 				A67084141BC943EA00F6A40F /* Images.xcassets */,
 				A67084161BC943EA00F6A40F /* LaunchScreen.xib */,
 				A67084071BC943EA00F6A40F /* Supporting Files */,
+				4999F9201BF8B64C00A8656C /* FrameWork */,
 				A610EBC41BCEB17F00B25B4D /* PrefixHeader.pch */,
 			);
 			path = MeiTuan;
@@ -688,6 +721,7 @@
 				A610EBB31BCEAE1300B25B4D /* DPRequest.m in Sources */,
 				49873A591BF4EBC20032B347 /* MASConstraint.m in Sources */,
 				A610EBBD1BCEAE1300B25B4D /* UIButton+WebCache.m in Sources */,
+				4999F9191BF8B60400A8656C /* MBProgressHUD.m in Sources */,
 				A610EBB51BCEAE1300B25B4D /* NSData+ImageContentType.m in Sources */,
 				A610EBBC1BCEAE1300B25B4D /* SDWebImagePrefetcher.m in Sources */,
 				49107F2F1BF82A6E00B0338E /* UIImage+Color.m in Sources */,

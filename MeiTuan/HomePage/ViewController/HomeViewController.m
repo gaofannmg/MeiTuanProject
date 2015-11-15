@@ -30,6 +30,7 @@
     FindDealsRequestFactory *requsetModelFactory;
     CatagoryFilterViewController *typeFilterVC;
     RegionFilterViewController *screenFilterVC;
+    MBProgressHUD *HUD;
 }
 @end
 
@@ -179,6 +180,25 @@
     
     [self getHttpData];
 }
+
+-(void) showLoaing
+{
+    if (!HUD)
+    {
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        HUD.mode = MBProgressHUDModeIndeterminate;
+        HUD.labelText = @"正在加载...";
+        HUD.labelFont = [UIFont systemFontOfSize:14];
+        [self.view addSubview:HUD];
+    }
+    [HUD show:YES];
+}
+
+-(void) hideLoaing
+{
+    [HUD hide:YES];
+}
+
 #pragma mark -- 获取数据
 /**
  *  首页默认搜索,定位成功走附近排序，否则走默认排序
@@ -188,6 +208,8 @@
     NSMutableDictionary *params = [requsetModelFactory getDefaultSearchDict];
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    
+    [self showLoaing];
     
 //    CLLocationCoordinate2D curLocation = [LocationMgr shareInstance].curLocation;
 //    if (curLocation.latitude > 0 && curLocation.longitude > 0)
@@ -217,6 +239,8 @@
     NSMutableDictionary *params = [requsetModelFactory getKeyWordsDict:keyWord];
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    
+    [self showLoaing];
 }
 
 /**
@@ -229,6 +253,8 @@
     NSMutableDictionary *params = [requsetModelFactory getCityDict:cityName];
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    
+    [self showLoaing];
 }
 
 /**
@@ -242,6 +268,7 @@
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
     
+    [self showLoaing];
 }
 
 /**
@@ -254,6 +281,8 @@
     NSMutableDictionary *params = [requsetModelFactory getCategoryDict:catagoryName];
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+    
+    [self showLoaing];
 }
 
 /**
@@ -271,6 +300,8 @@
         NSMutableDictionary *params = [requsetModelFactory getsortLatitude:curLocation.latitude longitude:curLocation.longitude radius:radius];
         DPAPI *api = [[DPAPI alloc] init];
         [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
+        
+        [self showLoaing];
     }
     else
     {
@@ -284,6 +315,8 @@
 {
     //result 字典
     NSLog(@"%@",result);
+    
+    [self hideLoaing];
     
     NSArray *dataArray = [result objectForKey:@"deals"];
     
@@ -308,6 +341,16 @@
 {
     //结束刷新动画
     [cView.bottomRefreshControl endRefreshing];
+    
+    [self hideLoaing];
+    
+    MBProgressHUD *errorHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    errorHUD.mode = MBProgressHUDModeText;
+    errorHUD.labelText = @"网络不给力";
+    errorHUD.labelFont = [UIFont systemFontOfSize:12];
+    [self.view addSubview:errorHUD];
+    [errorHUD show:YES];
+    [errorHUD hide:YES afterDelay:1];
 }
 
 #pragma mark --UICollectionViewDelegate
