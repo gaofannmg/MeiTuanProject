@@ -35,13 +35,15 @@
 //    [seachTitleView addSubview:backBut];
   
     UIButton *removeBut = [UIButton buttonWithType:UIButtonTypeSystem];
-    removeBut.backgroundColor = [UIColor whiteColor];
-    removeBut.frame = CGRectMake(WIN_WIDTH - 80, 20, 60, 40);
+    removeBut.backgroundColor = [UIColor clearColor];
+    [removeBut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    removeBut.frame = CGRectMake(WIN_WIDTH - 60, 20, 60, 40);
     [removeBut setTitle:@"取消" forState:UIControlStateNormal];
+//    removeBut.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
     [removeBut addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
     [seachTitleView addSubview:removeBut];
     
-    UIView *searchBar = [[UIView alloc] initWithFrame:CGRectMake(20, 25, WIN_WIDTH - 20 - removeBut.frame.size.width - 10 - 20, 34)];
+    UIView *searchBar = [[UIView alloc] initWithFrame:CGRectMake(20, 25, WIN_WIDTH - 10 - removeBut.frame.size.width  - 10, 34)];
     searchBar.layer.masksToBounds = YES;
     searchBar.layer.cornerRadius = 17.0;
     searchBar.backgroundColor = [UIColor whiteColor];

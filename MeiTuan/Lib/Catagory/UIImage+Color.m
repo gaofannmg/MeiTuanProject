@@ -36,13 +36,13 @@
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextClipToMask(context, rect, self.CGImage);
-    CGContextSetFillColorWithColor(context, [[UIColor redColor] CGColor]);
+    CGContextSetFillColorWithColor(context, color.CGColor);
     CGContextFillRect(context, rect);
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
     UIImage *flippedImage = [UIImage imageWithCGImage:img.CGImage
-                                                scale:1.0 orientation: UIImageOrientationDownMirrored];
+                                                scale:img.scale orientation: UIImageOrientationDownMirrored];
     
     return flippedImage;
 

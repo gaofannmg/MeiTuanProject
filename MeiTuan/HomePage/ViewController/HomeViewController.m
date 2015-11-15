@@ -50,14 +50,21 @@
     [self.view addSubview:titleView];
     
     cityBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    cityBtn.frame = CGRectMake(WIN_WIDTH - 80, 20 , 60, 40);
+    cityBtn.frame = CGRectMake(WIN_WIDTH - 85, 20 , 80, 40);
     [cityBtn setTitle:@"北京" forState:UIControlStateNormal];
-    cityBtn.backgroundColor = [UIColor whiteColor];
+    cityBtn.tintColor = [UIColor whiteColor];
+    [cityBtn setImage:[UIImage imageNamed:@"cityBtn"] forState:UIControlStateNormal];
+    cityBtn.adjustsImageWhenHighlighted = NO;
+    [cityBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    cityBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    cityBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 3);
+    cityBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 2, 0, 0);
+    cityBtn.backgroundColor = [UIColor clearColor];
     [cityBtn addTarget:self action:@selector(cityButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:cityBtn];
     
     searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    searchBtn.frame = CGRectMake(20, 25, WIN_WIDTH - 20 - 10 - cityBtn.frame.size.width - 20, 34);
+    searchBtn.frame = CGRectMake(20, 25, WIN_WIDTH - 30 - cityBtn.frame.size.width, 34);
     searchBtn.backgroundColor = [UIColor whiteColor];
     searchBtn.layer.masksToBounds = YES;
     searchBtn.layer.cornerRadius = searchBtn.frame.size.height/2;
