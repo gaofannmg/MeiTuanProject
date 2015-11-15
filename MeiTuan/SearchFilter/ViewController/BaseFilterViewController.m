@@ -14,9 +14,7 @@
 @interface BaseFilterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UIView *titleView;
-    NSInteger leftSelectIndex;
     NSInteger rightSelectIndex;
-    NSInteger leftSelectUIIndex; //用于ui选中
 }
 @end
 

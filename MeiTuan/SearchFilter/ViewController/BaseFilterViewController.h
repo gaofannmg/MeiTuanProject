@@ -19,6 +19,8 @@
     UITableView *rightTabVIew;
     NSString *rightArrayKeyString;
     NSString *leftTitleKey;
+    NSInteger leftSelectIndex;
+    NSInteger leftSelectUIIndex; //用于ui选中
 }
 @property (nonatomic,weak) HomeViewController *homeVC;
 

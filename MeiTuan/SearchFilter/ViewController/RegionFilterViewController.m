@@ -11,7 +11,7 @@
 
 @interface RegionFilterViewController ()
 {
-    
+    BOOL isFirstViewWillAppear;
 }
 @end
 
@@ -24,6 +24,8 @@
     titleLable.text = @"区域";
     rightArrayKeyString = @"subregions";
     leftTitleKey = @"name";
+    
+    isFirstViewWillAppear = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -57,6 +59,25 @@
     dic[rightArrayKeyString] = subCattegoriesArr;
     
     [leftArray insertObject:dic atIndex:0];
+    
+    //第一次创建执行，选中全部
+    
+    if (isFirstViewWillAppear)
+    {
+        isFirstViewWillAppear = NO;
+        for (int i = 0;i< leftArray.count;i++)
+        {
+            NSDictionary *leftDict = [leftArray objectAtIndex:i];
+            NSString *leftTitle = [leftDict objectForKey:@"name"];
+            
+            if ([leftTitle isEqual:@"全部"])
+            {
+                leftSelectUIIndex = i;
+                leftSelectIndex = i;
+                break;
+            }
+        }
+    }
     
     [super viewWillAppear:animated];
 }
