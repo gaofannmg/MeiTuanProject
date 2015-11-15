@@ -11,7 +11,7 @@
 
 @interface RegionFilterViewController ()
 {
-    BOOL isFirstViewWillAppear;
+    
 }
 @end
 
@@ -24,8 +24,6 @@
     titleLable.text = @"区域";
     rightArrayKeyString = @"subregions";
     leftTitleKey = @"name";
-    
-    isFirstViewWillAppear = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated

@@ -379,6 +379,7 @@
     }
     
     typeFilterVC.homeVC = self;
+    typeFilterVC.cityName = cityBtn.titleLabel.text;
     [self presentViewController:typeFilterVC animated:YES completion:nil];
 }
 

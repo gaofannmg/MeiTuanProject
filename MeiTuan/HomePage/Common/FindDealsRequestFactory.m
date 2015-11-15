@@ -58,6 +58,7 @@
     self.radius = 0;
     self.category = nil;
     self.region = nil;
+    self.keyword = nil;
     
     NSMutableDictionary *dict = [self convertToDictFromModel];
     

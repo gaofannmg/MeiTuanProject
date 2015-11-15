@@ -10,6 +10,4 @@
 
 @interface RegionFilterViewController : BaseFilterViewController
 
-@property (nonatomic,copy) NSString *cityName;
-
 @end

@@ -26,12 +26,24 @@
     rightSelectIndex = -1;
     leftSelectUIIndex = 0;
     leftSelectIndex = 0;
+    isFirstViewWillAppear = YES;
     
     rightArrayKeyString = @"subcategories";
     
     [self createNaigaitionBar];
     
     [self createUI];
+}
+
+-(void) setCityName:(NSString *)cityName
+{
+    if (![cityName isEqual:_cityName])
+    {
+        leftSelectUIIndex = 0;
+        leftSelectIndex = 0;
+    }
+    
+    _cityName  = cityName;
 }
 
 -(void) viewWillAppear:(BOOL)animated
