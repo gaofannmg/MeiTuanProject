@@ -59,22 +59,23 @@
 {
     titleView = [[UIView alloc] init];
     titleView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64);
-    titleView.backgroundColor = [UIColor whiteColor];
+    titleView.backgroundColor = RGB(248, 111, 93);
     [self.view addSubview:titleView];
     
     titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 100, 44)];
     titleLable.center = CGPointMake(titleView.center.x, titleLable.center.y);
-    titleLable.textColor = RGB(45, 45, 45);
+    titleLable.textColor = [UIColor whiteColor];
     titleLable.textAlignment = NSTextAlignmentCenter;
     titleLable.font = [UIFont systemFontOfSize:16];
     [titleView addSubview:titleLable];
     
     UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     outBtn.frame = CGRectMake(5,20,60, 44);
-    outBtn.backgroundColor = [UIColor whiteColor];
-    [outBtn setTitle:@"返回" forState:UIControlStateNormal];
-    outBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [outBtn setTitleColor:RGB(45, 45, 45) forState:UIControlStateNormal];
+    outBtn.backgroundColor = [UIColor clearColor];
+    outBtn.tintColor = [UIColor whiteColor];
+    [outBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 30)];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateNormal];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateHighlighted];
     [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:outBtn];
     
@@ -149,6 +150,7 @@
         NSString *rightTitle = rightArray[indexPath.row];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rightCell"];
         cell.textLabel.text = rightTitle;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
         if (leftSelectIndex == leftSelectUIIndex && rightSelectIndex == indexPath.row)

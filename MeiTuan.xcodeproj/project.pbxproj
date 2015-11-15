@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49107F2F1BF82A6E00B0338E /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 49107F2E1BF82A6E00B0338E /* UIImage+Color.m */; };
 		49265B3C1BDE8D680062F025 /* OtherDealsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 49265B2A1BDE8D680062F025 /* OtherDealsData.m */; };
 		49265B3D1BDE8D680062F025 /* BuyWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49265B2D1BDE8D680062F025 /* BuyWebViewController.m */; };
 		49265B3E1BDE8D680062F025 /* DealDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49265B2F1BDE8D680062F025 /* DealDetailViewController.m */; };
@@ -79,6 +80,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49107F2D1BF82A6E00B0338E /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		49107F2E1BF82A6E00B0338E /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
 		49265B291BDE8D680062F025 /* OtherDealsData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OtherDealsData.h; sourceTree = "<group>"; };
 		49265B2A1BDE8D680062F025 /* OtherDealsData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OtherDealsData.m; sourceTree = "<group>"; };
 		49265B2C1BDE8D680062F025 /* BuyWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyWebViewController.h; sourceTree = "<group>"; };
@@ -220,6 +223,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49107F2C1BF82A6E00B0338E /* Catagory */ = {
+			isa = PBXGroup;
+			children = (
+				49107F2D1BF82A6E00B0338E /* UIImage+Color.h */,
+				49107F2E1BF82A6E00B0338E /* UIImage+Color.m */,
+			);
+			path = Catagory;
+			sourceTree = "<group>";
+		};
 		49265B271BDE8D680062F025 /* DetailPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -421,6 +433,7 @@
 		A610EB871BCEAE1300B25B4D /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				49107F2C1BF82A6E00B0338E /* Catagory */,
 				49873A401BF4EBC20032B347 /* Masonry */,
 				49873A3C1BF4EB5E0032B347 /* UIScrollView+BottomRefreshControl */,
 				497139221BEBB60C0003D0E1 /* LocationMgr */,
@@ -676,6 +689,7 @@
 				A610EBBD1BCEAE1300B25B4D /* UIButton+WebCache.m in Sources */,
 				A610EBB51BCEAE1300B25B4D /* NSData+ImageContentType.m in Sources */,
 				A610EBBC1BCEAE1300B25B4D /* SDWebImagePrefetcher.m in Sources */,
+				49107F2F1BF82A6E00B0338E /* UIImage+Color.m in Sources */,
 				492A9F781BE26DC200F47AB2 /* SortCell.m in Sources */,
 				A610EBB91BCEAE1300B25B4D /* SDWebImageDownloader.m in Sources */,
 				A610EBB01BCEAE1300B25B4D /* HomeViewController.m in Sources */,

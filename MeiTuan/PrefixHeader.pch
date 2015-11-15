@@ -21,5 +21,6 @@
 #import "DPAPI.h"
 #import "CommonMethod.h"
 #import "LocationMgr.h"
+#import "UIImage+Color.h"
 
 #endif

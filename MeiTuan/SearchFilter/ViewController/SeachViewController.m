@@ -24,7 +24,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIView *seachTitleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
-    seachTitleView.backgroundColor = [UIColor greenColor];
+    seachTitleView.backgroundColor = RGB(248, 111, 93);
     [self.view addSubview:seachTitleView];
     
 //    UIButton *backBut = [UIButton buttonWithType:UIButtonTypeSystem];

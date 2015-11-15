@@ -14,6 +14,7 @@
 #import "OtherDealsData.h"
 #import "BuyWebViewController.h"
 
+
 @interface DealDetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     DetailMutipleWordsCell *caucateCell;
@@ -50,7 +51,7 @@
 -(void) createNaigaitionBar
 {
     titleView = [[UIView alloc] init];
-    titleView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64);
+    titleView.frame = CGRectMake(0, 0,WIN_WIDTH, 64);
     titleView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:titleView];
     
@@ -59,14 +60,16 @@
     titleLable.text = @"团购详情";
     titleLable.textColor = RGB(45, 45, 45);
     titleLable.textAlignment = NSTextAlignmentCenter;
-    titleLable.font = [UIFont systemFontOfSize:16];
+    titleLable.font = [UIFont systemFontOfSize:15];
     [titleView addSubview:titleLable];
     
     UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     outBtn.frame = CGRectMake(5,20,60, 44);
     outBtn.backgroundColor = [UIColor clearColor];
+    outBtn.tintColor = RGB(45, 45, 45);
+    [outBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 30)];
     [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateNormal];
-    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateHighlighted];    
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateHighlighted];
     [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:outBtn];
     
