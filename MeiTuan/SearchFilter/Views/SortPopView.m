@@ -46,6 +46,8 @@
     contentView.dataSource = self;
     
     [self addSubview:contentView];
+    
+    [contentView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
