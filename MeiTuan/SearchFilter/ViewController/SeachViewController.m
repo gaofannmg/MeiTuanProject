@@ -26,13 +26,6 @@
     UIView *seachTitleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 64)];
     seachTitleView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:seachTitleView];
-    
-//    UIButton *backBut = [UIButton buttonWithType:UIButtonTypeSystem];
-//    backBut.backgroundColor = [UIColor whiteColor];
-//    backBut.frame = CGRectMake(10, 20, 80, 40);
-//    [backBut setTitle:@"返回" forState:UIControlStateNormal];
-//    [backBut addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
-//    [seachTitleView addSubview:backBut];
   
     UIButton *removeBut = [UIButton buttonWithType:UIButtonTypeSystem];
     removeBut.backgroundColor = [UIColor whiteColor];
