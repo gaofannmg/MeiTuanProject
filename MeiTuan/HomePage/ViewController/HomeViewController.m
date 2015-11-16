@@ -531,7 +531,8 @@
 {
     if (![cityBtn.titleLabel.text isEqual:cityName])
     {
-        searchBtn.titleLabel.text = @"";
+        [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+        [searchBtn setTitleColor:RGB(200, 200 ,200) forState:UIControlStateNormal];
     }
     else
     {
