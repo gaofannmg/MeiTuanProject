@@ -13,6 +13,8 @@
 
 @property (nonatomic) CLLocationCoordinate2D curLocation;
 
+@property (nonatomic,copy) NSString *curCityName;
+
 +(LocationMgr *) shareInstance;
 
 @end

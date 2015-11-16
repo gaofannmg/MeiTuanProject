@@ -23,15 +23,30 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, WIN_WIDTH, 64)];
-    headView.backgroundColor = [UIColor blueColor];
+    headView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:headView];
     
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    backButton.frame = CGRectMake(10,20,60, 40);
-    backButton.backgroundColor = [UIColor whiteColor];
-    [backButton setTitle:@"返回主页" forState:UIControlStateNormal];
-    [backButton addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backButton];
+    UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    outBtn.frame = CGRectMake(5,20,60, 44);
+    outBtn.backgroundColor = [UIColor clearColor];
+    outBtn.tintColor = RGB(45, 45, 45);
+    [outBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 30)];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateNormal];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateHighlighted];
+    [outBtn addTarget:self action:@selector(clickHomeView) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:outBtn];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 100, 44)];
+    titleLabel.center = CGPointMake(headView.center.x, titleLabel.center.y);
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"选择城市";
+    titleLabel.font = [UIFont systemFontOfSize:15];
+    titleLabel.textColor = RGB(45, 45, 45);
+    [headView addSubview:titleLabel];
+    
+    UIView *splitView = [[UIView alloc] initWithFrame:CGRectMake(0, headView.frame.size.height - 0.5, headView.bounds.size.width, 0.5)];
+    splitView.backgroundColor = RGB(175, 175, 175);
+    [headView addSubview:splitView];
     
     UITableView *cityListTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(headView.frame), WIN_WIDTH, WIN_HIGHT -64) style:UITableViewStylePlain];
     cityListTabView.backgroundColor = [UIColor whiteColor];
@@ -85,6 +100,8 @@
     CityListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CityListViewCell.h" forIndexPath:indexPath];
     [cell refreshCell:cityName];
     
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    
     return cell;
 }
 
@@ -113,6 +130,7 @@
     NSDictionary *dic = cityAry[section];
     NSString *titleStr = dic[@"title"];
     label.text = titleStr;
+    label.font = [UIFont systemFontOfSize:15];
     [titleView addSubview:label];
     
     return titleView;

@@ -14,9 +14,7 @@
 @interface BaseFilterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UIView *titleView;
-    NSInteger leftSelectIndex;
     NSInteger rightSelectIndex;
-    NSInteger leftSelectUIIndex; //用于ui选中
 }
 @end
 
@@ -25,11 +23,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor greenColor];
-    
     rightSelectIndex = -1;
     leftSelectUIIndex = 0;
     leftSelectIndex = 0;
+    isFirstViewWillAppear = YES;
     
     rightArrayKeyString = @"subcategories";
     
@@ -38,42 +35,51 @@
     [self createUI];
 }
 
+-(void) setCityName:(NSString *)cityName
+{
+    if (![cityName isEqual:_cityName])
+    {
+        leftSelectUIIndex = 0;
+        leftSelectIndex = 0;
+    }
+    
+    _cityName  = cityName;
+}
+
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    if (leftSelectIndex > 0)
-    {
-        leftSelectUIIndex = leftSelectIndex;
-        [leftTabView reloadData];
-        //刷新右边数据
-        NSDictionary *leftDataDict =leftArray[leftSelectIndex];
-        rightArray = leftDataDict[rightArrayKeyString];
-        
-        [rightTabVIew reloadData];
-    }
+    leftSelectUIIndex = leftSelectIndex;
+    [leftTabView reloadData];
+    //刷新右边数据
+    NSDictionary *leftDataDict =leftArray[leftSelectIndex];
+    rightArray = leftDataDict[rightArrayKeyString];
+    
+    [rightTabVIew reloadData];
 }
 
 -(void) createNaigaitionBar
 {
     titleView = [[UIView alloc] init];
     titleView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64);
-    titleView.backgroundColor = [UIColor whiteColor];
+    titleView.backgroundColor = RGB(248, 111, 93);
     [self.view addSubview:titleView];
     
     titleLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 100, 44)];
     titleLable.center = CGPointMake(titleView.center.x, titleLable.center.y);
-    titleLable.textColor = RGB(45, 45, 45);
+    titleLable.textColor = [UIColor whiteColor];
     titleLable.textAlignment = NSTextAlignmentCenter;
     titleLable.font = [UIFont systemFontOfSize:16];
     [titleView addSubview:titleLable];
     
     UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     outBtn.frame = CGRectMake(5,20,60, 44);
-    outBtn.backgroundColor = [UIColor whiteColor];
-    [outBtn setTitle:@"返回" forState:UIControlStateNormal];
-    outBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [outBtn setTitleColor:RGB(45, 45, 45) forState:UIControlStateNormal];
+    outBtn.backgroundColor = [UIColor clearColor];
+    outBtn.tintColor = [UIColor whiteColor];
+    [outBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 30)];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateNormal];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateHighlighted];
     [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:outBtn];
     
@@ -127,27 +133,30 @@
         NSDictionary *dict = leftArray[indexPath.row];
         
         NSString *titleName = dict[leftTitleKey];
-
+       
+        
         if (indexPath.row == leftSelectUIIndex)
+        
         {
             [cell refreshCell:titleName isSelect:YES];
         }
+        
         else
+        
         {
             [cell refreshCell:titleName isSelect:NO];
         }
         
         return cell;
-        
-
     }
     else
     {
         NSString *rightTitle = rightArray[indexPath.row];
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"rightCell"];
         cell.textLabel.text = rightTitle;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
         if (leftSelectIndex == leftSelectUIIndex && rightSelectIndex == indexPath.row)
         {
             cell.textLabel.textColor = [UIColor redColor];
@@ -177,7 +186,7 @@
         if (!rightArray || rightArray.count == 0)
         {
             NSString *catogtyString = [leftDataDict objectForKey:leftTitleKey];
-            [self setFilterByName:catogtyString];
+            [self setFilterByName:catogtyString leftTitle:catogtyString];
             
             rightSelectIndex = -1;
             leftSelectIndex = leftSelectUIIndex;
@@ -194,14 +203,14 @@
         rightSelectIndex = indexPath.row;
         leftSelectIndex = leftSelectUIIndex;
         [rightTabVIew reloadData];
+        NSDictionary *leftDataDict =leftArray[leftSelectIndex];
         if ([rightArray[indexPath.row] isEqual:@"全部"])
         {
-            NSDictionary *leftDataDict =leftArray[leftSelectIndex];
-            [self setFilterByName:leftDataDict[leftTitleKey]];
+            [self setFilterByName:leftDataDict[leftTitleKey] leftTitle:leftDataDict[leftTitleKey]];
         }
         else
         {
-            [self setFilterByName:rightArray[indexPath.row]];
+            [self setFilterByName:rightArray[indexPath.row] leftTitle:leftDataDict[leftTitleKey]];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -211,7 +220,13 @@
     }
 }
 
--(void) setFilterByName:(NSString *) newFiterString
+/**
+ *  选中某个选项
+ *
+ *  @param newFiterString 筛选词
+ *  @param leftTitle      当前左边选中的文字
+ */
+-(void) setFilterByName:(NSString *) newFiterString leftTitle:(NSString *) leftTitle
 {
     if ([self isKindOfClass:[CatagoryFilterViewController class]])
     {
@@ -219,7 +234,16 @@
     }
     else if([self isKindOfClass:[RegionFilterViewController class]])
     {
-        [self.homeVC selectRegion:newFiterString];
+        if ([leftTitle isEqual:@"附近"])
+        {
+            NSString *radusStr = [newFiterString stringByReplacingOccurrencesOfString:@"m" withString:@""];
+            int radus = radusStr.intValue;
+            [self.homeVC getNearbyHttpData:radus];
+        }
+        else
+        {
+            [self.homeVC selectRegion:newFiterString];
+        }
     }
 }
 

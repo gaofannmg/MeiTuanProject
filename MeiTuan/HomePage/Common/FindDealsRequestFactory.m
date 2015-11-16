@@ -43,6 +43,9 @@
 -(NSMutableDictionary *) getKeyWordsDict:(NSString *) keyWords
 {
     self.keyword = keyWords;
+    self.radius = 0;
+    self.category = nil;
+    self.region = nil;
     
     NSMutableDictionary *dict = [self convertToDictFromModel];
     
@@ -52,6 +55,10 @@
 - (NSMutableDictionary *) getCityDict: (NSString *) cityName
 {
     self.city = cityName;
+    self.radius = 0;
+    self.category = nil;
+    self.region = nil;
+    self.keyword = nil;
     
     NSMutableDictionary *dict = [self convertToDictFromModel];
     
@@ -101,6 +108,14 @@
     else
     {
         self.region = region;
+    }
+    
+    self.radius = 0;
+    
+    if (self.sort != 7)
+    {
+        self.latitude = 0;
+        self.longitude = 0;
     }
     
     NSMutableDictionary *dict = [self convertToDictFromModel];

@@ -14,6 +14,7 @@
 #import "OtherDealsData.h"
 #import "BuyWebViewController.h"
 
+
 @interface DealDetailViewController ()<DPRequestDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     DetailMutipleWordsCell *caucateCell;
@@ -27,6 +28,8 @@
     BOOL isExpand; //是否展开，默认收起
     UIView *titleView;
     UIButton *titleViewBuyButton;
+    
+    MBProgressHUD *HUD;
 }
 
 @property (nonatomic,weak) UIButton *cellBuyButton;
@@ -50,7 +53,7 @@
 -(void) createNaigaitionBar
 {
     titleView = [[UIView alloc] init];
-    titleView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64);
+    titleView.frame = CGRectMake(0, 0,WIN_WIDTH, 64);
     titleView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:titleView];
     
@@ -59,15 +62,16 @@
     titleLable.text = @"团购详情";
     titleLable.textColor = RGB(45, 45, 45);
     titleLable.textAlignment = NSTextAlignmentCenter;
-    titleLable.font = [UIFont systemFontOfSize:16];
+    titleLable.font = [UIFont systemFontOfSize:15];
     [titleView addSubview:titleLable];
     
     UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     outBtn.frame = CGRectMake(5,20,60, 44);
-    outBtn.backgroundColor = [UIColor whiteColor];
-    [outBtn setTitle:@"返回" forState:UIControlStateNormal];
-    outBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [outBtn setTitleColor:RGB(45, 45, 45) forState:UIControlStateNormal];
+    outBtn.backgroundColor = [UIColor clearColor];
+    outBtn.tintColor = RGB(45, 45, 45);
+    [outBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 30)];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateNormal];
+    [outBtn setImage:[UIImage imageNamed:@"icon_round_back"] forState:UIControlStateHighlighted];
     [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:outBtn];
     
@@ -115,6 +119,25 @@
 
 #pragma mark -- 发送请求回调方法
 
+
+-(void) showLoaing
+{
+    if (!HUD)
+    {
+        HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        HUD.mode = MBProgressHUDModeIndeterminate;
+        HUD.labelText = @"正在加载...";
+        HUD.labelFont = [UIFont systemFontOfSize:14];
+        [self.view addSubview:HUD];
+    }
+    [HUD show:YES];
+}
+
+-(void) hideLoaing
+{
+    [HUD hide:YES];
+}
+
 - (void) getDealDetailData
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -122,6 +145,8 @@
     NSLog(@"发送请求的参数: %@", params.allValues);
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/get_single_deal" params:params delegate:self];
+  
+    [self showLoaing];
 }
 
 //成功
@@ -139,11 +164,20 @@
         
         [detailTabView reloadData];
     }
+    [self hideLoaing];
 }
 //失败
 - (void)request:(DPRequest *)request didFailWithError:(NSError *)error
 {
+    [self hideLoaing];
     
+    MBProgressHUD *errorHUD = [[MBProgressHUD alloc] initWithView:self.view];
+    errorHUD.mode = MBProgressHUDModeText;
+    errorHUD.labelText = @"网络不给力";
+    errorHUD.labelFont = [UIFont systemFontOfSize:12];
+    [self.view addSubview:errorHUD];
+    [errorHUD show:YES];
+    [errorHUD hide:YES afterDelay:1];
 }
 
 #pragma mark -- tableViewDelegate

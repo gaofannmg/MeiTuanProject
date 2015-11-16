@@ -10,13 +10,12 @@
 
 @interface HomeViewController : UIViewController
 
-- (void) changeBtnColor:(UIColor *) color;
 - (void) selectCity:(NSString *) cityName;
 - (void) sortWithText:(NSString *) sortTxt;
 - (void) searchWithKeyWord:(NSString *) keyWord;
 - (void) selectRegion:(NSString *) regionString;
 - (void) selectCatagoryByName:(NSString *) catagoryNameString;
 - (void) getHttpData;
-
+- (void) getNearbyHttpData:(int) radius;
 @end
 

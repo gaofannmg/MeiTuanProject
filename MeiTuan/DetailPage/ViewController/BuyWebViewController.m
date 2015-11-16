@@ -37,11 +37,11 @@
     [self.view addSubview:webView];
     
     UIButton *outBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    outBtn.frame = CGRectMake(WIN_WIDTH - 50,20,40, 40);
+    outBtn.frame = CGRectMake(WIN_WIDTH - 50,22,40, 40);
     outBtn.layer.cornerRadius = outBtn.frame.size.width/2.0;
-    outBtn.backgroundColor = [UIColor greenColor];
+    outBtn.backgroundColor = RGB(230, 230, 230);
     [outBtn setTitle:@"关闭" forState:UIControlStateNormal];
-    outBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    outBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [outBtn setTitleColor:RGB(45, 45, 45) forState:UIControlStateNormal];
     [outBtn addTarget:self action:@selector(clickView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:outBtn];

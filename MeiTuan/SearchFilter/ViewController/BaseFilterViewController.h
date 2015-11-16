@@ -19,8 +19,12 @@
     UITableView *rightTabVIew;
     NSString *rightArrayKeyString;
     NSString *leftTitleKey;
+    NSInteger leftSelectIndex;
+    NSInteger leftSelectUIIndex; //用于ui选中
+    BOOL isFirstViewWillAppear;
 }
 @property (nonatomic,weak) HomeViewController *homeVC;
+@property (nonatomic,copy) NSString *cityName;
 
 
 @end

@@ -28,8 +28,6 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-    
     NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"cities" ofType:@"plist"];
     NSArray *dataArray = [[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     
@@ -48,19 +46,43 @@
         NSDictionary *leftDataDict = [leftArray firstObject];
         
         rightArray = leftDataDict[rightArrayKeyString];
-
+        
     }
     
-    // Do any additional setup after loading the view.
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:@"附近" forKey:@"name"];
+    //定位成功
+    if ([LocationMgr shareInstance].curLocation.latitude > 0 && [LocationMgr shareInstance].curLocation.longitude > 0)
+    {
+        if ([[LocationMgr shareInstance].curCityName isEqual:self.cityName])
+        {
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObject:@"附近" forKey:@"name"];
+            
+            NSArray *subCattegoriesArr = @[@"500m",@"1000m",@"1500m",@"2000m",@"3000m"];
+            
+            dic[rightArrayKeyString] = subCattegoriesArr;
+            
+            [leftArray insertObject:dic atIndex:0];
+        }
+    }
     
-    NSArray *subCattegoriesArr = @[@"500m",@"1000m",@"1500m",@"2000m",@"3000m"];
+    //第一次创建执行，选中全部
+    if (isFirstViewWillAppear)
+    {
+        isFirstViewWillAppear = NO;
+        for (int i = 0;i< leftArray.count;i++)
+        {
+            NSDictionary *leftDict = [leftArray objectAtIndex:i];
+            NSString *leftTitle = [leftDict objectForKey:@"name"];
+            
+            if ([leftTitle isEqual:@"全部"])
+            {
+                leftSelectUIIndex = i;
+                leftSelectIndex = i;
+                break;
+            }
+        }
+    }
     
-    dic[rightArrayKeyString] = subCattegoriesArr;
-    
-    [leftArray insertObject:dic atIndex:0];
-    
-
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
