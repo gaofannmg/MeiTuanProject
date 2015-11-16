@@ -247,6 +247,15 @@
     DPAPI *api = [[DPAPI alloc] init];
     [api requestWithURL:@"v1/deal/find_deals" params:params delegate:self];
     
+    if (![cityBtn.titleLabel.text isEqual:cityName])
+    {
+        searchBtn.titleLabel.text = @"";
+    }
+    else
+    {
+        return;
+    }
+    
     [self showLoaing];
 }
 

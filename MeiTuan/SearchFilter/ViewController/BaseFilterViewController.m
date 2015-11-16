@@ -93,6 +93,7 @@
     leftTabView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(titleView.frame), self.view.frame.size.width * 0.28, self.view.frame.size.height - titleView.frame.size.height) style:UITableViewStylePlain];
     leftTabView.backgroundColor = RGB(231, 231, 231);
     leftTabView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    leftTabView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:leftTabView];
     
     rightTabVIew = [[UITableView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(leftTabView.frame), CGRectGetMaxY(titleView.frame), self.view.frame.size.width - leftTabView.frame.size.width,self.view.frame.size.height - titleView.frame.size.height) style:UITableViewStylePlain];
