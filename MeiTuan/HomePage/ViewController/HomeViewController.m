@@ -201,7 +201,7 @@
 //下拉刷新
 -(void) pullDownRefresh
 {
-    [self resetPageInfo];
+    requsetModelFactory.pageIndex = 1;
     
     [self getHttpData];
 }
