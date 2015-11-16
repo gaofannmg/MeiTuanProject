@@ -114,7 +114,7 @@
     //下拉刷新
     refreshControl = [[UIRefreshControl alloc] init];
     [cView addSubview:refreshControl];
-    [refreshControl addTarget:self action:@selector(getHttpData) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(pullDownRefresh) forControlEvents:UIControlEventValueChanged];
     
     UIView *topLine = [[UIView alloc] initWithFrame:CGRectMake(0, 0, barView.frame.size.width, 0.5)];
     topLine.backgroundColor = RGB(230, 230, 230);
@@ -186,12 +186,24 @@
         HUD.labelFont = [UIFont systemFontOfSize:14];
         [self.view addSubview:HUD];
     }
-    [HUD show:YES];
+    
+    if (requsetModelFactory.pageIndex == 1)
+    {
+        [HUD show:YES];
+    }
 }
 
 -(void) hideLoaing
 {
     [HUD hide:YES];
+}
+
+//下拉刷新
+-(void) pullDownRefresh
+{
+    [self resetPageInfo];
+    
+    [self getHttpData];
 }
 
 #pragma mark -- 获取数据

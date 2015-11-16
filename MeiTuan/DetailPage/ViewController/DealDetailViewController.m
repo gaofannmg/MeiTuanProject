@@ -396,11 +396,13 @@
 -(void) buyButtonClick
 {
     BuyWebViewController *buyWebView = [[BuyWebViewController alloc] init];
-    NSArray *array = dataDict[@"businesses"];
-    if (array.count > 0)
+    NSString *deal_id = dataDict[@"deal_id"];
+    
+    NSArray *dealIdArray = [deal_id componentsSeparatedByString:@"-"];
+
+    if (dealIdArray.count == 2)
     {
-        NSDictionary *dic = [array firstObject];
-        buyWebView.url = dic[@"h5_url"];
+        buyWebView.url = [NSString stringWithFormat:@"http://m.dianping.com/tuan/buy/%@",dealIdArray[1]];
         [self presentViewController:buyWebView animated:YES completion:nil];
     }
 }
