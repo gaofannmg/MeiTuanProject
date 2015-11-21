@@ -13,7 +13,6 @@
 
 @interface BaseFilterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    UIView *titleView;
     NSInteger rightSelectIndex;
 }
 @end
@@ -190,6 +189,40 @@
         return cell;
 
     }
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSDictionary *leftDict = [leftArray objectAtIndex:leftSelectUIIndex];
+    NSString *leftTitle = [leftDict objectForKey:leftTitleKey];
+    
+    if ([leftTitle isEqual:@"附近"] && tableView == rightTabVIew && [self isKindOfClass:[RegionFilterViewController class]] && [LocationMgr shareInstance].locationInfoName.length > 0)
+    {
+        UILabel *locationInfoCityNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, rightTabVIew.frame.size.width, 20)];
+        locationInfoCityNameLabel.text = [LocationMgr shareInstance].locationInfoName;
+        locationInfoCityNameLabel.font = [UIFont systemFontOfSize:12];
+        locationInfoCityNameLabel.backgroundColor = [UIColor blackColor];
+        locationInfoCityNameLabel.textColor = [UIColor whiteColor];
+        locationInfoCityNameLabel.alpha = 0.6;
+        locationInfoCityNameLabel.textAlignment = NSTextAlignmentCenter;
+       
+        return locationInfoCityNameLabel;
+    }
+    
+    return nil;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    NSDictionary *leftDict = [leftArray objectAtIndex:leftSelectUIIndex];
+    NSString *leftTitle = [leftDict objectForKey:leftTitleKey];
+    
+    if ([leftTitle isEqual:@"附近"] && tableView == rightTabVIew && [self isKindOfClass:[RegionFilterViewController class]] && [LocationMgr shareInstance].locationInfoName.length > 0)
+    {
+        return 20;
+    }
+    
+    return 0;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

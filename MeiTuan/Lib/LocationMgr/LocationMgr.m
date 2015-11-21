@@ -120,6 +120,9 @@ static LocationMgr *locationMgr = nil;
                     NSLog(@"longitude:%f; latitude:%f; addressDictionary:%@", placemark.location.coordinate.longitude, placemark.location.coordinate.latitude, placemark.addressDictionary);
                     locationMgr.curCityName = [placemark.addressDictionary objectForKey:@"City"];
                     locationMgr.curCityName = [self filterCityName:locationMgr.curCityName];
+                    locationMgr.locationInfoName = [placemark.addressDictionary objectForKey:@"Name"];
+                    locationMgr.locationInfoName = [locationMgr.locationInfoName stringByReplacingOccurrencesOfString:@"中国" withString:@""];
+                    
                 }
             }
         }];
