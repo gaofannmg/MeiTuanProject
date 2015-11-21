@@ -13,4 +13,8 @@
 
 @property (nonatomic,weak) HomeViewController *basicVC;
 
+-(void) showZuijinItem:(BOOL) isShow;
+
+-(void) selectFirstRow;
+
 @end

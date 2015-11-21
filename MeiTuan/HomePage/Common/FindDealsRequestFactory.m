@@ -59,6 +59,9 @@
     self.category = nil;
     self.region = nil;
     self.keyword = nil;
+    self.sort = 1;
+    self.latitude = 0;
+    self.longitude = 0;
     
     NSMutableDictionary *dict = [self convertToDictFromModel];
     

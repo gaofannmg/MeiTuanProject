@@ -490,12 +490,37 @@
         [self.view addSubview:sortPopView];
     }
     
+    [self isSortViewShowZuijinItem];
+    
     [UIView animateWithDuration:0.3 animations:^{
         backView.alpha = 0.5;
-        sortPopView.frame = CGRectMake(sortPopView.frame.origin.x, self.view.frame.size.height - 44 *7, sortPopView.frame.size.width, sortPopView.frame.size.height);
+        sortPopView.frame = CGRectMake(sortPopView.frame.origin.x, self.view.frame.size.height - sortPopView.frame.size.height, sortPopView.frame.size.width, sortPopView.frame.size.height);
     }];
 }
 
+/**
+ *  是否显示离我最近选项
+ */
+-(void) isSortViewShowZuijinItem
+{
+    SortPopView *sortPopView = [self.view viewWithTag:555];
+    
+    if ([LocationMgr shareInstance].curLocation.latitude > 0 && [LocationMgr shareInstance].curLocation.longitude > 0)
+    {
+        if ([[LocationMgr shareInstance].curCityName isEqual:cityBtn.titleLabel.text])
+        {
+            [sortPopView showZuijinItem:YES];
+        }
+        else
+        {
+            [sortPopView showZuijinItem:NO];
+        }
+    }
+    else
+    {
+        [sortPopView showZuijinItem:NO];
+    }
+}
 
 
 /**
@@ -542,6 +567,11 @@
     [self resetPageInfo];
     [cityBtn setTitle:cityName forState:UIControlStateNormal];
     [self getHttpDataByCityName:cityName];
+    
+    //换城市，默认排序
+    SortPopView *sortPopView = [self.view viewWithTag:555];
+    [self isSortViewShowZuijinItem];
+    [sortPopView selectFirstRow];
 }
 
 /**

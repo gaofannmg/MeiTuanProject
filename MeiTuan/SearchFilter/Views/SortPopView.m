@@ -13,6 +13,10 @@
 {
     UITableView *contentView;
     NSMutableArray *dataArray;
+    NSString *specialItem;
+    
+    CGFloat noItemHeight;
+    CGFloat basicItemHeight;
 }
 @end
 
@@ -20,6 +24,8 @@
 
 - (instancetype) initWithFrame:(CGRect)frame
 {
+    basicItemHeight = frame.size.height;
+    noItemHeight = frame.size.height - 44;
     if (self = [super initWithFrame:frame])
     {
         dataArray = [NSMutableArray array];
@@ -29,7 +35,9 @@
         [dataArray addObject:@"人气最高"];
         [dataArray addObject:@"最新发布"];
         [dataArray addObject:@"即将结束"];
-        [dataArray addObject:@"离我最近"];
+        
+        specialItem = @"离我最近";
+        [dataArray addObject:specialItem];
         
         [self makeUI];
     }
@@ -65,6 +73,7 @@
     SortCell *cell = [contentView dequeueReusableCellWithIdentifier:@"SortCell" forIndexPath:indexPath];
     NSString *sortName = dataArray[indexPath.row];
     [cell refreshCell:sortName];
+    
     return cell;
 }
 
@@ -73,6 +82,38 @@
     NSString *sortName = dataArray[indexPath.row];
     
     [self.basicVC sortWithText:sortName];
+}
+
+-(void) showZuijinItem:(BOOL) isShow
+{
+    if (isShow)
+    {
+        if (![dataArray containsObject:specialItem])
+        {
+            [dataArray addObject:specialItem];
+        }
+        
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, basicItemHeight);
+    }
+    else
+    {
+        if ([dataArray containsObject:specialItem])
+        {
+            [dataArray removeObject:specialItem];
+        }
+        
+        self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, noItemHeight);
+    }
+    
+    
+    NSIndexPath *ipath = [contentView indexPathForSelectedRow];
+    [contentView reloadData];
+    [contentView selectRowAtIndexPath:ipath animated:NO scrollPosition:UITableViewScrollPositionNone];
+}
+
+-(void) selectFirstRow
+{
+    [contentView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
 }
 
 /*
