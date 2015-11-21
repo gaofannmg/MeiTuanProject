@@ -74,19 +74,8 @@
 		A67084131BC943EA00F6A40F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A67084111BC943EA00F6A40F /* Main.storyboard */; };
 		A67084151BC943EA00F6A40F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A67084141BC943EA00F6A40F /* Images.xcassets */; };
 		A67084181BC943EA00F6A40F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A67084161BC943EA00F6A40F /* LaunchScreen.xib */; };
-		A67084241BC943EB00F6A40F /* MeiTuanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67084231BC943EB00F6A40F /* MeiTuanTests.m */; };
 		A6E78A131BDFB2A40024101E /* CityListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E78A121BDFB2A40024101E /* CityListViewCell.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A670841E1BC943EB00F6A40F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A67083FC1BC943EA00F6A40F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A67084031BC943EA00F6A40F;
-			remoteInfo = MeiTuan;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		49107F2D1BF82A6E00B0338E /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
@@ -216,7 +205,7 @@
 		A610EBAE1BCEAE1300B25B4D /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		A610EBAF1BCEAE1300B25B4D /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		A610EBC41BCEB17F00B25B4D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		A67084041BC943EA00F6A40F /* MeiTuan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeiTuan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67084041BC943EA00F6A40F /* 欣欣然购.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "欣欣然购.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67084081BC943EA00F6A40F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A67084091BC943EA00F6A40F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A670840B1BC943EA00F6A40F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -224,7 +213,6 @@
 		A67084121BC943EA00F6A40F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A67084141BC943EA00F6A40F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A67084171BC943EA00F6A40F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		A670841D1BC943EB00F6A40F /* MeiTuanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeiTuanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67084221BC943EB00F6A40F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A67084231BC943EB00F6A40F /* MeiTuanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeiTuanTests.m; sourceTree = "<group>"; };
 		A6E78A111BDFB2A40024101E /* CityListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CityListViewCell.h; path = MeiTuan/SearchFilter/CityListViewCell.h; sourceTree = SOURCE_ROOT; };
@@ -239,13 +227,6 @@
 				4999F91F1BF8B63E00A8656C /* CoreGraphics.framework in Frameworks */,
 				4999F91D1BF8B63500A8656C /* UIKit.framework in Frameworks */,
 				4999F91B1BF8B62C00A8656C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A670841A1BC943EB00F6A40F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,8 +565,7 @@
 		A67084051BC943EA00F6A40F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A67084041BC943EA00F6A40F /* MeiTuan.app */,
-				A670841D1BC943EB00F6A40F /* MeiTuanTests.xctest */,
+				A67084041BC943EA00F6A40F /* 欣欣然购.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -653,26 +633,8 @@
 			);
 			name = MeiTuan;
 			productName = MeiTuan;
-			productReference = A67084041BC943EA00F6A40F /* MeiTuan.app */;
+			productReference = A67084041BC943EA00F6A40F /* 欣欣然购.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A670841C1BC943EB00F6A40F /* MeiTuanTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A670842A1BC943EB00F6A40F /* Build configuration list for PBXNativeTarget "MeiTuanTests" */;
-			buildPhases = (
-				A67084191BC943EB00F6A40F /* Sources */,
-				A670841A1BC943EB00F6A40F /* Frameworks */,
-				A670841B1BC943EB00F6A40F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A670841F1BC943EB00F6A40F /* PBXTargetDependency */,
-			);
-			name = MeiTuanTests;
-			productName = MeiTuanTests;
-			productReference = A670841D1BC943EB00F6A40F /* MeiTuanTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -685,10 +647,6 @@
 				TargetAttributes = {
 					A67084031BC943EA00F6A40F = {
 						CreatedOnToolsVersion = 6.3.2;
-					};
-					A670841C1BC943EB00F6A40F = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = A67084031BC943EA00F6A40F;
 					};
 				};
 			};
@@ -706,7 +664,6 @@
 			projectRoot = "";
 			targets = (
 				A67084031BC943EA00F6A40F /* MeiTuan */,
-				A670841C1BC943EB00F6A40F /* MeiTuanTests */,
 			);
 		};
 /* End PBXProject section */
@@ -724,13 +681,6 @@
 				4999F92D1BF8CBC700A8656C /* DJRefresh.bundle in Resources */,
 				A67084151BC943EA00F6A40F /* Images.xcassets in Resources */,
 				49265B531BDE94120062F025 /* cityGroups.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A670841B1BC943EB00F6A40F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -801,23 +751,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A67084191BC943EB00F6A40F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A67084241BC943EB00F6A40F /* MeiTuanTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A670841F1BC943EB00F6A40F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A67084031BC943EA00F6A40F /* MeiTuan */;
-			targetProxy = A670841E1BC943EB00F6A40F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A67084111BC943EA00F6A40F /* Main.storyboard */ = {
@@ -858,8 +792,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Gao (VHFB68NPJA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yong Gao (VHFB68NPJA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yong Gao (2B9QX8E39M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yong Gao (2B9QX8E39M)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -882,7 +816,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "59ce07fd-99e3-438e-9976-9f084ebecec0";
+				PRODUCT_NAME = "欣欣然购";
+				PROVISIONING_PROFILE = "111150a2-9f70-422f-9d10-8119e5a9770c";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -904,7 +839,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yong Gao (2B9QX8E39M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yong Gao (2B9QX8E39M)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -919,7 +855,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "59ce07fd-99e3-438e-9976-9f084ebecec0";
+				PRODUCT_NAME = "欣欣然购";
+				PROVISIONING_PROFILE = "111150a2-9f70-422f-9d10-8119e5a9770c";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -929,14 +866,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Gao (VHFB68NPJA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yong Gao (VHFB68NPJA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yong Gao (2B9QX8E39M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yong Gao (2B9QX8E39M)";
 				GCC_PREFIX_HEADER = MeiTuan/PrefixHeader.pch;
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yongyinmg.phonetools;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "59ce07fd-99e3-438e-9976-9f084ebecec0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gaofan.xinxinrangou;
+				PRODUCT_NAME = "欣欣然购";
+				PROVISIONING_PROFILE = "111150a2-9f70-422f-9d10-8119e5a9770c";
 			};
 			name = Debug;
 		};
@@ -944,49 +881,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yong Gao (VHFB68NPJA)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yong Gao (2B9QX8E39M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yong Gao (2B9QX8E39M)";
 				GCC_PREFIX_HEADER = MeiTuan/PrefixHeader.pch;
 				INFOPLIST_FILE = MeiTuan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yongyinmg.phonetools;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "59ce07fd-99e3-438e-9976-9f084ebecec0";
-			};
-			name = Release;
-		};
-		A670842B1BC943EB00F6A40F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MeiTuanTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yongyinmg.phonetools;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeiTuan.app/MeiTuan";
-			};
-			name = Debug;
-		};
-		A670842C1BC943EB00F6A40F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MeiTuanTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yongyinmg.phonetools;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeiTuan.app/MeiTuan";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gaofan.xinxinrangou;
+				PRODUCT_NAME = "欣欣然购";
+				PROVISIONING_PROFILE = "111150a2-9f70-422f-9d10-8119e5a9770c";
 			};
 			name = Release;
 		};
@@ -1007,15 +909,6 @@
 			buildConfigurations = (
 				A67084281BC943EB00F6A40F /* Debug */,
 				A67084291BC943EB00F6A40F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A670842A1BC943EB00F6A40F /* Build configuration list for PBXNativeTarget "MeiTuanTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A670842B1BC943EB00F6A40F /* Debug */,
-				A670842C1BC943EB00F6A40F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

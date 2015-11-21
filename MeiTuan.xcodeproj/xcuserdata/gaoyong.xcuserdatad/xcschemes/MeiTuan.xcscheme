@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A67084031BC943EA00F6A40F"
-               BuildableName = "MeiTuan.app"
+               BuildableName = "&#x6b23;&#x6b23;&#x7136;&#x8d2d;.app"
                BlueprintName = "MeiTuan"
                ReferencedContainer = "container:MeiTuan.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A67084031BC943EA00F6A40F"
-            BuildableName = "MeiTuan.app"
+            BuildableName = "&#x6b23;&#x6b23;&#x7136;&#x8d2d;.app"
             BlueprintName = "MeiTuan"
             ReferencedContainer = "container:MeiTuan.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A67084031BC943EA00F6A40F"
-            BuildableName = "MeiTuan.app"
+            BuildableName = "&#x6b23;&#x6b23;&#x7136;&#x8d2d;.app"
             BlueprintName = "MeiTuan"
             ReferencedContainer = "container:MeiTuan.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A67084031BC943EA00F6A40F"
-            BuildableName = "MeiTuan.app"
+            BuildableName = "&#x6b23;&#x6b23;&#x7136;&#x8d2d;.app"
             BlueprintName = "MeiTuan"
             ReferencedContainer = "container:MeiTuan.xcodeproj">
          </BuildableReference>
@@ -110,6 +110,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "&#x6b23;&#x6b23;&#x7136;&#x8d2d;"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
