@@ -22,6 +22,7 @@
     NSInteger leftSelectIndex;
     NSInteger leftSelectUIIndex; //用于ui选中
     BOOL isFirstViewWillAppear;
+    BOOL isCityChange;
 }
 @property (nonatomic,weak) HomeViewController *homeVC;
 @property (nonatomic,copy) NSString *cityName;

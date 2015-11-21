@@ -39,8 +39,11 @@
 {
     if (![cityName isEqual:_cityName])
     {
-        leftSelectUIIndex = 0;
-        leftSelectIndex = 0;
+        isCityChange = YES;
+    }
+    else
+    {
+        isCityChange = NO;
     }
     
     _cityName  = cityName;
@@ -49,6 +52,23 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if (isCityChange)
+    {
+        for (int i = 0;i< leftArray.count;i++)
+        {
+            NSDictionary *leftDict = [leftArray objectAtIndex:i];
+            NSString *leftTitle = [leftDict objectForKey:leftTitleKey];
+            
+            if ([leftTitle isEqual:@"全部"]||[leftTitle isEqual:@"全部分类"])
+            {
+                leftSelectUIIndex = i;
+                leftSelectIndex = i;
+                rightSelectIndex = 0;
+                break;
+            }
+        }
+    }
     
     leftSelectUIIndex = leftSelectIndex;
     [leftTabView reloadData];
