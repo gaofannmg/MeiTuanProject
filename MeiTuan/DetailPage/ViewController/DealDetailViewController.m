@@ -396,20 +396,8 @@
 -(void) buyButtonClick
 {
     BuyWebViewController *buyWebView = [[BuyWebViewController alloc] init];
-    NSString *deal_id = dataDict[@"deal_id"];
-    
-    NSArray *dealIdArray = [deal_id componentsSeparatedByString:@"-"];
-
-    if (deal_id && [deal_id isKindOfClass:[NSString class]] && dealIdArray.count == 2)
-    {
-        buyWebView.url = [NSString stringWithFormat:@"http://m.dianping.com/tuan/buy/%@",dealIdArray[1]];
-        [self presentViewController:buyWebView animated:YES completion:nil];
-    }
-    else
-    {
-        buyWebView.url = dataDict[@"deal_h5_url"];
-        [self presentViewController:buyWebView animated:YES completion:nil];
-    }
+    buyWebView.url = dataDict[@"deal_h5_url"];
+    [self presentViewController:buyWebView animated:YES completion:nil];
 }
 
 //更多团购
