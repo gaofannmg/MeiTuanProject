@@ -57,6 +57,20 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSURL *url = request.URL;
+    
+    NSLog(@"url:%@",url);
+    
+    if ([url.absoluteString containsString:@"dianping://tuandeal"])
+    {
+        return NO;
+    }
+    
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
